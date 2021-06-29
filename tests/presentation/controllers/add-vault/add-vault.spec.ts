@@ -1,30 +1,11 @@
-import { VaultParams, Vault, EyeColor } from "../../../src/domain/models/vault"
-import { AddVault } from "../../../src/domain/usecases/add-vault"
-import { AddVaultController } from "../../../src/presentation/controllers/add-vault"
-import { IValidate } from "../../../src/presentation/interfaces/validate"
-import { THttpRequest } from "../../../src/presentation/types/http"
+import { VaultParams, Vault, EyeColor } from "../../../../src/domain/models/vault"
+import { AddVault } from "../../../../src/domain/usecases/add-vault"
+import { AddVaultController } from "../../../../src/presentation/controllers/add-vault"
+import { IValidate } from "../../../../src/presentation/interfaces/validate"
+import { THttpRequest } from "../../../../src/presentation/types/http"
+import { MockAddVault } from "./mocks/add-vault"
+import { MockValidator } from "./mocks/validator"
 
-class MockValidator implements IValidate{
-    validate(input: any): Error | undefined {
-        return
-    }
-}
-
-const expected_response = {
-    id: 'valid_id',
-    name: 'Maycon',
-    age: 1,
-    eyeColor: EyeColor.GREEN,
-    hairColor: 'brown',
-}
-
-class MockAddVault implements AddVault{
-    create(vault: VaultParams): Promise<Vault> {
-        return new Promise((resolve, reject) => {
-            resolve(expected_response)
-        })
-    }
-}
 
 type SutTypes = {
     sut: AddVaultController
@@ -55,6 +36,13 @@ describe('Add Vault Controller', () => {
     })
     test('Should return 200 when add vault with success', async () => {
         const {sut} = makeSut()
+        const expected_response = {
+            id: 'valid_id',
+            name: 'Maycon',
+            age: 1,
+            eyeColor: EyeColor.GREEN,
+            hairColor: 'brown',
+        }
         const request:THttpRequest = {
             body:{
                 name: 'valid_name', 
