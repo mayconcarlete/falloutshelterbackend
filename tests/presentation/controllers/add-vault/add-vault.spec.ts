@@ -1,11 +1,9 @@
-import { EyeColor } from "../../../../src/domain/models/vault"
 import { AddVault } from "../../../../src/domain/usecases/add-vault"
 import { AddVaultController } from "../../../../src/presentation/controllers/add-vault"
-import { RequiredFieldError } from "../../../../src/presentation/errors/required-field"
 import { ServerError } from "../../../../src/presentation/errors/server-error"
 import { IValidate } from "../../../../src/presentation/interfaces/validate"
 import { THttpRequest } from "../../../../src/presentation/types/http"
-import { MockAddVault } from "./mocks/add-vault"
+import { expected_response, MockAddVault } from "./mocks/add-vault"
 import { MockValidator } from "./mocks/validator"
 
 
@@ -62,13 +60,6 @@ describe('Add Vault Controller', () => {
     })
     test('Should return 200 when add vault with success', async () => {
         const {sut} = makeSut()
-        const expected_response = {
-            id: 'valid_id',
-            name: 'Maycon',
-            age: 1,
-            eyeColor: EyeColor.GREEN,
-            hairColor: 'brown',
-        }
         const response = await sut.handle(request)
         expect(response.statusCode).toBe(200)
         expect(response.body).toEqual(expected_response)
