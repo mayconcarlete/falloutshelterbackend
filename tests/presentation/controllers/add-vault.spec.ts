@@ -20,7 +20,10 @@ const makeSut = ():SutTypes => {
 }
 describe('Add Vault Controller', () => {
     test('Should return bad request when validation fails', async () => {
-        const {sut} = makeSut()
+        const {sut, validator} = makeSut()
+        jest.spyOn(validator, 'validate').mockImplementationOnce(() => {
+            throw Error('Test Error')
+        })
         const request:THttpRequest = {
             body:{
                 'any_field': 'invalid_value'
