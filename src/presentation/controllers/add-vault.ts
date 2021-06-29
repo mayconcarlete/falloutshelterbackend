@@ -1,6 +1,8 @@
 import { VaultParams } from "../../domain/models/vault";
 import { AddVault } from "../../domain/usecases/add-vault";
-import { badRequest, ok } from "../helpers/http-responses";
+import { RequiredFieldError } from "../errors/required-field";
+import { ServerError } from "../errors/server-error";
+import { badRequest, ok, serverError } from "../helpers/http-responses";
 import { IController } from "../interfaces/controller";
 import { IValidate } from "../interfaces/validate";
 import { THttpRequest, THttpResponse } from "../types/http";
@@ -21,7 +23,9 @@ export class AddVaultController implements IController{
             return ok(addVault)
 
         }catch(error){
-            return badRequest(error)
+            if(error instanceof RequiredFieldError || error instanceof TypeError ) return badRequest(error)
+            else if (error instanceof ServerError) return serverError(error)
+            return serverError(error)
         }
     }
 }
