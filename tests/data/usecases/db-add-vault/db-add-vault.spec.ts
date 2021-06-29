@@ -27,4 +27,10 @@ describe('Db Add Vault', () => {
         } 
         expect(sut.passFieldsToUpperCase(vault)).toEqual(expected_response)
     })
+
+    test('Should return 500 if cant insert into database', async () => {
+        const { sut } = makeSut()
+
+        // const response = sut.create()
+    })
 })
