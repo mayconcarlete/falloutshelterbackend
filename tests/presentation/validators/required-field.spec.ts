@@ -9,4 +9,11 @@ describe('Required Field Validator', () => {
         const sut = new RequiredField(fieldName)
         expect(()=>sut.validate(body)).toThrow(RequiredFieldError)
     })
+    test('Should be falsy when has required field', () => {
+        const fieldName = 'any_field'
+        const body = {[fieldName]:'any_value'}
+        const sut = new RequiredField(fieldName)
+        const response = sut.validate(body)
+        expect(response).toBeFalsy()
+    })
 })
