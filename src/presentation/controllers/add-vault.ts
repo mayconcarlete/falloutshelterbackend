@@ -1,3 +1,4 @@
+import { badRequest, ok } from "../helpers/http-responses";
 import { IController } from "../interfaces/controller";
 import { IValidate } from "../interfaces/validate";
 import { THttpRequest, THttpResponse } from "../types/http";
@@ -11,19 +12,11 @@ export class AddVaultController implements IController{
             const body = request.body
             this.validators.validate(body)
             return new Promise((resolve, reject) => {
-                const response: THttpResponse = {
-                    statusCode: 200,
-                    body: 'hello world'
-                } 
-                resolve(response)
+                resolve(ok('hello world'))
             })
         }catch(error){
             return new Promise((resolve, reject) => {
-                const response: THttpResponse = {
-                    statusCode: 400,
-                    body: error
-                } 
-                resolve(response)
+                resolve(badRequest(error))
             })
         }
     }
