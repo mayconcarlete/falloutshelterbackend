@@ -1,12 +1,12 @@
-import { EyeColor, Vault, VaultParams } from "../../../../../src/domain/models/vault"
+import { Vault, VaultParams } from "../../../../../src/domain/models/vault"
 import { AddVault } from "../../../../../src/domain/usecases/add-vault"
 
-const expected_response = {
+export const expected_response = {
     id: 'valid_id',
-    name: 'Maycon',
+    name: 'MAYCON',
     age: 1,
-    eyeColor: EyeColor.GREEN,
-    hairColor: 'brown',
+    eyeColor: 'BROWN',
+    hairColor: 'BROWN',
 }
 
 export class MockAddVault implements AddVault{

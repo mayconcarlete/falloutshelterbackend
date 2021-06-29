@@ -1,14 +1,8 @@
-export enum EyeColor {
-    BROWN = "BROWN",
-    GREEN = "GREEN",
-    BLUE = "BLUE"
-}   
-
 export type Vault = {
     name: string
     age: number
     hairColor: string
-    eyeColor: EyeColor
+    eyeColor: string
     id: string
 }
 
