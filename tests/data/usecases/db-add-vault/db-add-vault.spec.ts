@@ -2,18 +2,12 @@ import { AddVaultRepository } from "../../../../src/data/interfaces/vault/add-va
 import { DbAddVault } from "../../../../src/data/usecases/db-add-vault"
 import { VaultParams } from "../../../../src/domain/models/vault"
 import { MockAddVaultRepository } from "./mocks/add-vault-repository"
+import { expected_response, vault } from "./mocks/constants"
 
 
 type SutTypes = {
     sut: DbAddVault
     addVaultRepository: AddVaultRepository
-}
-
-const vault:VaultParams = {
-    age:1,
-    eyeColor: 'brown',
-    name: 'Maycon',
-    hairColor: 'brown'
 }
 
 const makeSut = ():SutTypes => {
@@ -25,13 +19,6 @@ const makeSut = ():SutTypes => {
 describe('Db Add Vault', () => {
     test('Should pass fields to uppercase', () => {
         const { sut } = makeSut()
-        
-        const expected_response:VaultParams = {
-            age:1,
-            eyeColor: 'BROWN',
-            name: 'MAYCON',
-            hairColor: 'BROWN'
-        } 
         expect(sut.passFieldsToUpperCase(vault)).toEqual(expected_response)
     })
 
