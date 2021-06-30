@@ -1,24 +1,31 @@
+import { AddVaultRepository } from "../../../../src/data/interfaces/vault/add-vault-repository"
 import { DbAddVault } from "../../../../src/data/usecases/db-add-vault"
 import { VaultParams } from "../../../../src/domain/models/vault"
+import { MockAddVaultRepository } from "./mocks/add-vault-repository"
+
 
 type SutTypes = {
     sut: DbAddVault
+    addVaultRepository: AddVaultRepository
+}
+
+const vault:VaultParams = {
+    age:1,
+    eyeColor: 'brown',
+    name: 'Maycon',
+    hairColor: 'brown'
 }
 
 const makeSut = ():SutTypes => {
-    const sut = new DbAddVault()
-    return {sut}
+    const addVaultRepository = new MockAddVaultRepository()
+    const sut = new DbAddVault(addVaultRepository)
+    return {sut, addVaultRepository}
 }
 
 describe('Db Add Vault', () => {
     test('Should pass fields to uppercase', () => {
         const { sut } = makeSut()
-        const vault:VaultParams = {
-            age:1,
-            eyeColor: 'brown',
-            name: 'Maycon',
-            hairColor: 'brown'
-        }
+        
         const expected_response:VaultParams = {
             age:1,
             eyeColor: 'BROWN',
@@ -28,9 +35,13 @@ describe('Db Add Vault', () => {
         expect(sut.passFieldsToUpperCase(vault)).toEqual(expected_response)
     })
 
-    test('Should return 500 if cant insert into database', async () => {
-        const { sut } = makeSut()
-
-        // const response = sut.create()
+    test('Should throw if repository throws', async () => {
+        const { sut, addVaultRepository } = makeSut()   
+        jest.spyOn(addVaultRepository, 'add').mockImplementationOnce(async () => {
+            return new Promise((resolve, reject) => {
+                throw Error('Repository error')
+            })
+        })
+        await expect(sut.create(vault)).rejects.toThrow()
     })
 })
