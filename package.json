@@ -18,6 +18,7 @@
     "typescript": "^4.3.4"
   },
   "dependencies": {
-    "aws-sdk": "^2.937.0"
+    "aws-sdk": "^2.937.0",
+    "dotenv": "^10.0.0"
   }
 }
