@@ -1,19 +1,18 @@
 import { VaultParams, Vault } from "../../domain/models/vault";
 import { AddVault } from "../../domain/usecases/add-vault";
+import { AddVaultRepository } from "../interfaces/vault/add-vault-repository";
 
 export class DbAddVault implements AddVault{
-    create(vault: VaultParams): Promise<Vault> {
+    constructor(
+        private readonly addVaultRepository: AddVaultRepository
+    ){}
+
+    async create(vault: VaultParams): Promise<Vault> {
         const vaultUpperCase = this.passFieldsToUpperCase(vault)
-        return new Promise((resolve, reject) => {
-            resolve({
-                age:1,
-                eyeColor: 'brown',
-                hairColor: 'BROWN',
-                id: 'valid_id',
-                name: 'Maycon'
-            })
-        })
+        const addedVault = await this.addVaultRepository.add(vaultUpperCase)
+        return addedVault
     }
+    
     passFieldsToUpperCase(vault: VaultParams):VaultParams {
         return {
             age: vault.age,
