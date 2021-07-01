@@ -1,25 +1,21 @@
-version: '3'
+version: '3.8'
 
 services: 
-    dynamodb_local:
+    dynamodb-local:
         command: "-jar DynamoDBLocal.jar -sharedDb -optimizeDbBeforeStartup -dbPath ./data"
         image: "amazon/dynamodb-local:latest"
-        container_name: dynamodb_local
+        container_name: dynamodb-local
+        working_dir:  /home/dynamodblocal
         ports:
             - "8000:8000"
         volumes:
-            - "./docker/dynamodb:/home/dynamodblocal/data"
-        working_dir:  /home/dynamodblocal
-        environment:
-            AWS_ACCESS_KEY_ID: DUMMY_ID
-            AWS_SECRET_ACCESS_KEY: DUMMY_KEY
-            REGION: 'us-east-1' 
+            - ".:/home/dynamodblocal/data"
         
     dynamodb_manager:
         image: taydy/dynamodb-manager
         privileged: true
         restart: always
         depends_on:
-            - dynamodb_local
+            - dynamodb-local
         ports:
             - "8080:80"

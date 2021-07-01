@@ -1,3 +1,4 @@
 node_modules
 Readme.md
 .env
+shared-local-instance.db
