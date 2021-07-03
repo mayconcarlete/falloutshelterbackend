@@ -8,13 +8,12 @@ import { DynamoDbConfig } from "./config";
 export class DynamoDbRepository implements AddVaultRepository{
     private aws
     constructor(config: DynamoDbConfig){
-        this.aws = new AWS.DynamoDB(config)    
+        this.aws = new AWS.DynamoDB(config)
     }     
     
-    async add(vault: VaultParams):Promise<Vault> {
+    async add(vault: VaultParams, table:string = 'Vault'):Promise<Vault> {
         const id = this.get_id() 
-        const params = this.mapObject({...vault, id})
-        
+        const params = this.mapObject({...vault, id}, table)
         return new Promise((resolve, reject) => {
             this.aws.putItem(params, (err, data) => {
                 if(err) reject(err)
@@ -23,12 +22,12 @@ export class DynamoDbRepository implements AddVaultRepository{
         })
     }
 
-    mapObject(vault:Vault){
+    mapObject(vault:Vault, table:string){
         return {
-            "TableName": 'Vault',
+            "TableName": table,
             "ConditionExpression": "attribute_not_exists(id)",
             "Item":{
-                "id": {"S": this.get_id()},
+                "id": {"S": vault.id},
                 "age":{"S": vault.age},
                 "eyeColor": {"S": vault.eyeColor},
                 "name": {"S": vault.name},
@@ -38,6 +37,23 @@ export class DynamoDbRepository implements AddVaultRepository{
     }
     get_id():string{
         return v4()
+    }
+    async remove(id:string): Promise<any>{
+        const params = {
+            TableName: 'Vault',
+            Key:{
+                "id":{
+                    S:id
+                },
+                
+            }
+        }
+        return new Promise((resolve, reject) => {
+            this.aws.deleteItem(params, function(err, data){
+                if(err){reject(err)}
+                resolve(data)
+            })
+        })
     }
     async createTable(): Promise<void>{
             return new Promise((resolve, reject) => {
