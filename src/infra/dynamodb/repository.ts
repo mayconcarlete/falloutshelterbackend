@@ -3,16 +3,11 @@ import { VaultParams, Vault } from "../../domain/models/vault";
 import {vaultTable} from './models/vault'
 import AWS from 'aws-sdk'
 import {v4} from 'uuid'
+import { DynamoDbConfig } from "./config";
 
 export class DynamoDbRepository implements AddVaultRepository{
     private aws
-    constructor(){
-        const config = {
-            'endpoint': 'http://localhost:8000',
-            'region': 'us-east-1',
-            'accessKeyId': 'DUMMY_ID',
-            'secretAccessKey': 'DUMMY_KEY'
-        }
+    constructor(config: DynamoDbConfig){
         this.aws = new AWS.DynamoDB(config)    
     }     
     
