@@ -21,15 +21,28 @@ describe('DynamoDb Repository', () => {
         const { sut } = makeSut()
         const vault = {
             "name": "Maycon",
-            "age": "2020-07-16",
+            "age": "1990-07-16",
             "eyeColor": "green",
             "hairColor": "red"
         }  
         const response = await sut.add(vault)
+        await sut.remove(response.id)
         expect(response.id).toBeTruthy()
         expect(response.name).toBe(vault.name)
         expect(response.age).toBe(vault.age)
         expect(response.eyeColor).toBe(vault.eyeColor)
         expect(response.hairColor).toBe(vault.hairColor)
     })
+    test('Should remove vault by id', async () => {
+        const { sut } = makeSut()
+        const vault = {
+            "name": "Maycon",
+            "age": "1990-07-16",
+            "eyeColor": "green",
+            "hairColor": "red"
+        }
+        const addVault = await sut.add(vault)
+        const removedVault = await sut.remove(addVault.id)
+        expect(removedVault).toEqual({})
+    })  
 })
