@@ -4,7 +4,7 @@ import { AddVault } from "../../../../../src/domain/usecases/add-vault"
 export const expected_response = {
     id: 'valid_id',
     name: 'MAYCON',
-    age: 1,
+    age: '2020-6-02',
     eyeColor: 'BROWN',
     hairColor: 'BROWN',
 }

@@ -1,6 +1,6 @@
 export type Vault = {
     name: string
-    age: number
+    age: string
     hairColor: string
     eyeColor: string
     id: string
