@@ -1,4 +1,5 @@
-import { DynamoDbRepository } from "./infra/dynamodb/repository";
+import server from './main/server'
 
-const dynamo = new DynamoDbRepository()
-dynamo.createTable()
+server.listen(3000, () => {
+    console.log('We are on fire')
+})
