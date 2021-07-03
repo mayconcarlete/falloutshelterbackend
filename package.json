@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "jest --watch --verbose",
-    "dev":"ts-node-dev src/index.ts"
+    "dev": "ts-node-dev src/index.ts"
   },
   "keywords": [],
   "author": "",
@@ -20,6 +20,7 @@
   },
   "dependencies": {
     "aws-sdk": "^2.937.0",
-    "dotenv": "^10.0.0"
+    "dotenv": "^10.0.0",
+    "uuid": "^3.3.2"
   }
 }
