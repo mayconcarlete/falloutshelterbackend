@@ -4,16 +4,32 @@ import {vaultTable} from './models/vault'
 import AWS from 'aws-sdk'
 import {v4} from 'uuid'
 import { DynamoDbConfig } from "./config";
+import { GetVaultById } from "../../domain/usecases/get-vault-by-id";
+import { AddVaultDynamoMap } from "./models/dynamo-add-vault";
+import { GetItemOutput } from "aws-sdk/clients/dynamodb";
 
-export class DynamoDbRepository implements AddVaultRepository{
+export class DynamoDbRepository implements AddVaultRepository, GetVaultById{
     private aws
     constructor(config: DynamoDbConfig){
         this.aws = new AWS.DynamoDB(config)
     }     
+    getById(id: string, tableName:string = 'Vault'): Promise<Vault> {
+        const params = {
+            TableName: tableName,
+            Key:{id:{S:id}}
+        }
+        return new Promise((resolve, reject) => {
+            this.aws.getItem(params,  (err, data) =>{
+                if(err) reject(err)
+                const vault = this.mapToJsonObject(data)
+                resolve(vault)
+            })
+        })
+    }
     
     async add(vault: VaultParams, table:string = 'Vault'):Promise<Vault> {
         const id = this.get_id() 
-        const params = this.mapObject({...vault, id}, table)
+        const params = this.mapToDynamoObject({...vault, id}, table)
         return new Promise((resolve, reject) => {
             this.aws.putItem(params, (err, data) => {
                 if(err) reject(err)
@@ -21,8 +37,16 @@ export class DynamoDbRepository implements AddVaultRepository{
             })
         })
     }
-
-    mapObject(vault:Vault, table:string){
+    mapToJsonObject(dynamoObj:GetItemOutput):Vault{
+        return {
+            id: dynamoObj.Item?.id.S!,
+            name: dynamoObj.Item?.name.S!,
+            eyeColor: dynamoObj.Item?.eyeColor.S!,
+            hairColor: dynamoObj.Item?.hairColor.S!,
+            age: dynamoObj.Item?.age.S!
+        }
+    }
+    mapToDynamoObject(vault:Vault, table:string):AddVaultDynamoMap{
         return {
             "TableName": table,
             "ConditionExpression": "attribute_not_exists(id)",
