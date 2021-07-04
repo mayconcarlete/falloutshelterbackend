@@ -21,4 +21,14 @@ describe('Db Get Vault By Id', () => {
         const getVault = await sut.getById(id)
         expect(getVault).toEqual(vault)
     })
+    test('Should throw when getVaultRepository throws', async () => {
+        const {sut, getVaultRepository} = makeSut()
+        const id = 'any_id'
+        jest.spyOn(getVaultRepository, 'getById').mockImplementationOnce(async() => {
+            return new Promise((resolve, reject) => {
+                throw new Error()
+            })
+        })
+        await expect(sut.getById(id)).rejects.toThrow()
+    })
 })
