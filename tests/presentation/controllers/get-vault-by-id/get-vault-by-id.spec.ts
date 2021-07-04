@@ -40,10 +40,24 @@ describe('GetVaultById Controller', () => {
             })
         })
         const request:THttpRequest = {
-            body:{id:'any_id'}
+            body:{id:'not_found_id'}
         }
         const response = await sut.handle(request)
         expect(response.statusCode).toBe(404)
         expect(response.body).toEqual(new NotFoundError('cant found a vault'))
+    })
+    test('Should return 500 and server error if getVaultId throws', async() => {
+        const {sut, getVaultById} = makeSut()
+        const request:THttpRequest = {
+            body:{id:'any_id'}
+        }
+        jest.spyOn(getVaultById, 'getById').mockImplementationOnce(async() => {
+            return new Promise((resolve, reject) => {
+                throw new Error('Something wrong')
+            })
+        })
+        const response = await sut.handle(request)
+        expect(response.statusCode).toBe(500)
+        expect(response.body).toEqual(new Error('Something wrong'))        
     })
 })
