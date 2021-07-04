@@ -11,6 +11,13 @@ const config = {
     'secretAccessKey': 'DUMMY_KEY'
 }
 
+const dummyVault = {
+    "name": "Maycon",
+    "age": new Date().toISOString(),
+    "eyeColor": "green",
+    "hairColor": "red"
+} 
+
 const makeSut = ():SutTypes => {
     const sut = new DynamoDbRepository(config) 
     return {sut}
@@ -18,31 +25,25 @@ const makeSut = ():SutTypes => {
 
 describe('DynamoDb Repository', () => {
     test('Should add a Vault with correct params', async () => {
-        const { sut } = makeSut()
-        const vault = {
-            "name": "Maycon",
-            "age": new Date().toISOString(),
-            "eyeColor": "green",
-            "hairColor": "red"
-        }  
-        const response = await sut.add(vault)
+        const { sut } = makeSut() 
+        const response = await sut.add(dummyVault)
         await sut.remove(response.id)
         expect(response.id).toBeTruthy()
-        expect(response.name).toBe(vault.name)
-        expect(response.age).toBe(vault.age)
-        expect(response.eyeColor).toBe(vault.eyeColor)
-        expect(response.hairColor).toBe(vault.hairColor)
+        expect(response.name).toBe(dummyVault.name)
+        expect(response.age).toBe(dummyVault.age)
+        expect(response.eyeColor).toBe(dummyVault.eyeColor)
+        expect(response.hairColor).toBe(dummyVault.hairColor)
     })
     test('Should remove vault by id', async () => {
         const { sut } = makeSut()
-        const vault = {
-            "name": "Maycon",
-            "age": new Date().toISOString(),
-            "eyeColor": "green",
-            "hairColor": "red"
-        }
-        const addVault = await sut.add(vault)
+        const addVault = await sut.add(dummyVault)
         const removedVault = await sut.remove(addVault.id)
         expect(removedVault).toEqual({})
-    })  
+    })
+    test('Should get a Vault by given an id', async() => {
+        const {sut} = makeSut()
+        const addedVault = await sut.add(dummyVault)
+        const getVault = await sut.getById(addedVault.id)
+        expect(getVault).toEqual(addedVault)
+    })
 })
