@@ -16,7 +16,7 @@ export class GetVaultByIdController implements IController {
             const params = request.params
             this.validators.validate(params)
 
-            const {id} = params.id
+            const id = params.id
             const vault = await this.getVaultByIdUseCase.getById(id)
             return ok(vault)
 
