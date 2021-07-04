@@ -13,7 +13,7 @@ export class DynamoDbRepository implements AddVaultRepository, GetVaultById{
     constructor(config: DynamoDbConfig){
         this.aws = new AWS.DynamoDB(config)
     }     
-    getById(id: string, tableName:string = 'Vault'): Promise<Vault> {
+    getById(id: string, tableName:string = 'Vault'): Promise<Vault | null> {
         const params = {
             TableName: tableName,
             Key:{id:{S:id}}
@@ -21,8 +21,14 @@ export class DynamoDbRepository implements AddVaultRepository, GetVaultById{
         return new Promise((resolve, reject) => {
             this.aws.getItem(params,  (err, data) =>{
                 if(err) reject(err)
-                const vault = this.mapToJsonObject(data)
-                resolve(vault)
+                if(!data.Item){
+                    resolve(null)
+                }
+                
+                else{
+                    const vault = this.mapToJsonObject(data)
+                    resolve(vault)
+                }
             })
         })
     }
