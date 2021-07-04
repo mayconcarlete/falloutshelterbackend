@@ -16,6 +16,13 @@ const makeSut = ():SutTypes =>{
 }
 
 describe('Db Get Vault By Id', () => {
+    test('ensure getById is called with carrect params', async() => {
+        const {sut} = makeSut()
+        const sutSpy = jest.spyOn(sut, 'getById')
+        const id = 'any_id'
+        await sut.getById(id)
+        expect(sutSpy).toHaveBeenCalledWith(id)
+    })
     test('ensure getGetById return a vault when find by id', async() => {
         const {sut} = makeSut()
         const id = 'valid_id'
