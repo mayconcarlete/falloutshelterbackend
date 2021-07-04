@@ -21,7 +21,7 @@ describe('DynamoDb Repository', () => {
         const { sut } = makeSut()
         const vault = {
             "name": "Maycon",
-            "age": "1990-07-16",
+            "age": new Date().toISOString(),
             "eyeColor": "green",
             "hairColor": "red"
         }  
@@ -37,7 +37,7 @@ describe('DynamoDb Repository', () => {
         const { sut } = makeSut()
         const vault = {
             "name": "Maycon",
-            "age": "1990-07-16",
+            "age": new Date().toISOString(),
             "eyeColor": "green",
             "hairColor": "red"
         }
