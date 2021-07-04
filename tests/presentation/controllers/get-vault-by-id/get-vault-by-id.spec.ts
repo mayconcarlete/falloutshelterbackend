@@ -43,7 +43,6 @@ describe('GetVaultById Controller', () => {
             body:{id:'any_id'}
         }
         const response = await sut.handle(request)
-        console.log(response)
         expect(response.statusCode).toBe(404)
         expect(response.body).toEqual(new NotFoundError('cant found a vault'))
     })
