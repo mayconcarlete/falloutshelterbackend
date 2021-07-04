@@ -6,9 +6,11 @@ export class DbGetVaultById implements GetVaultById{
     constructor(
         private readonly getVaultRepository: GetVaultById
     ){}
-    getById(id: string): Promise<Vault | null> {
-        const vault = this.getVaultRepository.getById(id)
-        if(!vault) throw new NotFoundError('cant found a vault')
+    async getById(id: string): Promise<Vault | null> {
+        const vault = await this.getVaultRepository.getById(id)
+        if(!vault){
+            throw new NotFoundError('cant found a vault')
+        }
         return vault
     }
 }
