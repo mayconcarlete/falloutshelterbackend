@@ -44,6 +44,7 @@ describe('DynamoDb Repository', () => {
         const {sut} = makeSut()
         const addedVault = await sut.add(dummyVault)
         const getVault = await sut.getById(addedVault.id)
+        await sut.remove(addedVault.id)
         expect(getVault).toEqual(addedVault)
     })
 })
