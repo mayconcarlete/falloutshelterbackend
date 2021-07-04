@@ -5,12 +5,11 @@ import { badRequest, notFound, ok, serverError } from "../helpers/http-responses
 import { IController } from "../interfaces/controller";
 import { IValidate } from "../interfaces/validate";
 import { THttpRequest, THttpResponse } from "../types/http";
-import { RequiredField } from "../validators/required-field";
 
 export class GetVaultByIdController implements IController {
     constructor(
         private readonly validators: IValidate,
-        private readonly getVaultById: GetVaultById
+        private readonly getVaultByIdUseCase: GetVaultById
     ){}
     async handle(request: THttpRequest): Promise<THttpResponse> {
         try{
@@ -18,7 +17,7 @@ export class GetVaultByIdController implements IController {
             this.validators.validate(body)
 
             const {id} = body.id
-            const vault = await this.getVaultById.getById(id)
+            const vault = await this.getVaultByIdUseCase.getById(id)
             return ok(vault)
 
         }catch(error){
