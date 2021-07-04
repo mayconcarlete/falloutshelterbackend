@@ -13,10 +13,10 @@ export class GetVaultByIdController implements IController {
     ){}
     async handle(request: THttpRequest): Promise<THttpResponse> {
         try{
-            const body = request.body
-            this.validators.validate(body)
+            const params = request.params
+            this.validators.validate(params)
 
-            const {id} = body.id
+            const {id} = params.id
             const vault = await this.getVaultByIdUseCase.getById(id)
             return ok(vault)
 
