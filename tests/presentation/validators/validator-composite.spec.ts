@@ -3,7 +3,7 @@ import { ValidatorComposite } from '../../../src/presentation/validators/validat
 
 class MockValidator implements IValidate {
   validate (input: any): Error | undefined {
-    return
+    return undefined
   }
 }
 class MockValidatorError implements IValidate {

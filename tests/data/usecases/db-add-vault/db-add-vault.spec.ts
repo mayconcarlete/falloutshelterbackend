@@ -1,6 +1,5 @@
 import { AddVaultRepository } from '../../../../src/data/interfaces/vault/add-vault-repository'
 import { DbAddVault } from '../../../../src/data/usecases/db-add-vault'
-import { VaultParams } from '../../../../src/domain/models/vault'
 import { MockAddVaultRepository } from './mocks/add-vault-repository'
 import { vault } from './mocks/constants'
 

@@ -65,6 +65,6 @@ describe('Add Vault Controller', () => {
     }
     const response = await sut.handle(request)
     expect(response.statusCode).toBe(200)
-    expect(response.body).toEqual({...expectedResponse, id:'valid_id'})
+    expect(response.body).toEqual({ ...expectedResponse, id: 'valid_id' })
   })
 })
