@@ -7,7 +7,7 @@ export const vault: VaultParams = {
   hairColor: 'brown'
 }
 
-export const expected_response: VaultParams = {
+export const expectedResponse: VaultParams = {
   age: '2020-06-02',
   eyeColor: 'BROWN',
   name: 'MAYCON',

@@ -3,7 +3,7 @@ import { AddVaultController } from '../../../../src/presentation/controllers/add
 import { ServerError } from '../../../../src/presentation/errors/server-error'
 import { IValidate } from '../../../../src/presentation/interfaces/validate'
 import { THttpRequest } from '../../../../src/presentation/types/http'
-import { expected_response, MockAddVault } from './mocks/add-vault'
+import { MockAddVault } from './mocks/add-vault'
 import { MockValidator } from './mocks/validator'
 
 type SutTypes = {
@@ -57,8 +57,14 @@ describe('Add Vault Controller', () => {
   })
   test('Should return 200 when add vault with success', async () => {
     const { sut } = makeSut()
+    const expectedResponse = {
+      age: '2020-6-02',
+      eyeColor: 'BROWN',
+      name: 'MAYCON',
+      hairColor: 'BROWN'
+    }
     const response = await sut.handle(request)
     expect(response.statusCode).toBe(200)
-    expect(response.body).toEqual(expected_response)
+    expect(response.body).toEqual({...expectedResponse, id:'valid_id'})
   })
 })
