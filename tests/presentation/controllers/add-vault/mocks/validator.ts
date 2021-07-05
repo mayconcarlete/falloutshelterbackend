@@ -1,7 +1,7 @@
-import { IValidate } from "../../../../../src/presentation/interfaces/validate";
+import { IValidate } from '../../../../../src/presentation/interfaces/validate'
 
-export class MockValidator implements IValidate{
-    validate(input: any): Error | undefined {
-        return
-    }
+export class MockValidator implements IValidate {
+  validate (input: any): Error | undefined {
+    return
+  }
 }
