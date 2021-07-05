@@ -21,6 +21,7 @@ export class AddVaultController implements IController {
       const addVault = await this.addVaultUseCase.create({ name, age, hairColor, eyeColor })
 
       return ok(addVault)
+    
     } catch (error) {
       if (error instanceof RequiredFieldError || error instanceof TypeError) return badRequest(error)
       else if (error instanceof ServerError) return serverError(error)
