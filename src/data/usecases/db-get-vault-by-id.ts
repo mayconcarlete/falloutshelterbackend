@@ -1,16 +1,17 @@
-import { Vault } from "../../domain/models/vault";
-import { GetVaultById } from "../../domain/usecases/get-vault-by-id";
-import { NotFoundError } from "../../presentation/errors/not-found";
+import { Vault } from '../../domain/models/vault'
+import { GetVaultById } from '../../domain/usecases/get-vault-by-id'
+import { NotFoundError } from '../../presentation/errors/not-found'
 
-export class DbGetVaultById implements GetVaultById{
-    constructor(
-        private readonly getVaultRepository: GetVaultById
-    ){}
-    async getById(id: string): Promise<Vault | null> {
-        const vault = await this.getVaultRepository.getById(id)
-        if(!vault){
-            throw new NotFoundError('cant found a vault')
-        }
-        return vault
+export class DbGetVaultById implements GetVaultById {
+  constructor (
+    private readonly getVaultRepository: GetVaultById
+  ) {}
+
+  async getById (id: string): Promise<Vault | null> {
+    const vault = await this.getVaultRepository.getById(id)
+    if (!vault) {
+      throw new NotFoundError('cant found a vault')
     }
+    return vault
+  }
 }

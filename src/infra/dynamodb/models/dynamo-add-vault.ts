@@ -1,7 +1,7 @@
-import { Item } from './dynamo-vault-obj';
+import { Item } from './dynamo-vault-obj'
 
 export type AddVaultDynamoMap = {
-    TableName: string,
-    ConditionExpression: string,
-    Item: Item
+  TableName: string
+  ConditionExpression: string
+  Item: Item
 }
