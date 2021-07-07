@@ -19,9 +19,8 @@ export class GetVaultByIdController implements IController {
 
       const id = params.id
       const vault = await this.getVaultByIdUseCase.getById(id)
-    
+
       return ok(vault)
-    
     } catch (error) {
       if (error instanceof RequiredFieldError || error instanceof TypeError) return badRequest(error)
       else if (error instanceof NotFoundError) return notFound(error)

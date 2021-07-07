@@ -6,9 +6,9 @@ export class MockQueryVault implements QueryVault {
         return new Promise((resolve, reject) => {
             resolve([{
                 id: 'valid_id',
-                age: '2020-06-16',
-                eyeColor: 'GREEN',
-                hairColor: 'BROWN',
+                age: 'valid_age',
+                eyeColor: 'valid_eye_color',
+                hairColor: 'valid_hair_color',
                 name: 'VALID_NAME'
             }])
         })
