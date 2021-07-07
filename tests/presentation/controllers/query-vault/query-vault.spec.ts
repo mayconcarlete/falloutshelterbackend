@@ -50,9 +50,9 @@ describe('Query Vault', () => {
         expect(response.statusCode).toBe(200)
         expect(response.body).toEqual([{
             id: 'valid_id',
-            age: 'valid_age',
-            eyeColor: 'valid_eye_color',
-            hairColor: 'valid_hair_color',
+            age: 'VALID_AGE',
+            eyeColor: 'VALID_EYE_COLOR',
+            hairColor: 'VALID_HAIR_COLOR',
             name: 'VALID_NAME'
         }])
     })
