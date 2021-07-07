@@ -12,4 +12,20 @@ describe('Parse Object Uppercase', () => {
         sut.parse(params)
         expect(paramsSpy).toHaveBeenCalledWith(params)        
     })
+    test('Should pass parameter to uppercase', () => {
+        const sut = new ParseParamsUpper()
+        const params = {
+            param0: 'a',
+            param1: 'b',
+            param2: 'c'
+        }
+        const response = sut.parse(params)
+        expect(response).toEqual({
+            param0: 'A',
+            param1: 'B',
+            param2: 'C'
+        }
+
+        )
+    })
 })
