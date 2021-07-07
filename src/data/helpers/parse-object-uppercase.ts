@@ -1,10 +1,12 @@
 import { ParseObjectUpperCase } from "../interfaces/helpers/parse-object-uppercase";
 
+
 export class ParseParamsUpper implements ParseObjectUpperCase{
     parse(params: any) {
+        let paramsUpperCase = params
         for(const key in params){
-            params[key].toUpperCase()
+            paramsUpperCase[key] = params[key].toUpperCase()
         }
-        return params
+        return paramsUpperCase
     }
 }
