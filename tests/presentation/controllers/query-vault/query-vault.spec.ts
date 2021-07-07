@@ -35,4 +35,25 @@ describe('Query Vault', () => {
         expect(response.statusCode).toBe(500)
         expect(response.body).toEqual(new Error('server throws'))
     })
+    test('Should return 200 and array of vault if query was success', async() => {
+        const {sut} = makeSut()
+        const request: THttpRequest = {
+            params: 'valid_id',
+            body: {
+                name: 'valid_name',
+                age: 'valid_age',
+                hairColor: 'valid_hair_color',
+                eyeColor: 'valid_eye_color'
+            }
+        }
+        const response = await sut.handle(request)
+        expect(response.statusCode).toBe(200)
+        expect(response.body).toEqual([{
+            id: 'valid_id',
+            age: 'valid_age',
+            eyeColor: 'valid_eye_color',
+            hairColor: 'valid_hair_color',
+            name: 'VALID_NAME'
+        }])
+    })
 })
