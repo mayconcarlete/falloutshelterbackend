@@ -13,8 +13,7 @@ export class DbQueryVault implements QueryVault{
     async query(vaultParams: Vault):Promise<Vault[]>{
         const paramsToQuery = this.removeUndefinedParams.remove(vaultParams)
         const paramsToUpperCase = this.parseParamsUpperCase.parse(paramsToQuery)
-        return new Promise((resolve, reject) => {
-            resolve([paramsToUpperCase])
-        })
+        const vaultList = await this.queryVaultRepository.query(paramsToUpperCase)
+        return vaultList
     }
 }
