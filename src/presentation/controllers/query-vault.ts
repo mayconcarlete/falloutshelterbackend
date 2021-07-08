@@ -1,8 +1,6 @@
 import { QueryVault } from '../../domain/usecases/query-vault'
-import { NotFoundError } from '../errors/not-found'
 import { ok, serverError } from '../helpers/http-responses'
 import { IController } from '../interfaces/controller'
-import { IValidate } from '../interfaces/validate'
 import { THttpRequest, THttpResponse } from '../types/http'
 
 export class QueryVaultController implements IController {
