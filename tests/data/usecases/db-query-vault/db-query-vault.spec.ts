@@ -70,4 +70,21 @@ describe('Db Query Vault', () => {
             expect(e).toEqual(new Error())
         }
     })
+    test('Should return an array with Vaults when query repository is successful', async() => {
+        const {sut} = makeSut()
+        const queryParams = {
+            age: 'valid_age',
+            eyeColor: undefined,
+            name: 'valid_name',
+            hairColor: 'green',
+        } 
+        const response = await sut.query(queryParams)
+        expect(response).toEqual([{
+            id: 'valid_id',
+            age: '2020-07-02',
+            eyeColor: 'BROWN',
+            name: 'MAYCON',
+            hairColor: 'BROWN'
+          }])
+    })
 })
