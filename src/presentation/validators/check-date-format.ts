@@ -7,7 +7,11 @@ export class CheckDateFormat implements IValidate{
     ){}
     validate(input: any): Error | undefined{
         const dateRegexp = /^\d{4}[-||/]\d{2}[-||/]\d{2}$/
-        const validate = dateRegexp.test(input[this.fieldName])
-        return validate === true ? undefined : new CheckDateFormatError()
+        const validateRegexp = dateRegexp.test(input[this.fieldName])
+        const validateDate = new Date(input[this.fieldName])
+        return (
+            validateRegexp === true &&
+            validateDate.toString() != 'Invalid Date'
+            ) ? undefined : new CheckDateFormatError()
     }
 } 
