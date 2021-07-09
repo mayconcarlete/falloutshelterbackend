@@ -21,6 +21,17 @@ const makeSut = (): SutTypes => {
 }
 
 describe('GetVaultById Controller', () => {
+  test('Should call getVaultByIdUseCase with correct params', async() => {
+    const {sut, getVaultById} = makeSut()
+    const getVaultSpy = jest.spyOn(getVaultById, 'getById')
+    const request:THttpRequest = {
+      params:{
+        id: 'any_id'
+      }
+    }
+    await sut.handle(request)
+    expect(getVaultSpy).toHaveBeenCalledWith('any_id')
+  })
   test('Should return 400 when validation fails', async () => {
     const { sut, validators } = makeSut()
     jest.spyOn(validators, 'validate').mockImplementationOnce(() => {
