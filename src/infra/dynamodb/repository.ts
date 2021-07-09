@@ -7,8 +7,9 @@ import { DynamoDbConfig } from './config'
 import { GetVaultById } from '../../domain/usecases/get-vault-by-id'
 import { AddVaultDynamoMap } from './models/dynamo-add-vault'
 import { GetItemOutput } from 'aws-sdk/clients/dynamodb'
+import { QueryVault } from '../../domain/usecases/query-vault'
 
-export class DynamoDbRepository implements AddVaultRepository, GetVaultById {
+export class DynamoDbRepository implements AddVaultRepository, GetVaultById, QueryVault {
   private readonly aws
   constructor (config: DynamoDbConfig) {
     this.aws = new AWS.DynamoDB(config)
@@ -95,6 +96,17 @@ export class DynamoDbRepository implements AddVaultRepository, GetVaultById {
         if (err) reject(err)
         resolve()
       })
+    })
+  }
+  async query(vaultParams: any):Promise<Vault[]>{
+    return new Promise((resolve, reject) => {
+      resolve([{
+        id: 'valid_id',
+        age: '2020-07-02',
+        eyeColor: 'BROWN',
+        name: 'MAYCON',
+        hairColor: 'BROWN'
+      }])
     })
   }
 }
