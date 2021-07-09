@@ -18,12 +18,6 @@ describe('Db Add Vault', () => {
   test('Should pass fields to uppercase', () => {
     const { sut } = makeSut()
     const vaultUpperCase = sut.passFieldsToUpperCase(vault)
-    const expectedResponse = {
-      age: '2020-06-02',
-      eyeColor: 'BROWN',
-      name: 'MAYCON',
-      hairColor: 'BROWN'
-    }
     expect(vaultUpperCase).toEqual(expectedResponse)
   })
   
@@ -34,7 +28,7 @@ describe('Db Add Vault', () => {
     expect(addVaultSpy).toHaveBeenCalledWith(expectedResponse)
   })
 
-  test('Should throw if repository throws', async () => {
+  test('Should throw if addVaultRepository throws', async () => {
     const { sut, addVaultRepository } = makeSut()
     jest.spyOn(addVaultRepository, 'add').mockImplementationOnce(async () => {
       return new Promise((resolve, reject) => {
@@ -42,5 +36,11 @@ describe('Db Add Vault', () => {
       })
     })
     await expect(sut.create(vault)).rejects.toThrow()
+  })
+
+  test('Should return a new Vault when addVaultRepository is successful', async() => {
+    const {sut} = makeSut()
+    const newVault = await sut.create(vault)
+    expect(newVault).toEqual({...expectedResponse, id:'valid_id'})
   })
 })

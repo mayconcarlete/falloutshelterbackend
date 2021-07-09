@@ -5,7 +5,7 @@ export class MockAddVaultRepository implements AddVaultRepository {
   async add (vault: VaultParams): Promise<Vault> {
     const addedVault = {
       id: 'valid_id',
-      age: '2020-07-02',
+      age: '2020-06-02',
       eyeColor: 'BROWN',
       name: 'MAYCON',
       hairColor: 'BROWN'
