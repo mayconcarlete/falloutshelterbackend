@@ -71,4 +71,21 @@ describe('GetVaultById Controller', () => {
     expect(response.statusCode).toBe(500)
     expect(response.body).toEqual(new Error('Something wrong'))
   })
+  test('Should return 200 when get vault with success', async() => {
+    const {sut} = makeSut()
+    const request:THttpRequest ={
+      params:{
+        id:'valid_id'
+      }
+    }
+    const response = await sut.handle(request)
+    expect(response.statusCode).toBe(200)
+    expect(response.body).toEqual({
+      id: 'valid_id',
+      name: 'MAYCON',
+      age: '2020-6-02',
+      eyeColor: 'BROWN',
+      hairColor: 'BROWN'
+    })
+  })
 })
