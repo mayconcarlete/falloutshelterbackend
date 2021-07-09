@@ -15,6 +15,26 @@ const makeSut = (): SutTypes => {
 }
 
 describe('Query Vault', () => {
+    test('Should call queryVaultUseCase with correct params', async() => {
+        const {sut, queryVaultUseCase} = makeSut()
+        const request: THttpRequest = {
+            params: 'valid_id',
+            body: {
+                name: 'valid_name',
+                age: 'valid_age',
+                hairColor: 'valid_hair_color',
+                eyeColor: 'valid_eye_color'
+            }
+        }
+        const queryVaultSpy = jest.spyOn(queryVaultUseCase, 'query')
+        await sut.handle(request)
+        expect(queryVaultSpy).toHaveBeenCalledWith({
+            name: 'valid_name',
+            age: 'valid_age',
+            hairColor: 'valid_hair_color',
+            eyeColor: 'valid_eye_color'
+        })
+    })
     test('Should return ServerError if queryVaultUseCase throws', async () => {
         const { sut, queryVaultUseCase } = makeSut()
         jest.spyOn(queryVaultUseCase, 'query').mockImplementationOnce(async () => {
