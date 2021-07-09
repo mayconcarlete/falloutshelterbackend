@@ -23,12 +23,6 @@ describe('Db Get Vault By Id', () => {
     await sut.getById(id)
     expect(sutSpy).toHaveBeenCalledWith(id)
   })
-  test('ensure getGetById return a vault when find by id', async () => {
-    const { sut } = makeSut()
-    const id = 'valid_id'
-    const getVault = await sut.getById(id)
-    expect(getVault).toEqual(vault)
-  })
   test('Should throw when getVaultRepository throws', async () => {
     const { sut, getVaultRepository } = makeSut()
     const id = 'any_id'
@@ -52,5 +46,11 @@ describe('Db Get Vault By Id', () => {
     } catch (error) {
       expect(error).toEqual(new NotFoundError('cant found a vault'))
     }
+  })
+  test('ensure getGetById return a vault when find by id', async () => {
+    const { sut } = makeSut()
+    const id = 'valid_id'
+    const getVault = await sut.getById(id)
+    expect(getVault).toEqual(vault)
   })
 })
