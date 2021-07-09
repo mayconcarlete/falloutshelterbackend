@@ -1,7 +1,7 @@
 import { AddVaultRepository } from '../../../../src/data/interfaces/vault/add-vault-repository'
 import { DbAddVault } from '../../../../src/data/usecases/db-add-vault'
 import { MockAddVaultRepository } from './mocks/add-vault-repository'
-import { vault } from './mocks/constants'
+import { expectedResponse, vault } from './mocks/constants'
 
 type SutTypes = {
   sut: DbAddVault
@@ -25,6 +25,13 @@ describe('Db Add Vault', () => {
       hairColor: 'BROWN'
     }
     expect(vaultUpperCase).toEqual(expectedResponse)
+  })
+  
+  test('Should call addVaultRepository with correct params', async() => {
+    const {sut, addVaultRepository} = makeSut()
+    const addVaultSpy = jest.spyOn(addVaultRepository, 'add')
+    await sut.create(vault)
+    expect(addVaultSpy).toHaveBeenCalledWith(expectedResponse)
   })
 
   test('Should throw if repository throws', async () => {
