@@ -46,4 +46,10 @@ describe('Db Move Time', () => {
             expect(error).toEqual(new Error('MoveTimeRepository throws'))
         }
     })
+    test('Should return an valid date when moveDateRepository update new date', async() => {
+        const {sut} = makeSut()
+        const date = 'valid_date'
+        const updatedDate = await sut.moveTime(date)
+        expect(updatedDate).toEqual(date)
+    })
 })
