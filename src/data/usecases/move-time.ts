@@ -1,4 +1,4 @@
-import { MoveTime } from "../../domain/usecases/time-foward";
+import { MoveTime } from "../../domain/usecases/move-time";
 import { IValidate } from "../../presentation/interfaces/validate";
 import { MoveTimeRepository } from "../interfaces/vault/move-time-repository";
 
