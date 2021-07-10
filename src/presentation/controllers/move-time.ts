@@ -2,7 +2,9 @@ import { badRequest } from "../helpers/http-responses";
 import { IController } from "../interfaces/controller";
 import { IValidate } from "../interfaces/validate";
 import { THttpRequest, THttpResponse } from "../types/http";
+import { CheckDateFormat } from "../validators/check-date-format";
 import { RequiredField } from "../validators/required-field";
+import { TypeOfField } from "../validators/type-of-field";
 
 export class MoveTimeController implements IController {
     constructor(
@@ -16,7 +18,10 @@ export class MoveTimeController implements IController {
                 resolve({statusCode:200, body:'ok'})
             })
         }catch(error){
-            if(error instanceof RequiredField){
+            if(error instanceof RequiredField ||
+                error instanceof TypeOfField ||
+                error instanceof CheckDateFormat
+                ){
                 return new Promise((resolve, reject) => {
                     resolve(badRequest(error))
                 })
