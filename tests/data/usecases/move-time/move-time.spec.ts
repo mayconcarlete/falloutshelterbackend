@@ -1,6 +1,6 @@
 import { MoveTimeRepository } from "../../../../src/data/interfaces/vault/move-time-repository"
 import { MoveTimeUseCase } from "../../../../src/data/usecases/move-time"
-import { MoveTime } from "../../../../src/domain/usecases/time-foward"
+import { MoveTime } from "../../../../src/domain/usecases/move-time"
 import { IValidate } from "../../../../src/presentation/interfaces/validate"
 import { MockMoveTimeRepository } from "./mocks/move-time-repository"
 import { MockValidator } from "./mocks/validator"
