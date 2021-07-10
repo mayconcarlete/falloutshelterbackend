@@ -1,6 +1,5 @@
-import { rejects } from "assert/strict"
 import { MoveTimeRepository } from "../../../../src/data/interfaces/vault/move-time-repository"
-import { DbMoveTime } from "../../../../src/data/usecases/db-move-time"
+import { MoveTimeUseCase } from "../../../../src/data/usecases/move-time"
 import { MoveTime } from "../../../../src/domain/usecases/time-foward"
 import { IValidate } from "../../../../src/presentation/interfaces/validate"
 import { MockMoveTimeRepository } from "./mocks/move-time-repository"
@@ -15,7 +14,7 @@ type SutTypes = {
 const makeSut = ():SutTypes => {
     const moveTimeRepository = new MockMoveTimeRepository()
     const checkDateFormat = new MockValidator()
-    const sut = new DbMoveTime(checkDateFormat, moveTimeRepository)
+    const sut = new MoveTimeUseCase(checkDateFormat, moveTimeRepository)
     return {sut, checkDateFormat, moveTimeRepository}
 }
 
