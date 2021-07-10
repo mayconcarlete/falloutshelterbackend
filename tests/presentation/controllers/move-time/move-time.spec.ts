@@ -1,5 +1,6 @@
 import { MoveTimeUseCase } from "../../../../src/data/usecases/move-time"
 import { MoveTimeController } from "../../../../src/presentation/controllers/move-time"
+import { CheckDateFormatError } from "../../../../src/presentation/errors/check-date-format"
 import { IValidate } from "../../../../src/presentation/interfaces/validate"
 import { THttpRequest } from "../../../../src/presentation/types/http"
 import { RequiredField } from "../../../../src/presentation/validators/required-field"
@@ -23,7 +24,7 @@ describe('Move Time Controllers', () => {
     test('Should throw in a bad request if validation fails', async() => {    
         const {sut, validators} = makeSut()
         jest.spyOn(validators, 'validate').mockImplementationOnce(() =>{
-            throw new RequiredField('Validation Fails')
+            throw new CheckDateFormatError()
         })
         const request:THttpRequest = {
             body:{
@@ -32,7 +33,7 @@ describe('Move Time Controllers', () => {
         }
         const response = await sut.handle(request)
         expect(response.statusCode).toEqual(400)
-        expect(response.body).toEqual(new RequiredField('Validation Fails'))
+        expect(response.body).toEqual(new CheckDateFormatError())
     })
     test('Should call moveTimeUseCase with correct params', async() => {
         const {sut, moveTimeUseCase} = makeSut()         
@@ -44,5 +45,21 @@ describe('Move Time Controllers', () => {
         }
         await sut.handle(request)
         expect(moveTimeSpy).toHaveBeenLastCalledWith('any_date')
+    })
+    test('Should return a Server Error and status 500 if moveTimeUseCase throws', async() => {
+        const {sut, moveTimeUseCase} = makeSut()
+        jest.spyOn(moveTimeUseCase, 'moveTime').mockImplementationOnce(async() =>{
+            return new Promise((resolve, reject) => {
+                throw new Error('Server Error')
+            })
+        })
+        const request:THttpRequest = {
+            body:{
+                date: 'valid_value'
+            }
+        }
+        const response = await sut.handle(request)
+        expect(response.statusCode).toBe(500)
+        expect(response.body).toEqual(new Error('Server Error'))
     })
 })
