@@ -62,4 +62,15 @@ describe('Move Time Controllers', () => {
         expect(response.statusCode).toBe(500)
         expect(response.body).toEqual(new Error('Server Error'))
     })
+    test('Should return a new date when moveTimeUseCase create a new date', async() => {
+        const {sut} = makeSut()        
+        const request:THttpRequest = {
+            body:{
+                date:'valid_date'
+            }
+        }
+        const response = await sut.handle(request)
+        expect(response.statusCode).toBe(200)
+        expect(response.body).toBe('valid_date')
+    })
 })
