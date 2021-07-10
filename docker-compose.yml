@@ -19,3 +19,14 @@ services:
             - dynamodb-local
         ports:
             - "8080:80"
+    mongo:
+        image: mongo
+        restart: always
+    
+    mongo-express:
+        image: mongo-express
+        restart: always
+        depends_on: 
+            - mongo
+        ports:
+            - "8081:8081"
