@@ -13,6 +13,7 @@
   "devDependencies": {
     "@types/express": "^4.17.12",
     "@types/jest": "^26.0.23",
+    "@types/mongoose": "^5.11.97",
     "@types/node": "^15.12.5",
     "@types/uuid": "^8.3.1",
     "@typescript-eslint/eslint-plugin": "^4.8.2",
@@ -31,6 +32,7 @@
     "aws-sdk": "^2.937.0",
     "dotenv": "^10.0.0",
     "express": "^4.17.1",
+    "mongoose": "^5.13.2",
     "uuid": "^3.3.2"
   }
 }
