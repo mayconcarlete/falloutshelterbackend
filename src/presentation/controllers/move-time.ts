@@ -1,5 +1,7 @@
 import { MoveTime } from "../../domain/usecases/move-time";
-import { badRequest } from "../helpers/http-responses";
+import { CheckDateFormatError } from "../errors/check-date-format";
+import { RequiredFieldError } from "../errors/required-field";
+import { badRequest, serverError } from "../helpers/http-responses";
 import { IController } from "../interfaces/controller";
 import { IValidate } from "../interfaces/validate";
 import { THttpRequest, THttpResponse } from "../types/http";
@@ -22,17 +24,13 @@ export class MoveTimeController implements IController {
                 resolve({statusCode:200, body:moveTime})
             })
         }catch(error){
-            if(error instanceof RequiredField ||
-                error instanceof TypeOfField ||
-                error instanceof CheckDateFormat
+            if(error instanceof RequiredFieldError ||
+                error instanceof TypeError ||
+                error instanceof CheckDateFormatError
                 ){
-                return new Promise((resolve, reject) => {
-                    resolve(badRequest(error))
-                })
+                return badRequest(error)
             }
-            return new Promise((resolve, reject) => {
-                resolve({statusCode:500, body:'ok'})
-            })
+            return serverError(error)
         }
     }
 }
