@@ -7,30 +7,16 @@ import { MockValidator } from "./mocks/validator"
 
 type SutTypes = {
     sut: MoveTime,
-    checkDateFormat: IValidate
     moveTimeRepository: MoveTimeRepository
 }
 
 const makeSut = ():SutTypes => {
     const moveTimeRepository = new MockMoveTimeRepository()
-    const checkDateFormat = new MockValidator()
-    const sut = new MoveTimeUseCase(checkDateFormat, moveTimeRepository)
-    return {sut, checkDateFormat, moveTimeRepository}
+    const sut = new MoveTimeUseCase(moveTimeRepository)
+    return {sut, moveTimeRepository}
 }
 
 describe('Db Move Time', () => {
-    test('Should throw if date provided is invalid', async() => {
-        const {sut, checkDateFormat} = makeSut()
-        jest.spyOn(checkDateFormat, 'validate').mockImplementationOnce(() => {
-            throw new Error('Check Date Throws')
-        })
-        try{
-            const date = "invalid_date"
-            await sut.moveTime(date)
-        }catch(error){
-            expect(error).toEqual(new Error('Check Date Throws'))
-        }
-    })
     test('Should throw if moveTimeRepository throws', async() => {
         const {sut, moveTimeRepository} = makeSut()
         jest.spyOn(moveTimeRepository, 'move').mockImplementationOnce(async() => {
