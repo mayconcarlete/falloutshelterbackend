@@ -1,12 +1,17 @@
 import mongoose from 'mongoose'
 import {Mongoose} from 'mongoose'
 import { AddVaultRepository } from '../../data/interfaces/vault/add-vault-repository'
+import { GetVaultByIdRepository } from '../../data/interfaces/vault/get-vault-by-id'
 import { VaultParams, Vault } from '../../domain/models/vault'
 import VaultRepository from './models/vault'
 
-export class MongoDBRepository implements AddVaultRepository {
+export class MongoDBRepository implements AddVaultRepository, GetVaultByIdRepository {
     private mongooseConnection: Mongoose | any
     constructor(){
+    }
+    async get(id: string): Promise<Vault | null> {
+        const vault = await VaultRepository.findById(id)
+        return this.mapObject(vault)
     }
     async add(vault: VaultParams):Promise<Vault>{
         const addedVault =  await VaultRepository.create(vault) 
@@ -23,7 +28,8 @@ export class MongoDBRepository implements AddVaultRepository {
         return await VaultRepository.find()
     }
     mapObject(object:any):any{
-        const {_id, ...rest} = object
+        const newObj = object._doc
+        const {_id, __v,...rest} = newObj
         return {...rest, id:_id}
     }
 }
