@@ -21,11 +21,11 @@ const makeSut = (): SutTypes => {
 }
 
 describe('GetVaultById Controller', () => {
-  test('Should call getVaultByIdUseCase with correct params', async() => {
-    const {sut, getVaultById} = makeSut()
+  test('Should call getVaultByIdUseCase with correct params', async () => {
+    const { sut, getVaultById } = makeSut()
     const getVaultSpy = jest.spyOn(getVaultById, 'getById')
-    const request:THttpRequest = {
-      params:{
+    const request: THttpRequest = {
+      params: {
         id: 'any_id'
       }
     }
@@ -71,11 +71,11 @@ describe('GetVaultById Controller', () => {
     expect(response.statusCode).toBe(500)
     expect(response.body).toEqual(new Error('Something wrong'))
   })
-  test('Should return 200 when get vault with success', async() => {
-    const {sut} = makeSut()
-    const request:THttpRequest ={
-      params:{
-        id:'valid_id'
+  test('Should return 200 when get vault with success', async () => {
+    const { sut } = makeSut()
+    const request: THttpRequest = {
+      params: {
+        id: 'valid_id'
       }
     }
     const response = await sut.handle(request)

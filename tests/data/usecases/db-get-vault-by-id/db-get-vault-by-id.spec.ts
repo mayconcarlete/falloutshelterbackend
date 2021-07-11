@@ -1,6 +1,5 @@
 import { GetVaultByIdRepository } from '../../../../src/data/interfaces/vault/get-vault-by-id'
 import { DbGetVaultById } from '../../../../src/data/usecases/db-get-vault-by-id'
-import { GetVaultById } from '../../../../src/domain/usecases/get-vault-by-id'
 import { NotFoundError } from '../../../../src/presentation/errors/not-found'
 import { vault } from './mocks/constants'
 import { MockGetByIdRepository } from './mocks/get-vault-repository'
