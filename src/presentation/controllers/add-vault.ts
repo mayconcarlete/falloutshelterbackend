@@ -1,4 +1,5 @@
 import { AddVault } from '../../domain/usecases/add-vault'
+import { CheckDateFormatError } from '../errors/check-date-format'
 import { RequiredFieldError } from '../errors/required-field'
 import { ServerError } from '../errors/server-error'
 import { badRequest, ok, serverError } from '../helpers/http-responses'
@@ -22,7 +23,7 @@ export class AddVaultController implements IController {
 
       return ok(addVault)
     } catch (error) {
-      if (error instanceof RequiredFieldError || error instanceof TypeError) return badRequest(error)
+      if (error instanceof RequiredFieldError || error instanceof TypeError || error instanceof CheckDateFormatError) return badRequest(error)
       else if (error instanceof ServerError) return serverError(error)
       return serverError(error)
     }
