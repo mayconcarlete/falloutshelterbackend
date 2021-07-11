@@ -1,12 +1,16 @@
 import { RemoveParams } from '../interfaces/helpers/remove-undefined-params'
 
 export class RemoveUndefinedParams implements RemoveParams {
+  constructor(
+    private readonly fields: string[]
+  ){}
   remove (vaultParams: any): any {
-    for (const key in vaultParams) {
-      if (!vaultParams[key]) {
-        delete vaultParams[key]
+    let validParams = {}
+    for (const field of this.fields) {
+      if(vaultParams[field]){
+        validParams = {...validParams, [field]: vaultParams[field]}
       }
     }
-    return vaultParams
+    return validParams
   }
 }
