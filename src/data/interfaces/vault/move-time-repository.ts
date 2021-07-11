@@ -1,3 +1,3 @@
 export interface MoveTimeRepository {
-    move(date:string):Promise<string>
+  move: (date: string) => Promise<string>
 }

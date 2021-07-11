@@ -98,7 +98,8 @@ export class DynamoDbRepository implements AddVaultRepository, GetVaultById, Que
       })
     })
   }
-  async query(vaultParams: any):Promise<Vault[]>{
+
+  async query (vaultParams: any): Promise<Vault[]> {
     return new Promise((resolve, reject) => {
       resolve([{
         id: 'valid_id',

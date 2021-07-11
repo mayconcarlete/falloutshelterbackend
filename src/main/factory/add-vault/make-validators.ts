@@ -10,7 +10,7 @@ export const makeAddVaultValidators = (): ValidatorComposite => {
   const age = new RequiredField('age')
   const hairColor = new RequiredField('hairColor')
   const eyeColor = new RequiredField('eyeColor')
-  
+
   arrayOfValidations.push(name)
   arrayOfValidations.push(age)
   arrayOfValidations.push(hairColor)
@@ -25,9 +25,9 @@ export const makeAddVaultValidators = (): ValidatorComposite => {
   arrayOfValidations.push(typeAge)
   arrayOfValidations.push(typeHair)
   arrayOfValidations.push(typeEyeColor)
-  
+
   const checkDateFormat = new CheckDateFormat('age')
-  
+
   arrayOfValidations.push(checkDateFormat)
 
   const validatorComposite = new ValidatorComposite(arrayOfValidations)

@@ -1,5 +1,5 @@
-import { Vault } from "../../../domain/models/vault";
+import { Vault } from '../../../domain/models/vault'
 
 export interface RemoveParams {
-    remove(vaultParams:any):any
+  remove: (vaultParams: any) => any
 }

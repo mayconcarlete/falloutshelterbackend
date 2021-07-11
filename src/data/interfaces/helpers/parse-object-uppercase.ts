@@ -1,3 +1,3 @@
 export interface ParseObjectUpperCase {
-    parse(params:any):any
+  parse: (params: any) => any
 }
