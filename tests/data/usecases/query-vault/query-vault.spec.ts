@@ -14,7 +14,8 @@ type SutTypes = {
 }
 
 const makeSut = (): SutTypes => {
-  const removeUndefinedParams = new RemoveUndefinedParams()
+  const fields = ['age', 'eyeColor', 'name', 'hairColor']
+  const removeUndefinedParams = new RemoveUndefinedParams(fields)
   const parseParamsUpperCase = new ParseParamsUpper()
   const queryVaultRepository = new MockQueryVaultRepository()
   const sut = new QueryVaultUseCase(removeUndefinedParams, parseParamsUpperCase, queryVaultRepository)
@@ -44,12 +45,12 @@ describe('Db Query Vault', () => {
       hairColor: 'green'
     }
     const parseUpperCase = {
-      age: 'valid_age',
-      name: 'valid_name',
-      hairColor: 'green'
+      age: 'VALID_AGE',
+      name: 'VALID_NAME',
+      hairColor: 'GREEN'
     }
     sut.query(queryParams)
-    expect(parseParamsUpperCase.params).toEqual(parseUpperCase)
+    expect(parseParamsUpperCase.paramsUpperCase).toEqual(parseUpperCase)
   })
   test('Should throw when query repository throws', async () => {
     const { sut, queryVaultRepository } = makeSut()
