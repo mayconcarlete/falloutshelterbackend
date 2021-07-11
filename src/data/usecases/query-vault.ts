@@ -4,7 +4,7 @@ import { ParseParamsUpper } from '../helpers/parse-object-uppercase'
 import { RemoveParams } from '../interfaces/helpers/remove-undefined-params'
 import { QueryVaultRepository } from '../interfaces/vault/query-vault-repository'
 
-export class DbQueryVault implements QueryVault {
+export class QueryVaultUseCase implements QueryVault {
   constructor (
     private readonly removeUndefinedParams: RemoveParams,
     private readonly parseParamsUpperCase: ParseParamsUpper,
