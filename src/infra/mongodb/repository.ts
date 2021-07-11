@@ -28,8 +28,8 @@ export class MongoDBRepository implements AddVaultRepository, GetVaultByIdReposi
         return await VaultRepository.find()
     }
     mapObject(object:any):any{
-        const newObj = object._doc
-        const {_id, __v,...rest} = newObj
+        const _doc = object._doc
+        const {_id, __v,...rest} = _doc
         return {...rest, id:_id}
     }
 }
