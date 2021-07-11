@@ -14,13 +14,16 @@ const makeSut = ():SutTypes => {
 }
 
 describe('Check Date Format', () => {
-    test('Should return error if Date is in wrong format', () => {
+    test('Should throws an error if Date is in wrong format', () => {
         const {sut} = makeSut()
         const body = {
             [fieldName]: 'invalid_date_format'
         } 
-        const validateDate = sut.validate(body)
-        expect(validateDate).toEqual(new CheckDateFormatError())
+        try{
+            sut.validate(body)
+        }catch(error){
+            expect(error).toEqual(new CheckDateFormatError())
+        }
     })
     test('Should be falsy when validation succeeds', () => {
         const {sut} = makeSut()
