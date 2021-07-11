@@ -2,7 +2,7 @@ import { VaultParams, Vault } from '../../domain/models/vault'
 import { AddVault } from '../../domain/usecases/add-vault'
 import { AddVaultRepository } from '../interfaces/vault/add-vault-repository'
 
-export class DbAddVault implements AddVault {
+export class AddVaultUseCase implements AddVault {
   constructor (
     private readonly addVaultRepository: AddVaultRepository
   ) {}

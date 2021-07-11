@@ -1,4 +1,4 @@
-import { DbAddVault } from '../../../data/usecases/db-add-vault'
+import { AddVaultUseCase } from '../../../data/usecases/add-vault'
 import { MongoDBRepository } from '../../../infra/mongodb/repository'
 import { AddVaultController } from '../../../presentation/controllers/add-vault'
 import { makeAddVaultValidators } from './make-validators'
@@ -15,7 +15,7 @@ export const makeAddVaultController = (): AddVaultController => {
   // }
   // const repository = new DynamoDbRepository(config)
   const mongoRepository = new MongoDBRepository()
-  const addVaultUseCase = new DbAddVault(mongoRepository)
+  const addVaultUseCase = new AddVaultUseCase(mongoRepository)
   const addVaultController = new AddVaultController(validators, addVaultUseCase)
   return addVaultController
 }
