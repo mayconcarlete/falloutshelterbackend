@@ -1,3 +1,4 @@
+import { GetVaultByIdRepository } from '../../../../src/data/interfaces/vault/get-vault-by-id'
 import { DbGetVaultById } from '../../../../src/data/usecases/db-get-vault-by-id'
 import { GetVaultById } from '../../../../src/domain/usecases/get-vault-by-id'
 import { NotFoundError } from '../../../../src/presentation/errors/not-found'
@@ -6,7 +7,7 @@ import { MockGetByIdRepository } from './mocks/get-vault-repository'
 
 type SutTypes = {
   sut: DbGetVaultById
-  getVaultRepository: GetVaultById
+  getVaultRepository: GetVaultByIdRepository
 }
 
 const makeSut = (): SutTypes => {
@@ -26,7 +27,7 @@ describe('Db Get Vault By Id', () => {
   test('Should throw when getVaultRepository throws', async () => {
     const { sut, getVaultRepository } = makeSut()
     const id = 'any_id'
-    jest.spyOn(getVaultRepository, 'getById').mockImplementationOnce(async () => {
+    jest.spyOn(getVaultRepository, 'get').mockImplementationOnce(async () => {
       return new Promise((resolve, reject) => {
         throw new Error()
       })
@@ -36,7 +37,7 @@ describe('Db Get Vault By Id', () => {
   test('Should throw NotFoundError when vault are not found', async () => {
     const { sut, getVaultRepository } = makeSut()
     const id = 'invalid_id'
-    jest.spyOn(getVaultRepository, 'getById').mockImplementationOnce(async () => {
+    jest.spyOn(getVaultRepository, 'get').mockImplementationOnce(async () => {
       return new Promise((resolve, reject) => {
         resolve(null)
       })
