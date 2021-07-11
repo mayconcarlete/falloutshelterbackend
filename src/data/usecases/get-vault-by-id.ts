@@ -3,7 +3,7 @@ import { GetVaultById } from '../../domain/usecases/get-vault-by-id'
 import { NotFoundError } from '../../presentation/errors/not-found'
 import { GetVaultByIdRepository } from '../interfaces/vault/get-vault-by-id'
 
-export class DbGetVaultById implements GetVaultById {
+export class GetVaultByIdUseCase implements GetVaultById {
   constructor (
     private readonly getVaultRepository: GetVaultByIdRepository
   ) {}

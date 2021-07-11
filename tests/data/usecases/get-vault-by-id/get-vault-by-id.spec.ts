@@ -1,17 +1,17 @@
 import { GetVaultByIdRepository } from '../../../../src/data/interfaces/vault/get-vault-by-id'
-import { DbGetVaultById } from '../../../../src/data/usecases/db-get-vault-by-id'
+import { GetVaultByIdUseCase } from '../../../../src/data/usecases/get-vault-by-id'
 import { NotFoundError } from '../../../../src/presentation/errors/not-found'
 import { vault } from './mocks/constants'
 import { MockGetByIdRepository } from './mocks/get-vault-repository'
 
 type SutTypes = {
-  sut: DbGetVaultById
+  sut: GetVaultByIdUseCase
   getVaultRepository: GetVaultByIdRepository
 }
 
 const makeSut = (): SutTypes => {
   const getVaultRepository = new MockGetByIdRepository()
-  const sut = new DbGetVaultById(getVaultRepository)
+  const sut = new GetVaultByIdUseCase(getVaultRepository)
   return { sut, getVaultRepository }
 }
 

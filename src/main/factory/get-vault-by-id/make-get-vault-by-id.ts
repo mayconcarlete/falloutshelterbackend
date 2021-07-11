@@ -1,4 +1,4 @@
-import { DbGetVaultById } from '../../../data/usecases/db-get-vault-by-id'
+import { GetVaultByIdUseCase } from '../../../data/usecases/get-vault-by-id'
 import { DynamoDbRepository } from '../../../infra/dynamodb/repository'
 import { MongoDBRepository } from '../../../infra/mongodb/repository'
 import { GetVaultByIdController } from '../../../presentation/controllers/get-vault-by-id'
@@ -15,7 +15,7 @@ export const makeGetVaultByIdController = (): GetVaultByIdController => {
   // }
   // const repository = new DynamoDbRepository(config)
   const mongoRepository = new MongoDBRepository()
-  const getVaultById = new DbGetVaultById(mongoRepository)
+  const getVaultById = new GetVaultByIdUseCase(mongoRepository)
 
   const getVaultByIdController = new GetVaultByIdController(validators, getVaultById)
   return getVaultByIdController
