@@ -69,6 +69,6 @@ describe('Move Time Controllers', () => {
     }
     const response = await sut.handle(request)
     expect(response.statusCode).toBe(200)
-    expect(response.body).toBe('valid_date')
+    expect(response.body).toEqual({id: "valid_id", time: "valid_date"})
   })
 })

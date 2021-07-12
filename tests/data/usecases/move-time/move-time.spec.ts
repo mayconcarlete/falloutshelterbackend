@@ -17,14 +17,14 @@ const makeSut = (): SutTypes => {
 describe('Db Move Time', () => {
   test('Should throw if moveTimeRepository throws', async () => {
     const { sut, moveTimeRepository } = makeSut()
-    jest.spyOn(moveTimeRepository, 'move').mockImplementationOnce(async () => {
+    jest.spyOn(moveTimeRepository, 'add').mockImplementationOnce(async () => {
       return new Promise((resolve, reject) => {
         throw new Error('MoveTimeRepository throws')
       })
     })
     try {
       const date = 'valid_date'
-      await sut.moveTime(date)
+      await sut.moveTime({time:date})
     } catch (error) {
       expect(error).toEqual(new Error('MoveTimeRepository throws'))
     }
@@ -32,7 +32,10 @@ describe('Db Move Time', () => {
   test('Should return an valid date when moveDateRepository update new date', async () => {
     const { sut } = makeSut()
     const date = 'valid_date'
-    const updatedDate = await sut.moveTime(date)
-    expect(updatedDate).toEqual(date)
+    const updatedDate = await sut.moveTime({time:date})
+    expect(updatedDate).toEqual({
+      id:'valid_id',
+      time: 'valid_time'
+    })
   })
 })
