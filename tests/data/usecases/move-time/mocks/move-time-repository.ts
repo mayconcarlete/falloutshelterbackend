@@ -1,9 +1,13 @@
 import { MoveTimeRepository } from '../../../../../src/data/interfaces/vault/move-time-repository'
+import { TimeFowardParams, TimeFoward } from '../../../../../src/domain/models/time'
 
 export class MockMoveTimeRepository implements MoveTimeRepository {
-  async move (date: string): Promise<string> {
+  add(timeFowardParams: TimeFowardParams):Promise<TimeFoward>{
     return new Promise((resolve, reject) => {
-      resolve(date)
+      resolve({
+        id:'valid_id',
+        time: 'valid_time'
+      })
     })
   }
 }

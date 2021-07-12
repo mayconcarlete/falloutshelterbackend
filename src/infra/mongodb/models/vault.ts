@@ -1,5 +1,4 @@
 import mongoose, { Schema, Document } from 'mongoose'
-import { Vault } from '../../../domain/models/vault'
 
 export interface VaultInterface extends Document {
   name: string
