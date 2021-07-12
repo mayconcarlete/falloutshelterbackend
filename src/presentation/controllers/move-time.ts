@@ -16,8 +16,8 @@ export class MoveTimeController implements IController {
     try {
       const body = request.body
       this.validators.validate(body)
-      const { date } = request.body
-      const moveTime = await this.moveTimeUseCase.moveTime(date)
+      const { time } = request.body
+      const moveTime = await this.moveTimeUseCase.moveTime({time})
       return ok(moveTime)
     } catch (error) {
       if (error instanceof RequiredFieldError ||

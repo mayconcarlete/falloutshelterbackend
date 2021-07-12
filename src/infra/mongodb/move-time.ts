@@ -1,12 +1,14 @@
 import mongoose from 'mongoose'
 import { MoveTimeRepository } from "../../data/interfaces/vault/move-time-repository";
+import { TimeFoward, TimeFowardParams } from '../../domain/models/time';
 import {MongoDB} from './helper'
 import TimeRepository from './models/time'
 
 export class MoveTimeInfra implements MoveTimeRepository{
-    async add(date: string):Promise<string>{
+    async add(timeFowardParams: TimeFowardParams):Promise<TimeFoward>{
         await TimeRepository.deleteMany()
-        const newDate = await TimeRepository.create({time:date})
+        const time = timeFowardParams.time 
+        const newDate = await TimeRepository.create({time})
         return MongoDB.mapObject(newDate)
     }
 }
