@@ -1,3 +1,5 @@
+import { TimeFoward, TimeFowardParams } from "../models/time";
+
 export interface MoveTime {
-  moveTime: (date: string) => Promise<string>
+  moveTime: (timeFowardParams: TimeFowardParams) => Promise<TimeFoward>
 }
