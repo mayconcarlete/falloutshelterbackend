@@ -1,6 +1,7 @@
 import mongoose from 'mongoose'
 import { MoveTimeRepository } from "../../data/interfaces/vault/move-time-repository";
 import { TimeFoward, TimeFowardParams } from '../../domain/models/time';
+import { LoadTimeUseCase } from '../../domain/usecases/load-time';
 import {MongoDB} from './helper'
 import TimeRepository from './models/time'
 

@@ -1,4 +1,4 @@
-import { MoveTimeRepository } from '../../../../src/data/interfaces/vault/move-time-repository'
+import { MoveTimeRepository } from '../../../../src/data/interfaces/time/move-time-repository'
 import { MoveTimeUseCase } from '../../../../src/data/usecases/move-time'
 import { MoveTime } from '../../../../src/domain/usecases/move-time'
 import { MockMoveTimeRepository } from './mocks/move-time-repository'

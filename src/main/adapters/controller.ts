@@ -3,11 +3,12 @@ import { THttpRequest } from '../../presentation/types/http'
 import { Request, Response } from 'express'
 
 export const adapterController = (controller: IController) => {
-  return async (req: Request, res: Response) => {
+  return async (req: any, res: Response) => {
     const request: THttpRequest = {
       headers: req.headers,
       params: req.params,
-      body: req.body
+      body: req.body,
+      time: req.time
     }
     const response = await controller.handle(request)
     return res.status(response.statusCode).json(response.body)

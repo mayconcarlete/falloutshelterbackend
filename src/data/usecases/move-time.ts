@@ -1,6 +1,6 @@
 import { TimeFoward, TimeFowardParams } from '../../domain/models/time'
 import { MoveTime } from '../../domain/usecases/move-time'
-import { MoveTimeRepository } from '../interfaces/vault/move-time-repository'
+import { MoveTimeRepository } from '../interfaces/time/move-time-repository'
 
 export class MoveTimeUseCase implements MoveTime {
   constructor (

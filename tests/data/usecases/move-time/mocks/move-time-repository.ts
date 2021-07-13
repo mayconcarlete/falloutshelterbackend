@@ -1,4 +1,4 @@
-import { MoveTimeRepository } from '../../../../../src/data/interfaces/vault/move-time-repository'
+import { MoveTimeRepository } from '../../../../../src/data/interfaces/time/move-time-repository'
 import { TimeFowardParams, TimeFoward } from '../../../../../src/domain/models/time'
 
 export class MockMoveTimeRepository implements MoveTimeRepository {
