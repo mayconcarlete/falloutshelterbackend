@@ -18,11 +18,6 @@ export class GetVaultByIdController implements IController {
       this.validators.validate(params)
       const id = params.id
       const vault = await this.getVaultByIdUseCase.getById(id)
-      const {time} = request
-      const age = new Date(vault!.age)
-      const getAge = new Date(request.time)
-      const result = getAge.getTime() - age.getTime()
-      console.log(Math.trunc(result/31536000000))
 
       return ok(vault)
     } catch (error) {
