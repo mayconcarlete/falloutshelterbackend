@@ -24,7 +24,6 @@ export class AddVaultController implements IController {
       return ok(addVault)
     } catch (error) {
       if (error instanceof RequiredFieldError || error instanceof TypeError || error instanceof CheckDateFormatError) return badRequest(error)
-      else if (error instanceof ServerError) return serverError(error)
       return serverError(error)
     }
   }
