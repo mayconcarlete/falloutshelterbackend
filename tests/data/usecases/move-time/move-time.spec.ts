@@ -1,11 +1,11 @@
-import { MoveTimeRepository } from '../../../../src/data/interfaces/time/move-time-repository'
-import { MoveTimeUseCase } from '../../../../src/data/usecases/move-time'
+import { AddTimeRepository } from '../../../../src/data/interfaces/time/add-time'
+import { MoveTimeUseCase } from '../../../../src/data/usecases/add-time'
 import { MoveTime } from '../../../../src/domain/usecases/move-time'
 import { MockMoveTimeRepository } from './mocks/move-time-repository'
 
 type SutTypes = {
   sut: MoveTime
-  moveTimeRepository: MoveTimeRepository
+  moveTimeRepository: AddTimeRepository
 }
 
 const makeSut = (): SutTypes => {

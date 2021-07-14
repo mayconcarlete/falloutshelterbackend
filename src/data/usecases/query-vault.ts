@@ -2,7 +2,7 @@ import { Vault } from '../../domain/models/vault'
 import { QueryVault } from '../../domain/usecases/query-vault'
 import { ParseParamsUpper } from '../helpers/parse-object-uppercase'
 import { RemoveParams } from '../interfaces/helpers/remove-undefined-params'
-import { QueryVaultRepository } from '../interfaces/vault/query-vault-repository'
+import { QueryVaultRepository } from '../interfaces/vault/query-vault'
 
 export class QueryVaultUseCase implements QueryVault {
   constructor (

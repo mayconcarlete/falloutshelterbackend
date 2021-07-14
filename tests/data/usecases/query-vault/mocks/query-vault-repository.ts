@@ -1,4 +1,4 @@
-import { QueryVaultRepository } from '../../../../../src/data/interfaces/vault/query-vault-repository'
+import { QueryVaultRepository } from '../../../../../src/data/interfaces/vault/query-vault'
 import { Vault } from '../../../../../src/domain/models/vault'
 
 export class MockQueryVaultRepository implements QueryVaultRepository {

@@ -1,4 +1,4 @@
-import { AddVaultRepository } from '../../data/interfaces/vault/add-vault-repository'
+import { AddVaultRepository } from '../../data/interfaces/vault/add-vault'
 import { VaultParams, Vault } from '../../domain/models/vault'
 import { vaultTable } from './models/vault'
 import AWS from 'aws-sdk'

@@ -1,4 +1,4 @@
-import { MoveTimeUseCase } from "../../../../data/usecases/move-time";
+import { MoveTimeUseCase } from "../../../../data/usecases/add-time";
 import { MoveTimeInfra } from "../../../../infra/mongodb/move-time";
 import { MoveTimeController } from "../../../../presentation/controllers/move-time";
 import { makeMoveTimeValidators } from "./make-validators";

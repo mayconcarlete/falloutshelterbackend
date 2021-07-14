@@ -1,4 +1,4 @@
-import { AddVaultRepository } from '../../../../../src/data/interfaces/vault/add-vault-repository'
+import { AddVaultRepository } from '../../../../../src/data/interfaces/vault/add-vault'
 import { Vault, VaultParams } from '../../../../../src/domain/models/vault'
 
 export class MockAddVaultRepository implements AddVaultRepository {

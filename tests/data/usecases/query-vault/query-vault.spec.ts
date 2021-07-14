@@ -1,7 +1,7 @@
 import { ParseParamsUpper } from '../../../../src/data/helpers/parse-object-uppercase'
 import { RemoveUndefinedParams } from '../../../../src/data/helpers/remove-undefined-params'
 import { RemoveParams } from '../../../../src/data/interfaces/helpers/remove-undefined-params'
-import { QueryVaultRepository } from '../../../../src/data/interfaces/vault/query-vault-repository'
+import { QueryVaultRepository } from '../../../../src/data/interfaces/vault/query-vault'
 import { QueryVaultUseCase } from '../../../../src/data/usecases/query-vault'
 import { QueryVault } from '../../../../src/domain/usecases/query-vault'
 import { MockQueryVaultRepository } from './mocks/query-vault-repository'

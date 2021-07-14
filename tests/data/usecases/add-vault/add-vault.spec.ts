@@ -1,4 +1,4 @@
-import { AddVaultRepository } from '../../../../src/data/interfaces/vault/add-vault-repository'
+import { AddVaultRepository } from '../../../../src/data/interfaces/vault/add-vault'
 import { AddVaultUseCase } from '../../../../src/data/usecases/add-vault'
 import { MockAddVaultRepository } from './mocks/add-vault-repository'
 import { expectedResponse, vault } from './mocks/constants'

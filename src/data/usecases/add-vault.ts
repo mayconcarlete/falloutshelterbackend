@@ -1,6 +1,6 @@
 import { VaultParams, Vault } from '../../domain/models/vault'
 import { AddVault } from '../../domain/usecases/add-vault'
-import { AddVaultRepository } from '../interfaces/vault/add-vault-repository'
+import { AddVaultRepository } from '../interfaces/vault/add-vault'
 
 export class AddVaultUseCase implements AddVault {
   constructor (

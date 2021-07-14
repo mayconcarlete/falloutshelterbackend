@@ -1,14 +1,14 @@
-import { TimeFoward } from "../../domain/models/time";
-import { AddTime } from "../../domain/usecases/add-time";
-import { MoveTimeRepository } from "../interfaces/time/move-time-repository";
+import { TimeFoward, TimeFowardParams } from '../../domain/models/time'
+import { MoveTime } from '../../domain/usecases/move-time'
+import { AddTimeRepository } from '../interfaces/time/add-time'
 
-export class AddTimeUseCase implements AddTime{
-    constructor(
-        private readonly addTimeRepository: MoveTimeRepository
-    ){}
-    async create():Promise<TimeFoward> {
-        return new Promise((resolve, reject) => {
-            
-        })
-    }
+export class MoveTimeUseCase implements MoveTime {
+  constructor (
+    private readonly moveTimeRepository: AddTimeRepository
+  ) {}
+
+  async moveTime(timeFowardParams: TimeFowardParams):Promise<TimeFoward>{
+    const moveDate = await this.moveTimeRepository.add(timeFowardParams)
+    return moveDate
+  }
 }

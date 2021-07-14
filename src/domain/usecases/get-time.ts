@@ -1,5 +1,5 @@
 import { TimeFoward } from "../models/time";
 
-export interface LoadTimeUseCase {
+export interface GetTime {
     getTime():Promise<TimeFoward>
 }

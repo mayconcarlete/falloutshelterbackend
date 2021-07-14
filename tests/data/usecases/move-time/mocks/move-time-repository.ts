@@ -1,7 +1,7 @@
-import { MoveTimeRepository } from '../../../../../src/data/interfaces/time/move-time-repository'
+import { AddTimeRepository } from '../../../../../src/data/interfaces/time/add-time'
 import { TimeFowardParams, TimeFoward } from '../../../../../src/domain/models/time'
 
-export class MockMoveTimeRepository implements MoveTimeRepository {
+export class MockMoveTimeRepository implements AddTimeRepository {
   add(timeFowardParams: TimeFowardParams):Promise<TimeFoward>{
     return new Promise((resolve, reject) => {
       resolve({
