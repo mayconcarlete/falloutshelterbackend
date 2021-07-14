@@ -2,7 +2,7 @@ import { ParseParamsUpper } from '../../../../data/helpers/parse-object-uppercas
 import { RemoveUndefinedParams } from '../../../../data/helpers/remove-undefined-params'
 import { QueryVaultUseCase } from '../../../../data/usecases/query-vault'
 import { DynamoDbRepository } from '../../../../infra/dynamodb/repository'
-import { MongoDBRepository } from '../../../../infra/mongodb/repository'
+import { VaultRepository } from '../../../../infra/mongodb/vault-repository'
 import { QueryVaultController } from '../../../../presentation/controllers/query-vault'
 
 export const makeQueryVaultController = (): QueryVaultController => {
@@ -16,7 +16,7 @@ export const makeQueryVaultController = (): QueryVaultController => {
   //   secretAccessKey: 'DUMMY_KEY'
   // }
   // const mockRepository = new DynamoDbRepository(config)
-  const mongoRepository = new MongoDBRepository()
+  const mongoRepository = new VaultRepository()
   const queryVault = new QueryVaultUseCase(removeUndefinedParams, parseParamsUpperCase, mongoRepository)
 
   const queryVaultController = new QueryVaultController(queryVault)

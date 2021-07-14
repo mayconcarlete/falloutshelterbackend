@@ -14,6 +14,6 @@ const VaultSchema: Schema = new Schema({
   eyeColor: { type: String, required: true }
 })
 
-const VaultRepository = mongoose.model<VaultInterface>('Vault', VaultSchema)
+const VaultRepositoryModel = mongoose.model<VaultInterface>('Vault', VaultSchema)
 
-export default VaultRepository
+export default VaultRepositoryModel
