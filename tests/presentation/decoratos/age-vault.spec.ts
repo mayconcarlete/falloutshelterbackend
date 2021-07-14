@@ -47,4 +47,53 @@ describe('UpdateAgeDecorator class', () => {
         expect(response.statusCode).toBe(200)
         expect(response.body["age"]).toBe('29')
     })
+    test('Should return a parsed array of vaults with age update when body is an array of vaults', async() => {
+        const {sut, controller} = makeSut()
+        const request:THttpRequest = {
+            body:{
+                hairColor: 'any_value',
+            }
+        }
+        jest.spyOn(controller, 'handle').mockImplementationOnce(async() => {
+            return new Promise((resolve, reject) => {
+                resolve({
+                    statusCode:200,
+                    body:[
+                        {
+                            "age": "1990-07-16",
+                            "eyeColor": "GREEN",
+                            "hairColor": "RED",
+                            "name": "MAYCON",
+                            "id": "valid_id_1"
+                        },
+                        {
+                            "age": "1991-07-16",
+                            "eyeColor": "GREEN",
+                            "hairColor": "RED",
+                            "name": "CAROLINA",
+                            "id": "valid_id_2"
+                        }
+                    ]
+                })
+            })
+        })
+        const response = await sut.handle(request)
+        expect(response.statusCode).toBe(200)
+        expect(response.body).toEqual([
+            {
+                "age": "29",
+                "eyeColor": "GREEN",
+                "hairColor": "RED",
+                "name": "MAYCON",
+                "id": "valid_id_1"
+            },
+            {
+                "age": "28",
+                "eyeColor": "GREEN",
+                "hairColor": "RED",
+                "name": "CAROLINA",
+                "id": "valid_id_2"
+            }
+        ])
+    })
 })
