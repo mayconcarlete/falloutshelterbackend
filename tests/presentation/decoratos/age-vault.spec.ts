@@ -36,4 +36,15 @@ describe('UpdateAgeDecorator class', () => {
         expect(response.statusCode).toBe(400)
         expect(response.body).toBe('dummy_value')
     })
+    test('Should return a parsed vault with age updated when body is a single vault', async() => {
+        const {sut} = makeSut()
+        const request:THttpRequest = {
+            body:{
+                id:'valid_id'
+            }
+        }
+        const response = await sut.handle(request)
+        expect(response.statusCode).toBe(200)
+        expect(response.body["age"]).toBe('29')
+    })
 })
