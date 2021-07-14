@@ -18,4 +18,11 @@ describe('Validator Composite', () => {
     const sut = new ValidatorComposite(validators)
     expect(() => sut.validate({})).toThrow(Error)
   })
+  test('Should return falsy when validation succeeds', () => {
+    const validators = [new MockValidator(), new MockValidator()]
+    const sut = new ValidatorComposite(validators)
+    const input = {dummy_key: 'dummy_value'}
+    const validationResult = sut.validate(input)
+    expect(validationResult).toBeFalsy()
+  })
 })
