@@ -25,6 +25,7 @@ describe('GetVaultById Controller', () => {
     const { sut, getVaultById } = makeSut()
     const getVaultSpy = jest.spyOn(getVaultById, 'getById')
     const request: THttpRequest = {
+      time: 'any_value',
       params: {
         id: 'any_id'
       }
@@ -38,7 +39,7 @@ describe('GetVaultById Controller', () => {
       throw new RequiredFieldError('id')
     })
 
-    const response = await sut.handle({})
+    const response = await sut.handle({time:'any'})
 
     expect(response.statusCode).toBe(400)
     expect(response.body).toEqual(new RequiredFieldError('id'))
@@ -51,6 +52,7 @@ describe('GetVaultById Controller', () => {
       })
     })
     const request: THttpRequest = {
+      time: 'any_value',
       params: { id: 'not_found_id' }
     }
     const response = await sut.handle(request)
@@ -60,6 +62,7 @@ describe('GetVaultById Controller', () => {
   test('Should return 500 and server error if getVaultId throws', async () => {
     const { sut, getVaultById } = makeSut()
     const request: THttpRequest = {
+      time: 'any_value',
       params: { id: 'any_id' }
     }
     jest.spyOn(getVaultById, 'getById').mockImplementationOnce(async () => {
@@ -74,6 +77,7 @@ describe('GetVaultById Controller', () => {
   test('Should return 200 when get vault with success', async () => {
     const { sut } = makeSut()
     const request: THttpRequest = {
+      time: 'any_value',
       params: {
         id: 'valid_id'
       }

@@ -25,6 +25,7 @@ describe('Move Time Controllers', () => {
       throw new CheckDateFormatError()
     })
     const request: THttpRequest = {
+      time:'any_value',
       body: {
         invalid_field: 'any_value'
       }
@@ -37,12 +38,13 @@ describe('Move Time Controllers', () => {
     const { sut, moveTimeUseCase } = makeSut()
     const moveTimeSpy = jest.spyOn(moveTimeUseCase, 'moveTime')
     const request: THttpRequest = {
+      time: 'any_value',
       body: {
-        date: 'any_date'
+        time: 'any_date'
       }
     }
     await sut.handle(request)
-    expect(moveTimeSpy).toHaveBeenLastCalledWith('any_date')
+    expect(moveTimeSpy).toHaveBeenLastCalledWith({time: 'any_date'})
   })
   test('Should return a Server Error and status 500 if moveTimeUseCase throws', async () => {
     const { sut, moveTimeUseCase } = makeSut()
@@ -52,8 +54,9 @@ describe('Move Time Controllers', () => {
       })
     })
     const request: THttpRequest = {
+      time: 'any_value',
       body: {
-        date: 'valid_value'
+        time: 'valid_value'
       }
     }
     const response = await sut.handle(request)
@@ -63,8 +66,9 @@ describe('Move Time Controllers', () => {
   test('Should return a new date when moveTimeUseCase create a new date', async () => {
     const { sut } = makeSut()
     const request: THttpRequest = {
+      time: 'any_value',
       body: {
-        date: 'valid_date'
+        time: 'valid_date'
       }
     }
     const response = await sut.handle(request)

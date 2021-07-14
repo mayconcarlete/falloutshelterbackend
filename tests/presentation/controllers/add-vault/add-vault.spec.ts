@@ -13,6 +13,7 @@ type SutTypes = {
 }
 
 const request: THttpRequest = {
+  time: 'any_value',
   body: {
     name: 'valid_name',
     age: 1,
@@ -47,6 +48,7 @@ describe('Add Vault Controller', () => {
       throw TypeError('any_field')
     })
     const request: THttpRequest = {
+      time: 'any_value',
       body: {
         any_field: 'invalid_value'
       }

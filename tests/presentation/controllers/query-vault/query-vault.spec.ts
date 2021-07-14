@@ -18,6 +18,7 @@ describe('Query Vault', () => {
   test('Should call queryVaultUseCase with correct params', async () => {
     const { sut, queryVaultUseCase } = makeSut()
     const request: THttpRequest = {
+      time: 'any_value',
       params: 'valid_id',
       body: {
         name: 'valid_name',
@@ -43,6 +44,7 @@ describe('Query Vault', () => {
       })
     })
     const request: THttpRequest = {
+      time: 'any_value',
       params: 'valid_id',
       body: {
         name: 'valid_name',
@@ -58,6 +60,7 @@ describe('Query Vault', () => {
   test('Should return 200 and array of vault if query was success', async () => {
     const { sut } = makeSut()
     const request: THttpRequest = {
+      time: 'any_value',
       params: 'valid_id',
       body: {
         name: 'valid_name',
