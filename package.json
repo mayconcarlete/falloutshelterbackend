@@ -5,6 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "jest --watch --verbose --runInBand",
+    "test:coverage": "jest --runInBand --no-cache --verbose --collect-coverage --passWithNoTests",
     "dev": "ts-node-dev src/index.ts"
   },
   "keywords": [],
