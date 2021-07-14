@@ -2,7 +2,7 @@ export type THttpRequest = {
   headers?: any
   params?: any
   body?: any
-  time: string
+  time?: string
 }
 
 export type THttpResponse = {
