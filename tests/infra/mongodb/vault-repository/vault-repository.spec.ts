@@ -52,4 +52,13 @@ describe('VaultRepository class', () => {
         expect(vault![0].hairColor).toBe('BROWN')
         expect(vault![0].age).toBe('1990-07-16')
     })
+    test('Should add vault with success', async() => {
+        const sut = makeSut()
+        const vault = await sut.add(mockedVault)
+        expect(vault!.id).toBeTruthy()
+        expect(vault!.name).toBe('MAYCON CARLETE')
+        expect(vault!.eyeColor).toBe('BROWN')
+        expect(vault!.hairColor).toBe('BROWN')
+        expect(vault!.age).toBe('1990-07-16')
+    })
 })

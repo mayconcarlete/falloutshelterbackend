@@ -26,10 +26,4 @@ export class VaultRepository implements AddVaultRepository, GetVaultByIdReposito
     const addedVault = await VaultRepositoryModel.create(vault)
     return MongoDB.mapObject(addedVault)
   }
-
-  async getAll (): Promise<Vault[]> {
-    const getAll = await VaultRepositoryModel.find()
-    return MongoDB.mapObject(getAll)
-  }
-
 }
