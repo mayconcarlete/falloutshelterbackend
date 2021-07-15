@@ -27,4 +27,12 @@ describe('GetTimeUseCase class', () => {
             expect(error).toEqual(new Error())
         }
     })
+    test('Should return a TimeFoward when query is succeesful', async() => {
+        const {sut} = makeSut()
+        const time = await sut.getTime()
+        expect(time).toEqual({
+            id: 'valid_id',
+            time: '2021-01-01'
+        })
+    })
 })
