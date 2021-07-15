@@ -9,7 +9,7 @@ export class MoveTimeInfra implements AddTimeRepository, GetTimeRepository{
         const time = await TimeRepository.find()
         if(time.length === 0){
             const getDefaultTime = this.createDefaultTime()
-            return this.add({time:getDefaultTime})
+            return await this.add({time:getDefaultTime})
         }
         const map =  MongoDB.mapObject(time[0])
         return map
@@ -21,7 +21,7 @@ export class MoveTimeInfra implements AddTimeRepository, GetTimeRepository{
         return MongoDB.mapObject(newDate)
     }
     createDefaultTime():string{
-        const time = new Date()
-        return `${time.getFullYear()}-${time.getMonth()}-${time.getDay()}`    
+        const time = new Date(Date.now())
+        return `${time.getUTCFullYear()}-${time.getUTCMonth() +1}-${time.getUTCDate()}`
     }
 }
