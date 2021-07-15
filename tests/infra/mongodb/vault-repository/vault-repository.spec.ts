@@ -31,4 +31,12 @@ describe('VaultRepository class', () => {
         expect(vault!.hairColor).toBe('BROWN')
         expect(vault!.age).toBe('1990-07-16')
     })
+    test('Should return an empty array when query doesnt find vault', async() => {
+        const sut = makeSut()
+        const queryParams ={
+            name: "invalid_value"
+        }
+        const vault = await sut.query(queryParams)
+        expect(vault).toEqual([])
+    })
 })
