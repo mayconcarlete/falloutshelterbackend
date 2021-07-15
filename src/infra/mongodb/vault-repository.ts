@@ -8,8 +8,12 @@ import {MongoDB} from './helper'
 export class VaultRepository implements AddVaultRepository, GetVaultByIdRepository, QueryVaultRepository {
 
   async get (id: string): Promise<Vault | null> {
-    const vault = await VaultRepositoryModel.findById(id)
-    return MongoDB.mapObject(vault)
+    try{
+      const vault = await VaultRepositoryModel.findById(id)
+      return MongoDB.mapObject(vault)
+    }catch(error){
+      return null
+    }
   }
 
   async query(params: any):Promise<Vault[]> {
