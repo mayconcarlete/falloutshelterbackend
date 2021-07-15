@@ -39,4 +39,17 @@ describe('VaultRepository class', () => {
         const vault = await sut.query(queryParams)
         expect(vault).toEqual([])
     })
+    test('Should return an array with vaults quering by params', async() => {
+        const sut = makeSut()
+        await VaultRepositoryModel.create(mockedVault) 
+        const queryParams ={
+            name: "MAYCON CARLETE"
+        }
+        const vault = await sut.query(queryParams)
+        expect(vault![0].id).toBeTruthy()
+        expect(vault![0].name).toBe('MAYCON CARLETE')
+        expect(vault![0].eyeColor).toBe('BROWN')
+        expect(vault![0].hairColor).toBe('BROWN')
+        expect(vault![0].age).toBe('1990-07-16')
+    })
 })
