@@ -1,7 +1,6 @@
-import { mongo } from "mongoose"
-import { MongoDB } from "../../../src/infra/mongodb/helper"
-import TimeRepository from "../../../src/infra/mongodb/models/time"
-import { MoveTimeInfra } from "../../../src/infra/mongodb/move-time"
+import { MongoDB } from "../../../../src/infra/mongodb/helper"
+import TimeRepository from "../../../../src/infra/mongodb/models/time"
+import { MoveTimeRepository } from "../../../../src/infra/mongodb/move-time-repository"
 import { mockedTime } from "./mocks/time"
 
 describe('MoveTimeInfra class', () => {
@@ -14,7 +13,7 @@ describe('MoveTimeInfra class', () => {
     })
 
     test('Should return a time from Database when time already exists in DB', async() => {
-        const sut = new MoveTimeInfra()
+        const sut = new MoveTimeRepository()
         await TimeRepository.create(mockedTime)
         const getTime = await sut.get()
         expect(getTime.time).toBe('2021-01-01')
@@ -22,7 +21,7 @@ describe('MoveTimeInfra class', () => {
     })
 
     test('Should return a default system date when doesnt exists time in DB', async() => {
-        const sut = new MoveTimeInfra()
+        const sut = new MoveTimeRepository()
         const getTime = await sut.get()
         expect(new Date(getTime.time)).toBeTruthy()
         expect(getTime.id).toBeTruthy()
