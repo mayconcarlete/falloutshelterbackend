@@ -1,4 +1,3 @@
-import mongoose, { Mongoose } from 'mongoose'
 import { AddVaultRepository } from '../../data/interfaces/vault/add-vault'
 import { GetVaultByIdRepository } from '../../data/interfaces/vault/get-vault-by-id'
 import { QueryVaultRepository } from '../../data/interfaces/vault/query-vault'

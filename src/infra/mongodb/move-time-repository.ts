@@ -4,7 +4,7 @@ import { TimeFoward, TimeFowardParams } from '../../domain/models/time';
 import {MongoDB} from './helper'
 import TimeRepository from './models/time'
 
-export class MoveTimeInfra implements AddTimeRepository, GetTimeRepository{
+export class MoveTimeRepository implements AddTimeRepository, GetTimeRepository{
     async get():Promise<TimeFoward> {
         const time = await TimeRepository.find()
         if(time.length === 0){
