@@ -17,10 +17,7 @@ describe('VaultRepository class', () => {
     test('should throw when get method cant find vault by id', async() => {
         const sut = makeSut()
         const id = 'invalid_id'
-        try{
-            const vault = await sut.get(id)
-        }catch(error){
-            expect(error).toBeInstanceOf(Error)
-        }
+        const vault = await sut.get(id)
+        expect(vault).toBe(null)
     })
 })
