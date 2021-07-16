@@ -39,7 +39,7 @@ describe('GetVaultById Controller', () => {
       throw new RequiredFieldError('id')
     })
 
-    const response = await sut.handle({time:'any'})
+    const response = await sut.handle({ time: 'any' })
 
     expect(response.statusCode).toBe(400)
     expect(response.body).toEqual(new RequiredFieldError('id'))

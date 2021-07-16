@@ -21,7 +21,7 @@ describe('Validator Composite', () => {
   test('Should return falsy when validation succeeds', () => {
     const validators = [new MockValidator(), new MockValidator()]
     const sut = new ValidatorComposite(validators)
-    const input = {dummy_key: 'dummy_value'}
+    const input = { dummy_key: 'dummy_value' }
     const validationResult = sut.validate(input)
     expect(validationResult).toBeFalsy()
   })

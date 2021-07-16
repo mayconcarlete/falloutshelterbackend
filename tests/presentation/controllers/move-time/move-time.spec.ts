@@ -25,7 +25,7 @@ describe('Move Time Controllers', () => {
       throw new CheckDateFormatError()
     })
     const request: THttpRequest = {
-      time:'any_value',
+      time: 'any_value',
       body: {
         invalid_field: 'any_value'
       }
@@ -44,7 +44,7 @@ describe('Move Time Controllers', () => {
       }
     }
     await sut.handle(request)
-    expect(moveTimeSpy).toHaveBeenLastCalledWith({time: 'any_date'})
+    expect(moveTimeSpy).toHaveBeenLastCalledWith({ time: 'any_date' })
   })
   test('Should return a Server Error and status 500 if moveTimeUseCase throws', async () => {
     const { sut, moveTimeUseCase } = makeSut()
@@ -73,6 +73,6 @@ describe('Move Time Controllers', () => {
     }
     const response = await sut.handle(request)
     expect(response.statusCode).toBe(200)
-    expect(response.body).toEqual({id: "valid_id", time: "valid_date"})
+    expect(response.body).toEqual({ id: 'valid_id', time: 'valid_date' })
   })
 })
