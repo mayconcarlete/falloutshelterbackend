@@ -1,5 +1,5 @@
-import { TimeFoward } from "../models/time";
+import { TimeFoward } from '../models/time'
 
 export interface GetTime {
-    getTime():Promise<TimeFoward>
+  getTime: () => Promise<TimeFoward>
 }
