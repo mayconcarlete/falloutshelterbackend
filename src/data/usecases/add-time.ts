@@ -7,7 +7,7 @@ export class MoveTimeUseCase implements MoveTime {
     private readonly moveTimeRepository: AddTimeRepository
   ) {}
 
-  async moveTime(timeFowardParams: TimeFowardParams):Promise<TimeFoward>{
+  async moveTime (timeFowardParams: TimeFowardParams): Promise<TimeFoward> {
     const moveDate = await this.moveTimeRepository.add(timeFowardParams)
     return moveDate
   }
