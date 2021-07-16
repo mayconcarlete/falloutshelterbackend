@@ -24,7 +24,7 @@ describe('Db Move Time', () => {
     })
     try {
       const date = 'valid_date'
-      await sut.moveTime({time:date})
+      await sut.moveTime({ time: date })
     } catch (error) {
       expect(error).toEqual(new Error('MoveTimeRepository throws'))
     }
@@ -32,9 +32,9 @@ describe('Db Move Time', () => {
   test('Should return an valid date when moveDateRepository update new date', async () => {
     const { sut } = makeSut()
     const date = 'valid_date'
-    const updatedDate = await sut.moveTime({time:date})
+    const updatedDate = await sut.moveTime({ time: date })
     expect(updatedDate).toEqual({
-      id:'valid_id',
+      id: 'valid_id',
       time: 'valid_time'
     })
   })
