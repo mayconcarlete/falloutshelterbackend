@@ -1,7 +1,6 @@
 import { ParseParamsUpper } from '../../../../data/helpers/parse-object-uppercase'
 import { RemoveUndefinedParams } from '../../../../data/helpers/remove-undefined-params'
 import { QueryVaultUseCase } from '../../../../data/usecases/query-vault'
-import { DynamoDbRepository } from '../../../../infra/dynamodb/repository'
 import { VaultRepository } from '../../../../infra/mongodb/vault-repository'
 import { QueryVaultController } from '../../../../presentation/controllers/query-vault'
 

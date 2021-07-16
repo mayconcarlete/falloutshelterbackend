@@ -1,5 +1,4 @@
 import { GetVaultByIdUseCase } from '../../../../data/usecases/get-vault-by-id'
-import { DynamoDbRepository } from '../../../../infra/dynamodb/repository'
 import { VaultRepository } from '../../../../infra/mongodb/vault-repository'
 import { GetVaultByIdController } from '../../../../presentation/controllers/get-vault-by-id'
 import { makeGetVaultByIdValitors } from './make-validators'

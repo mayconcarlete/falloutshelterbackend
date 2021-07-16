@@ -1,6 +1,6 @@
 import { IController } from '../../presentation/interfaces/controller'
 import { THttpRequest } from '../../presentation/types/http'
-import { Request, Response } from 'express'
+import { Response } from 'express'
 
 export const adapterController = (controller: IController) => {
   return async (req: any, res: Response) => {
