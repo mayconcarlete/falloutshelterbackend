@@ -1,7 +1,6 @@
 import { AddVault } from '../../domain/usecases/add-vault'
 import { CheckDateFormatError } from '../errors/check-date-format'
 import { RequiredFieldError } from '../errors/required-field'
-import { ServerError } from '../errors/server-error'
 import { badRequest, ok, serverError } from '../helpers/http-responses'
 import { IController } from '../interfaces/controller'
 import { IValidate } from '../interfaces/validate'

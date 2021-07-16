@@ -1,5 +1,5 @@
-import { THttpRequest, THttpResponse } from "../types/http";
+import { THttpRequest, THttpResponse } from '../types/http'
 
 export interface Middleware {
-    handle(request: THttpRequest):Promise<THttpResponse>
+  handle: (request: THttpRequest) => Promise<THttpResponse>
 }
