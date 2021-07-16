@@ -1,5 +1,5 @@
-import { TimeFowardParams } from "../../../../../src/domain/models/time";
+import { TimeFowardParams } from '../../../../../src/domain/models/time'
 
-export const mockedTime:TimeFowardParams = {
-    time: '2021-01-01'
+export const mockedTime: TimeFowardParams = {
+  time: '2021-01-01'
 }
