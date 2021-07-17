@@ -1,5 +1,5 @@
 import { AddVault } from '../../../../src/domain/usecases/add-vault'
-import { AddVaultController } from '../../../../src/presentation/controllers/add-vault'
+import { AddVaultController } from '../../../../src/presentation/controllers/add-vault/add-vault'
 import { ServerError } from '../../../../src/presentation/errors/server-error'
 import { IValidate } from '../../../../src/presentation/interfaces/validate'
 import { THttpRequest } from '../../../../src/presentation/types/http'

@@ -1,6 +1,6 @@
 import { AddVaultUseCase } from '../../../../data/usecases/add-vault'
 import { VaultRepository } from '../../../../infra/mongodb/vault-repository'
-import { AddVaultController } from '../../../../presentation/controllers/add-vault'
+import { AddVaultController } from '../../../../presentation/controllers/add-vault/add-vault'
 import { makeAddVaultValidators } from './make-validators'
 // import { DynamoDbRepository } from '../../../infra/dynamodb/repository'
 
