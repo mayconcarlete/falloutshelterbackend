@@ -8,13 +8,18 @@ const makeSut = (): VaultRepository => {
 }
 
 describe('VaultRepository class', () => {
+  const mongoDB = new MongoDB()
   beforeAll(async () => {
-    const mongoDB = new MongoDB()
     await mongoDB.connect()
   })
   beforeEach(async () => {
     VaultRepositoryModel.deleteMany()
   })
+
+  afterAll(async() => {
+    await mongoDB.disconnect()  
+  })
+
   test('should return null when get method cant find vault by id', async () => {
     const sut = makeSut()
     const id = 'invalid_id'

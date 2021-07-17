@@ -1,15 +1,20 @@
+import { mongo } from 'mongoose'
 import { MongoDB } from '../../../../src/infra/mongodb/helper'
 import TimeRepository from '../../../../src/infra/mongodb/models/time'
 import { MoveTimeRepository } from '../../../../src/infra/mongodb/move-time-repository'
 import { mockedTime } from './mocks/time'
 
 describe('MoveTimeInfra class', () => {
+  const mongoDB = new MongoDB()
   beforeAll(async () => {
-    const mongoDB = new MongoDB()
     await mongoDB.connect()
   })
   beforeEach(async () => {
     await TimeRepository.deleteMany()
+  })
+
+  afterAll(async() => {
+    await mongoDB.disconnect()  
   })
 
   test('Should return a time from Database when time already exists in DB', async () => {
