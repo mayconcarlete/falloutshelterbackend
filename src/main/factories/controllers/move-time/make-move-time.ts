@@ -1,6 +1,6 @@
 import { MoveTimeUseCase } from '../../../../data/usecases/add-time'
 import { MoveTimeRepository } from '../../../../infra/mongodb/move-time-repository'
-import { MoveTimeController } from '../../../../presentation/controllers/move-time'
+import { MoveTimeController } from '../../../../presentation/controllers/move-time/move-time'
 import { makeMoveTimeValidators } from './make-validators'
 
 export const makeMoveTimeController = (): MoveTimeController => {

@@ -1,4 +1,4 @@
-import { MoveTimeController } from '../../../../src/presentation/controllers/move-time'
+import { MoveTimeController } from '../../../../src/presentation/controllers/move-time/move-time'
 import { CheckDateFormatError } from '../../../../src/presentation/errors/check-date-format'
 import { IValidate } from '../../../../src/presentation/interfaces/validate'
 import { THttpRequest } from '../../../../src/presentation/types/http'
