@@ -1,10 +1,10 @@
 import server from './main/server'
 import { MongoDB } from './infra/mongodb/helper'
 const mongoRepository = new MongoDB()
-
+const PORT = 3000
 mongoRepository.connect().then(async () =>
-  server.listen(3000,() => {
-    console.log('We are on, port: 3000')
+  server.listen(PORT,() => {
+    console.log(`We are online on port: ${PORT}`)
   })
 ).catch(error => {
   console.log('Error')

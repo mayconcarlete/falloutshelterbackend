@@ -3,8 +3,12 @@ import { addVault } from './routes/add-vault'
 import { getVaultByIdRoute } from './routes/get-vault-by-id'
 import { queryVault } from './routes/query-vault'
 import { moveTimeFoward } from './routes/move-time'
+import { swaggerSetup } from './routes/swagger-route'
 
 const app = express()
+
+swaggerSetup(app)
+
 app.use(express.json())
 
 getVaultByIdRoute(app)
