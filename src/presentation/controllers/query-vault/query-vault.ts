@@ -19,6 +19,7 @@ export class QueryVaultController implements IController {
       const vault = await this.queryVaultUseCase.query({ name, eyeColor, hairColor, age })
 
       return ok(vault)
+      
     } catch (error) {
       return serverError(error)
     }
