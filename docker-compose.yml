@@ -18,7 +18,7 @@ services:
     unit-test:
         build:
             context: .
-            dockerfile: base-tests.Dockerfile
+            dockerfile: docker/base-tests.Dockerfile
         volumes:
             - "/app/node_modules"
             - ".:/app"
