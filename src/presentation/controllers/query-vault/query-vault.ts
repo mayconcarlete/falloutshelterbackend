@@ -1,7 +1,11 @@
-import { QueryVault } from '../../domain/usecases/query-vault'
-import { ok, serverError } from '../helpers/http-responses'
-import { IController } from '../interfaces/controller'
-import { THttpRequest, THttpResponse } from '../types/http'
+import { 
+  IController, 
+  ok, 
+  QueryVault, 
+  serverError, 
+  THttpRequest, 
+  THttpResponse 
+} from './index'
 
 export class QueryVaultController implements IController {
   constructor (

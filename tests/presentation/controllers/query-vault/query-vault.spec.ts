@@ -1,5 +1,5 @@
 import { QueryVault } from '../../../../src/domain/usecases/query-vault'
-import { QueryVaultController } from '../../../../src/presentation/controllers/query-vault'
+import { QueryVaultController } from '../../../../src/presentation/controllers/query-vault/query-vault'
 import { THttpRequest } from '../../../../src/presentation/types/http'
 import { MockQueryVault } from './mocks/query-vault'
 
