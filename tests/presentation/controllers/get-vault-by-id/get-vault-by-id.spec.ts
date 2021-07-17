@@ -1,5 +1,5 @@
 import { GetVaultById } from '../../../../src/domain/usecases/get-vault-by-id'
-import { GetVaultByIdController } from '../../../../src/presentation/controllers/get-vault-by-id'
+import { GetVaultByIdController } from '../../../../src/presentation/controllers/get-vault-by-id/get-vault-by-id'
 import { NotFoundError } from '../../../../src/presentation/errors/not-found'
 import { RequiredFieldError } from '../../../../src/presentation/errors/required-field'
 import { IValidate } from '../../../../src/presentation/interfaces/validate'

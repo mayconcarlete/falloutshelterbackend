@@ -1,10 +1,16 @@
-import { GetVaultById } from '../../domain/usecases/get-vault-by-id'
-import { NotFoundError } from '../errors/not-found'
-import { RequiredFieldError } from '../errors/required-field'
-import { badRequest, notFound, ok, serverError } from '../helpers/http-responses'
-import { IController } from '../interfaces/controller'
-import { IValidate } from '../interfaces/validate'
-import { THttpRequest, THttpResponse } from '../types/http'
+import { 
+  badRequest, 
+  GetVaultById, 
+  IController, 
+  IValidate, 
+  notFound, 
+  NotFoundError, 
+  ok, 
+  RequiredFieldError, 
+  serverError, 
+  THttpRequest, 
+  THttpResponse 
+} from './index'
 
 export class GetVaultByIdController implements IController {
   constructor (

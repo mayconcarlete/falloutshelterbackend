@@ -1,6 +1,6 @@
 import { GetVaultByIdUseCase } from '../../../../data/usecases/get-vault-by-id'
 import { VaultRepository } from '../../../../infra/mongodb/vault-repository'
-import { GetVaultByIdController } from '../../../../presentation/controllers/get-vault-by-id'
+import { GetVaultByIdController } from '../../../../presentation/controllers/get-vault-by-id/get-vault-by-id'
 import { makeGetVaultByIdValitors } from './make-validators'
 
 export const makeGetVaultByIdController = (): GetVaultByIdController => {
