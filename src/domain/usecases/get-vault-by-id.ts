@@ -1,5 +1,5 @@
-import { Vault } from '../models/vault'
+import { Dweller } from '../models/dweller'
 
 export interface GetVaultById {
-  getById: (id: string) => Promise<Vault | null>
+  getById: (id: string) => Promise<Dweller | null>
 }

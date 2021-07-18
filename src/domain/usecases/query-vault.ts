@@ -1,5 +1,5 @@
-import { Vault } from '../models/vault'
+import { Dweller } from '../models/dweller'
 
 export interface QueryVault {
-  query: (vaultParams: any) => Promise<Vault[]>
+  query: (vaultParams: any) => Promise<Dweller[]>
 }

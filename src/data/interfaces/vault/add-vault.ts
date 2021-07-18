@@ -1,5 +1,5 @@
-import { Vault, VaultParams } from '../../../domain/models/vault'
+import { Dweller, DwellerParams } from '../../../domain/models/dweller'
 
 export interface AddVaultRepository {
-  add: (vault: VaultParams) => Promise<Vault>
+  add: (vault: DwellerParams) => Promise<Dweller>
 }

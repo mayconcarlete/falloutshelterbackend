@@ -1,4 +1,4 @@
-export type Vault = {
+export type Dweller = {
   name: string
   age: string
   hairColor: string
@@ -6,4 +6,4 @@ export type Vault = {
   id: string
 }
 
-export type VaultParams = Omit<Vault, 'id'>
+export type DwellerParams = Omit<Dweller, 'id'>

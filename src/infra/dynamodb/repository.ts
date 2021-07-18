@@ -1,5 +1,5 @@
 import { AddVaultRepository } from '../../data/interfaces/vault/add-vault'
-import { VaultParams, Vault } from '../../domain/models/vault'
+import { DwellerParams, Dweller } from '../../domain/models/dweller'
 import { vaultTable } from './models/vault'
 import AWS from 'aws-sdk'
 import { v4 } from 'uuid'
@@ -15,7 +15,7 @@ export class DynamoDbRepository implements AddVaultRepository, GetVaultById, Que
     this.aws = new AWS.DynamoDB(config)
   }
 
-  async getById (id: string, tableName: string = 'Vault'): Promise<Vault | null> {
+  async getById (id: string, tableName: string = 'Vault'): Promise<Dweller | null> {
     const params = {
       TableName: tableName,
       Key: { id: { S: id } }
@@ -33,7 +33,7 @@ export class DynamoDbRepository implements AddVaultRepository, GetVaultById, Que
     })
   }
 
-  async add (vault: VaultParams, table: string = 'Vault'): Promise<Vault> {
+  async add (vault: DwellerParams, table: string = 'Vault'): Promise<Dweller> {
     const id = this.get_id()
     const params = this.mapToDynamoObject({ ...vault, id }, table)
     return new Promise((resolve, reject) => {
@@ -44,7 +44,7 @@ export class DynamoDbRepository implements AddVaultRepository, GetVaultById, Que
     })
   }
 
-  mapToJsonObject (dynamoObj: GetItemOutput): Vault {
+  mapToJsonObject (dynamoObj: GetItemOutput): Dweller {
     return {
       id: dynamoObj.Item?.id.S!,
       name: dynamoObj.Item?.name.S!,
@@ -54,7 +54,7 @@ export class DynamoDbRepository implements AddVaultRepository, GetVaultById, Que
     }
   }
 
-  mapToDynamoObject (vault: Vault, table: string): AddVaultDynamoMap {
+  mapToDynamoObject (vault: Dweller, table: string): AddVaultDynamoMap {
     return {
       TableName: table,
       ConditionExpression: 'attribute_not_exists(id)',
@@ -99,7 +99,7 @@ export class DynamoDbRepository implements AddVaultRepository, GetVaultById, Que
     })
   }
 
-  async query (vaultParams: any): Promise<Vault[]> {
+  async query (vaultParams: any): Promise<Dweller[]> {
     return new Promise((resolve, reject) => {
       resolve([{
         id: 'valid_id',

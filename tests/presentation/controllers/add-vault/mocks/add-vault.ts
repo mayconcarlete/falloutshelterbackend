@@ -1,4 +1,4 @@
-import { Vault, VaultParams } from '../../../../../src/domain/models/vault'
+import { Dweller, DwellerParams } from '../../../../../src/domain/models/dweller'
 import { AddVault } from '../../../../../src/domain/usecases/add-vault'
 
 export const expectedResponse = {
@@ -10,7 +10,7 @@ export const expectedResponse = {
 }
 
 export class MockAddVault implements AddVault {
-  async create (vault: VaultParams): Promise<Vault> {
+  async create (vault: DwellerParams): Promise<Dweller> {
     return new Promise((resolve, reject) => {
       resolve(expectedResponse)
     })

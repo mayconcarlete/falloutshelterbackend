@@ -1,4 +1,4 @@
-import { Vault } from '../../domain/models/vault'
+import { Dweller } from '../../domain/models/dweller'
 import { QueryVault } from '../../domain/usecases/query-vault'
 import { ParseParamsUpper } from '../helpers/parse-object-uppercase'
 import { RemoveParams } from '../interfaces/helpers/remove-undefined-params'
@@ -11,7 +11,7 @@ export class QueryVaultUseCase implements QueryVault {
     private readonly queryVaultRepository: QueryVaultRepository
   ) {}
 
-  async query (vaultParams: Vault): Promise<Vault[]> {
+  async query (vaultParams: Dweller): Promise<Dweller[]> {
     const paramsToQuery = this.removeUndefinedParams.remove(vaultParams)
     const paramsToUpperCase = this.parseParamsUpperCase.parse(paramsToQuery)
     const vaultList = await this.queryVaultRepository.query(paramsToUpperCase)

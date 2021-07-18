@@ -1,5 +1,5 @@
-import { Vault } from '../../../domain/models/vault'
+import { Dweller } from '../../../domain/models/dweller'
 
 export interface GetVaultByIdRepository {
-  get: (id: string) => Promise<Vault | null>
+  get: (id: string) => Promise<Dweller | null>
 }

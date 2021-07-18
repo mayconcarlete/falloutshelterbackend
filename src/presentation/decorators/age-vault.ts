@@ -1,4 +1,4 @@
-import { Vault } from '../../domain/models/vault'
+import { Dweller } from '../../domain/models/dweller'
 import { GetTime } from '../../domain/usecases/get-time'
 import { IController } from '../interfaces/controller'
 import { THttpRequest, THttpResponse } from '../types/http'
@@ -32,12 +32,12 @@ export class UpdateAgeDecorator implements IController {
     return Array.isArray(body)
   }
 
-  updateArrayAge (arrVault: Vault[], time: string): Vault[] {
+  updateArrayAge (arrVault: Dweller[], time: string): Dweller[] {
     const updatedAgeVault = arrVault.map(vault => this.updateAge(vault, time))
     return updatedAgeVault
   }
 
-  updateAge (vault: Vault, time: string): Vault {
+  updateAge (vault: Dweller, time: string): Dweller {
     const millisecondsDiff = new Date(time).getTime() - new Date(vault.age).getTime()
     const years = `${Math.trunc(millisecondsDiff / 31536000000)}`
     return { ...vault, age: years }

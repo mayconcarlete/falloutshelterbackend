@@ -1,6 +1,6 @@
-import { VaultParams } from '../../../../../src/domain/models/vault'
+import { DwellerParams } from '../../../../../src/domain/models/dweller'
 
-export const mockedVault: VaultParams = {
+export const mockedVault: DwellerParams = {
   name: 'MAYCON CARLETE',
   age: '1990-07-16',
   eyeColor: 'BROWN',
