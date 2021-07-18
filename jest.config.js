@@ -3,6 +3,7 @@ module.exports = {
     testEnvironment: 'node',
     collectCoverageFrom: [
       '<rootDir>/src/**/*.ts',
+      '!<rootDir>/src/presentation/interfaces/index.ts',
       '!<rootDir>/src/index.ts',
       '!<rootDir>/src/main/**',
       '!<rootDir>/src/infra/dynamodb/**',
