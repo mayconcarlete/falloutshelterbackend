@@ -1,5 +1,5 @@
 import { AddDweller } from '../../../../src/domain/usecases/add-dweller'
-import { AddVaultController } from '../../../../src/presentation/controllers/add-vault/add-vault'
+import { AddDwellerController } from '../../../../src/presentation/controllers/add-dweller/add-dweller'
 import { ServerError } from '../../../../src/presentation/errors/server-error'
 import { IValidate } from '../../../../src/presentation/interfaces/validate'
 import { THttpRequest } from '../../../../src/presentation/types/http'
@@ -7,7 +7,7 @@ import { MockAddVault } from './mocks/add-vault'
 import { MockValidator } from './mocks/validator'
 
 type SutTypes = {
-  sut: AddVaultController
+  sut: AddDwellerController
   validator: IValidate
   addVaultUseCase: AddDweller
 }
@@ -25,7 +25,7 @@ const request: THttpRequest = {
 const makeSut = (): SutTypes => {
   const validator = new MockValidator()
   const addVaultUseCase = new MockAddVault()
-  const sut = new AddVaultController(validator, addVaultUseCase)
+  const sut = new AddDwellerController(validator, addVaultUseCase)
   return { sut, validator, addVaultUseCase }
 }
 

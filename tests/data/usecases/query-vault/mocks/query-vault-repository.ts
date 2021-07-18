@@ -1,4 +1,4 @@
-import { QueryVaultRepository } from '../../../../../src/data/interfaces/vault/query-vault'
+import { QueryVaultRepository } from '../../../../../src/data/interfaces/dweller/query-vault'
 import { Dweller } from '../../../../../src/domain/models/dweller'
 
 export class MockQueryVaultRepository implements QueryVaultRepository {

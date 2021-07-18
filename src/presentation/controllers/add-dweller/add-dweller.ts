@@ -1,5 +1,5 @@
 import {
-  AddVault,
+  AddDweller,
   badRequest,
   CheckDateFormatError,
   IController,
@@ -12,10 +12,10 @@ import {
 }
   from './index'
 
-export class AddVaultController implements IController {
+export class AddDwellerController implements IController {
   constructor (
     private readonly validators: IValidate,
-    private readonly addVaultUseCase: AddVault
+    private readonly addDwellerUseCase: AddDweller
   ) {}
 
   async handle (request: THttpRequest): Promise<THttpResponse> {
@@ -24,9 +24,9 @@ export class AddVaultController implements IController {
       this.validators.validate(body)
       
       const { name, age, hairColor, eyeColor } = request.body
-      const addVault = await this.addVaultUseCase.create({ name, age, hairColor, eyeColor })
+      const addDweller = await this.addDwellerUseCase.create({ name, age, hairColor, eyeColor })
 
-      return ok(addVault)
+      return ok(addDweller)
       
     } catch (error) {
       if (error instanceof RequiredFieldError || error instanceof TypeError || error instanceof CheckDateFormatError) return badRequest(error)

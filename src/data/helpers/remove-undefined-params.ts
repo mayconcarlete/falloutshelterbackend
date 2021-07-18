@@ -5,11 +5,11 @@ export class RemoveUndefinedParams implements RemoveParams {
     private readonly fields: string[]
   ) {}
 
-  remove (vaultParams: any): any {
+  remove (dwellerParams: any): any {
     let validParams = {}
     for (const field of this.fields) {
-      if (vaultParams[field]) {
-        validParams = { ...validParams, [field]: vaultParams[field] }
+      if (dwellerParams[field]) {
+        validParams = { ...validParams, [field]: dwellerParams[field] }
       }
     }
     return validParams

@@ -1,4 +1,4 @@
-import { AddVaultRepository } from '../../data/interfaces/vault/add-vault'
+import { AddDwellerRepository } from '../../data/interfaces/dweller/add-dweller'
 import { DwellerParams, Dweller } from '../../domain/models/dweller'
 import { vaultTable } from './models/vault'
 import AWS from 'aws-sdk'
@@ -9,7 +9,7 @@ import { AddVaultDynamoMap } from './models/dynamo-add-vault'
 import { GetItemOutput } from 'aws-sdk/clients/dynamodb'
 import { QueryVault } from '../../domain/usecases/query-vault'
 
-export class DynamoDbRepository implements AddVaultRepository, GetVaultById, QueryVault {
+export class DynamoDbRepository implements AddDwellerRepository, GetVaultById, QueryVault {
   private readonly aws
   constructor (config: DynamoDbConfig) {
     this.aws = new AWS.DynamoDB(config)

@@ -1,7 +1,7 @@
 import { Dweller } from '../../domain/models/dweller'
 import { GetVaultById } from '../../domain/usecases/get-vault-by-id'
 import { NotFoundError } from '../../presentation/errors/not-found'
-import { GetVaultByIdRepository } from '../interfaces/vault/get-vault-by-id'
+import { GetVaultByIdRepository } from '../interfaces/dweller/get-vault-by-id'
 
 export class GetVaultByIdUseCase implements GetVaultById {
   constructor (

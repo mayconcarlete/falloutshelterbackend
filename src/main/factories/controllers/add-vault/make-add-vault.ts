@@ -1,10 +1,10 @@
-import { AddVaultUseCase } from '../../../../data/usecases/add-vault'
+import { AddDwellerUseCase } from '../../../../data/usecases/add-dweller'
 import { VaultRepository } from '../../../../infra/mongodb/vault-repository'
-import { AddVaultController } from '../../../../presentation/controllers/add-vault/add-vault'
+import { AddDwellerController } from '../../../../presentation/controllers/add-dweller/add-dweller'
 import { makeAddVaultValidators } from './make-validators'
 // import { DynamoDbRepository } from '../../../infra/dynamodb/repository'
 
-export const makeAddVaultController = (): AddVaultController => {
+export const makeAddVaultController = (): AddDwellerController => {
   const validators = makeAddVaultValidators()
 
   // const config = {
@@ -15,7 +15,7 @@ export const makeAddVaultController = (): AddVaultController => {
   // }
   // const repository = new DynamoDbRepository(config)
   const mongoRepository = new VaultRepository()
-  const addVaultUseCase = new AddVaultUseCase(mongoRepository)
-  const addVaultController = new AddVaultController(validators, addVaultUseCase)
+  const addVaultUseCase = new AddDwellerUseCase(mongoRepository)
+  const addVaultController = new AddDwellerController(validators, addVaultUseCase)
   return addVaultController
 }

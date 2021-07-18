@@ -2,7 +2,7 @@ import { Dweller } from '../../domain/models/dweller'
 import { QueryVault } from '../../domain/usecases/query-vault'
 import { ParseParamsUpper } from '../helpers/parse-object-uppercase'
 import { RemoveParams } from '../interfaces/helpers/remove-undefined-params'
-import { QueryVaultRepository } from '../interfaces/vault/query-vault'
+import { QueryVaultRepository } from '../interfaces/dweller/query-vault'
 
 export class QueryVaultUseCase implements QueryVault {
   constructor (

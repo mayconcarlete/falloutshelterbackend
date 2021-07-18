@@ -1,16 +1,16 @@
-import { AddVaultRepository } from '../../../../src/data/interfaces/vault/add-vault'
-import { AddVaultUseCase } from '../../../../src/data/usecases/add-vault'
+import { AddDwellerRepository } from '../../../../src/data/interfaces/dweller/add-dweller'
+import { AddDwellerUseCase } from '../../../../src/data/usecases/add-dweller'
 import { MockAddVaultRepository } from './mocks/add-vault-repository'
 import { expectedResponse, vault } from './mocks/constants'
 
 type SutTypes = {
-  sut: AddVaultUseCase
-  addVaultRepository: AddVaultRepository
+  sut: AddDwellerUseCase
+  addVaultRepository: AddDwellerRepository
 }
 
 const makeSut = (): SutTypes => {
   const addVaultRepository = new MockAddVaultRepository()
-  const sut = new AddVaultUseCase(addVaultRepository)
+  const sut = new AddDwellerUseCase(addVaultRepository)
   return { sut, addVaultRepository }
 }
 

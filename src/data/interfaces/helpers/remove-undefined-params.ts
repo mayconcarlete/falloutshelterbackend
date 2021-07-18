@@ -1,3 +1,3 @@
 export interface RemoveParams {
-  remove: (vaultParams: any) => any
+  remove: (dwellerParams: any) => any
 }

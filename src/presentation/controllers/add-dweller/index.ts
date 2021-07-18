@@ -1,4 +1,4 @@
-export { AddDweller as AddVault } from '../../../domain/usecases/add-dweller'
+export { AddDweller } from '../../../domain/usecases/add-dweller'
 export { badRequest, ok, serverError } from '../../helpers/http-responses'
 export { THttpRequest, THttpResponse } from '../../types/http'
 export { CheckDateFormatError, RequiredFieldError } from '../../errors'

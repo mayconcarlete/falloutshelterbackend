@@ -1,4 +1,4 @@
-import { GetVaultByIdRepository } from '../../../../src/data/interfaces/vault/get-vault-by-id'
+import { GetVaultByIdRepository } from '../../../../src/data/interfaces/dweller/get-vault-by-id'
 import { GetVaultByIdUseCase } from '../../../../src/data/usecases/get-vault-by-id'
 import { NotFoundError } from '../../../../src/presentation/errors/not-found'
 import { vault } from './mocks/constants'
