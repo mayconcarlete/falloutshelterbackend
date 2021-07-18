@@ -1,5 +1,5 @@
 import express from 'express'
-import { addVault } from './routes/add-vault'
+import { addDweller } from './routes/add-dweller'
 import { getVaultByIdRoute } from './routes/get-vault-by-id'
 import { queryVault } from './routes/query-vault'
 import { moveTimeFoward } from './routes/move-time'
@@ -12,7 +12,7 @@ swaggerSetup(app)
 app.use(express.json())
 
 getVaultByIdRoute(app)
-addVault(app)
+addDweller(app)
 queryVault(app)
 moveTimeFoward(app)
 
