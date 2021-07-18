@@ -1,10 +1,10 @@
 import { MongoDB } from '../../../../src/infra/mongodb/helper'
-import VaultRepositoryModel from '../../../../src/infra/mongodb/models/vault'
-import { VaultRepository } from '../../../../src/infra/mongodb/vault-repository'
+import DwellerRepositoryModel from '../../../../src/infra/mongodb/models/dweller'
+import { DwellerRepository } from '../../../../src/infra/mongodb/dweller-repository'
 import { mockedVault } from './mocks/vault'
 
-const makeSut = (): VaultRepository => {
-  return new VaultRepository()
+const makeSut = (): DwellerRepository => {
+  return new DwellerRepository()
 }
 
 describe('VaultRepository class', () => {
@@ -13,7 +13,7 @@ describe('VaultRepository class', () => {
     await mongoDB.connect()
   })
   beforeEach(async () => {
-    VaultRepositoryModel.deleteMany()
+    DwellerRepositoryModel.deleteMany()
   })
 
   afterAll(async() => {
@@ -28,7 +28,7 @@ describe('VaultRepository class', () => {
   })
   test('Should return a vault when get method find a vault by id', async () => {
     const sut = makeSut()
-    const addVault = await VaultRepositoryModel.create(mockedVault)
+    const addVault = await DwellerRepositoryModel.create(mockedVault)
     const vault = await sut.get(addVault.id)
     expect(vault!.id).toBeTruthy()
     expect(vault!.name).toBe('MAYCON CARLETE')
@@ -46,7 +46,7 @@ describe('VaultRepository class', () => {
   })
   test('Should return an array with vaults quering by params', async () => {
     const sut = makeSut()
-    await VaultRepositoryModel.create(mockedVault)
+    await DwellerRepositoryModel.create(mockedVault)
     const queryParams = {
       name: 'MAYCON CARLETE'
     }

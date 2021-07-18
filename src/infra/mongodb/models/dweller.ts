@@ -1,6 +1,6 @@
 import mongoose, { Schema, Document } from 'mongoose'
 
-export interface VaultInterface extends Document {
+export interface DwellerInterface extends Document {
   name: string
   age: string
   hairColor: string
@@ -14,6 +14,6 @@ const VaultSchema: Schema = new Schema({
   eyeColor: { type: String, required: true }
 })
 
-const VaultRepositoryModel = mongoose.model<VaultInterface>('Vault', VaultSchema)
+const DwellerRepositoryModel = mongoose.model<DwellerInterface>('Vault', VaultSchema)
 
-export default VaultRepositoryModel
+export default DwellerRepositoryModel

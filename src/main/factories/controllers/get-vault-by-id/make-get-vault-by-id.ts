@@ -1,5 +1,5 @@
 import { GetVaultByIdUseCase } from '../../../../data/usecases/get-vault-by-id'
-import { VaultRepository } from '../../../../infra/mongodb/vault-repository'
+import { DwellerRepository } from '../../../../infra/mongodb/dweller-repository'
 import { GetVaultByIdController } from '../../../../presentation/controllers/get-vault-by-id/get-vault-by-id'
 import { makeGetVaultByIdValitors } from './make-validators'
 
@@ -13,7 +13,7 @@ export const makeGetVaultByIdController = (): GetVaultByIdController => {
   //   secretAccessKey: 'DUMMY_KEY'
   // }
   // const repository = new DynamoDbRepository(config)
-  const mongoRepository = new VaultRepository()
+  const mongoRepository = new DwellerRepository()
   const getVaultById = new GetVaultByIdUseCase(mongoRepository)
 
   const getVaultByIdController = new GetVaultByIdController(validators, getVaultById)
