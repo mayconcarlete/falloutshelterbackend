@@ -1,8 +1,8 @@
 import { DwellerParams, Dweller } from '../../domain/models/dweller'
-import { AddVault } from '../../domain/usecases/add-vault'
+import { AddDweller } from '../../domain/usecases/add-dweller'
 import { AddVaultRepository } from '../interfaces/vault/add-vault'
 
-export class AddVaultUseCase implements AddVault {
+export class AddVaultUseCase implements AddDweller {
   constructor (
     private readonly addVaultRepository: AddVaultRepository
   ) {}

@@ -1,5 +1,5 @@
 import { Dweller, DwellerParams } from '../../../../../src/domain/models/dweller'
-import { AddVault } from '../../../../../src/domain/usecases/add-vault'
+import { AddDweller } from '../../../../../src/domain/usecases/add-dweller'
 
 export const expectedResponse = {
   id: 'valid_id',
@@ -9,7 +9,7 @@ export const expectedResponse = {
   hairColor: 'BROWN'
 }
 
-export class MockAddVault implements AddVault {
+export class MockAddVault implements AddDweller {
   async create (vault: DwellerParams): Promise<Dweller> {
     return new Promise((resolve, reject) => {
       resolve(expectedResponse)

@@ -1,4 +1,4 @@
-import { AddVault } from '../../../../src/domain/usecases/add-vault'
+import { AddDweller } from '../../../../src/domain/usecases/add-dweller'
 import { AddVaultController } from '../../../../src/presentation/controllers/add-vault/add-vault'
 import { ServerError } from '../../../../src/presentation/errors/server-error'
 import { IValidate } from '../../../../src/presentation/interfaces/validate'
@@ -9,7 +9,7 @@ import { MockValidator } from './mocks/validator'
 type SutTypes = {
   sut: AddVaultController
   validator: IValidate
-  addVaultUseCase: AddVault
+  addVaultUseCase: AddDweller
 }
 
 const request: THttpRequest = {
