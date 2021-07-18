@@ -2,7 +2,7 @@ import { ParseParamsUpper } from '../../../../data/helpers/parse-object-uppercas
 import { RemoveUndefinedParams } from '../../../../data/helpers/remove-undefined-params'
 import { QueryVaultUseCase } from '../../../../data/usecases/query-vault'
 import { VaultRepository } from '../../../../infra/mongodb/vault-repository'
-import { QueryVaultController } from '../../../../presentation/controllers/query-vault'
+import { QueryVaultController } from '../../../../presentation/controllers/query-vault/query-vault'
 
 export const makeQueryVaultController = (): QueryVaultController => {
   const fields = ['age', 'hairColor', 'eyeColor', 'name']
