@@ -42,7 +42,7 @@
 * localhost:3000/get-three-words/:word
 * localhost:3000/update-word/:word
 
->## Swagger
+>## Swagger Support
 ![alt text](https://user-images.githubusercontent.com/6265325/126053768-39999bea-f999-4f63-a582-b6f84c944dbf.png)
 
 >## Test Driven Development is awesome!
