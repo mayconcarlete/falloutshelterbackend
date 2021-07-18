@@ -3,7 +3,7 @@ import { RequiredField } from '../../../../presentation/validators/required-fiel
 import { TypeOfField } from '../../../../presentation/validators/type-of-field'
 import { ValidatorComposite } from '../../../../presentation/validators/validator-composite'
 
-export const makeAddVaultValidators = (): ValidatorComposite => {
+export const makeAddDwellerValidators = (): ValidatorComposite => {
   const arrayOfValidations = []
 
   const name = new RequiredField('name')

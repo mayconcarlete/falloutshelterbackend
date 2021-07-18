@@ -1,11 +1,11 @@
 import { AddDwellerUseCase } from '../../../../data/usecases/add-dweller'
 import { DwellerRepository } from '../../../../infra/mongodb/dweller-repository'
 import { AddDwellerController } from '../../../../presentation/controllers/add-dweller/add-dweller'
-import { makeAddVaultValidators } from './make-validators'
+import { makeAddDwellerValidators } from './make-validators'
 // import { DynamoDbRepository } from '../../../infra/dynamodb/repository'
 
-export const makeAddVaultController = (): AddDwellerController => {
-  const validators = makeAddVaultValidators()
+export const makeAddDwellerController = (): AddDwellerController => {
+  const validators = makeAddDwellerValidators()
 
   // const config = {
   //   endpoint: 'http://localhost:8000',
@@ -15,7 +15,7 @@ export const makeAddVaultController = (): AddDwellerController => {
   // }
   // const repository = new DynamoDbRepository(config)
   const mongoRepository = new DwellerRepository()
-  const addVaultUseCase = new AddDwellerUseCase(mongoRepository)
-  const addVaultController = new AddDwellerController(validators, addVaultUseCase)
-  return addVaultController
+  const addDwellerUseCase = new AddDwellerUseCase(mongoRepository)
+  const addDwellerController = new AddDwellerController(validators, addDwellerUseCase)
+  return addDwellerController
 }
