@@ -24,12 +24,14 @@
 * Modular Design
 
 >## Top Level Architecture Design
->### GetThreeWordsController
-![alt text](https://user-images.githubusercontent.com/6265325/114273921-835d5780-99f2-11eb-951c-a572f0144f00.png)
->### UpdateWordController
-![alt text](https://user-images.githubusercontent.com/6265325/114584235-d46e8500-9c58-11eb-9dcf-dc696e4799c9.png)
->### DeleteWordController
-![alt text](https://user-images.githubusercontent.com/6265325/114584238-d5071b80-9c58-11eb-8097-daf7e9c1d03d.png)
+>### Add Vault Controller
+![alt text](https://user-images.githubusercontent.com/6265325/126053658-87721218-9b6a-48b0-912e-47e9d680904d.png)
+>### Get Vault By Id Controller
+![alt text](https://user-images.githubusercontent.com/6265325/126053671-f24aed54-b8e5-4829-8d61-521da7ef23b6.png)
+>### Query Vault Controller
+![alt text](https://user-images.githubusercontent.com/6265325/126053683-976ebfab-57cc-4d81-979f-6d1475bcd308.png)
+>### Move Time Controller
+![alt text](https://user-images.githubusercontent.com/6265325/126053696-1019c9d2-ef7c-4fee-a74f-5e6e3405779e.png)
 
 
 >## Start Application
@@ -41,43 +43,14 @@
 * localhost:3000/update-word/:word
 
 >## Swagger
-![alt text](https://user-images.githubusercontent.com/6265325/114895636-0d883000-9de6-11eb-9f00-f0306fb60951.png)
+![alt text](https://user-images.githubusercontent.com/6265325/126053768-39999bea-f999-4f63-a582-b6f84c944dbf.png)
 
 >## Test Driven Development is awesome!
 * Coverage over all core system
 
-![alt text](https://user-images.githubusercontent.com/6265325/114895532-f5b0ac00-9de5-11eb-97da-cd6e4cdeedd1.png)
-
->## Search algorithm used: Levenshtein
-
-## Task Description
-Your task for this challenge is to create a small search engine comprising of two parts, a web-based user interface and a server component that exposes a REST API which provides search results retrieved from a corpus of text that will be provided to you in `corpus/hemingway.txt`.
-
-Your submission will be evaluated for conforming to the specifications outlined below as well as code quality (maintainability, scalability, performance etc.). You are permitted to use any resources and libraries you wish, however, you should be able to justify design choices in your code.
+![alt text](https://user-images.githubusercontent.com/6265325/126053822-988d9d82-183f-4358-b02c-11e89608152e.png)
 
 
-## Requirements
-The basic search engine should be capable of the following three operations.
-
-1. Given a query consisting of a single word, display the 3 most similar words in the search corpus according to some similarity metric of your choosing.
-2. Given a single word `w`, update the search corpus with `w`. The new word `w` should immediately be 
-queryable.
-3. Given a single word `w`, remove the most similar word to `w` in the corpus from further search results. 
-### User Interface
-The user interface should be a browser-based application developed using your JavaScript web framework of choice. It should support the three aforementioned operations. How this is done is completely up to you. Use your creativity and imagination to create a UI that will set your submission apart!
-
-### REST API
-The REST API can be implemented using whatever language and frameworks of your choosing. Again, like the UI, it needs to support the three operations listed above. How you choose to accomplish this task is up to you.
-
-## Deliverables
-To submit your challenge, fork this repository and provide the link to your forked repository.
-You should also update this README to include instructions on how to run your search engine.
-Tests are not mandatory but will be considered bonus points if you provide them.
-
-
-
-
-# Fallout Shelter Backend
 ## Summary
 Welcome to the Fallout Shelter Underground Vault, where you act as the Overseer with the ability to:
  * Retrieve information regarding each dweller in the Vault
@@ -85,4 +58,6 @@ Welcome to the Fallout Shelter Underground Vault, where you act as the Overseer 
  * Retrieve all information regarding a specific dweller by providing their user ID
  * Query the Vault for dwellers that match a specific search filter (i.e: haircolor, eyecolor, age, name)
  * Move time forward to retrieve a search result with dwellers and their updated ages 
+ 
+Please follow along to setup the environment and run the application. 
  
