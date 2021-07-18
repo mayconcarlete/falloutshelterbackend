@@ -2,20 +2,26 @@ version: '3'
 
 services: 
     mongo:
+        env_file: 
+            - .env
         image: mongo
         restart: always
         ports:
-            - "27017:27017"
+            - ${MONGO_PORT}:${MONGO_PORT}
     
     mongo-express:
+        env_file: 
+            - .env
         image: mongo-express
         restart: always
         depends_on: 
             - mongo
         ports:
-            - "8081:8081"
+            - ${MONGO_MANAGER_PORT}:${MONGO_MANAGER_PORT}
 
     unit-test:
+        env_file: 
+            - .env
         build:
             context: .
             dockerfile: docker/base-tests.Dockerfile
@@ -26,3 +32,19 @@ services:
             - mongo
             - mongo-express
         command: ["npm", "run", "test"]
+
+    run-local:
+        env_file: 
+            - .env
+        build:
+            context: .
+            dockerfile: docker/base-tests.Dockerfile
+        ports:
+            - ${SERVER_PORT}:${SERVER_PORT}
+        volumes:
+            - "/app/node_modules"
+            - ".:/app"
+        depends_on: 
+            - mongo
+            - mongo-express
+        command: ["npm", "run", "dev"]
