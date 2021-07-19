@@ -1,6 +1,6 @@
 import { 
   badRequest, 
-  GetVaultById, 
+  GetDwellerById, 
   IController, 
   IValidate, 
   notFound, 
@@ -12,10 +12,10 @@ import {
   THttpResponse 
 } from './index'
 
-export class GetVaultByIdController implements IController {
+export class GetDwellerByIdController implements IController {
   constructor (
     private readonly validators: IValidate,
-    private readonly getVaultByIdUseCase: GetVaultById
+    private readonly getDwellerByIdUseCase: GetDwellerById
   ) {}
 
   async handle (request: THttpRequest): Promise<THttpResponse> {
@@ -24,9 +24,9 @@ export class GetVaultByIdController implements IController {
       this.validators.validate(params)
       
       const id = params.id
-      const vault = await this.getVaultByIdUseCase.getById(id)
+      const dweller = await this.getDwellerByIdUseCase.getById(id)
 
-      return ok(vault)
+      return ok(dweller)
 
     } catch (error) {
       if (error instanceof RequiredFieldError || error instanceof TypeError) return badRequest(error)

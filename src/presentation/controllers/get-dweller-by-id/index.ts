@@ -1,4 +1,4 @@
-export { GetVaultById } from '../../../domain/usecases/get-vault-by-id'
+export { GetDwellerById } from '../../../domain/usecases/get-dweller-by-id'
 export { badRequest, notFound, ok, serverError } from '../../helpers/http-responses'
 export { THttpRequest, THttpResponse } from '../../types/http'
 export { NotFoundError, RequiredFieldError } from '../../errors'

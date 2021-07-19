@@ -1,17 +1,17 @@
-import { GetVaultByIdRepository } from '../../../../src/data/interfaces/dweller/get-vault-by-id'
-import { GetVaultByIdUseCase } from '../../../../src/data/usecases/get-vault-by-id'
+import { GetDwellerByIdRepository } from '../../../../src/data/interfaces/dweller/get-dweller-by-id'
+import { GetDwellerByIdUseCase } from '../../../../src/data/usecases/get-dweller-by-id'
 import { NotFoundError } from '../../../../src/presentation/errors/not-found'
 import { vault } from './mocks/constants'
 import { MockGetByIdRepository } from './mocks/get-vault-repository'
 
 type SutTypes = {
-  sut: GetVaultByIdUseCase
-  getVaultRepository: GetVaultByIdRepository
+  sut: GetDwellerByIdUseCase
+  getVaultRepository: GetDwellerByIdRepository
 }
 
 const makeSut = (): SutTypes => {
   const getVaultRepository = new MockGetByIdRepository()
-  const sut = new GetVaultByIdUseCase(getVaultRepository)
+  const sut = new GetDwellerByIdUseCase(getVaultRepository)
   return { sut, getVaultRepository }
 }
 
@@ -44,7 +44,7 @@ describe('Db Get Vault By Id', () => {
     try {
       await sut.getById(id)
     } catch (error) {
-      expect(error).toEqual(new NotFoundError('cant found a vault'))
+      expect(error).toEqual(new NotFoundError('cant found a dweller'))
     }
   })
   test('ensure getGetById return a vault when find by id', async () => {

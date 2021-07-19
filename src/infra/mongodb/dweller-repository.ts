@@ -1,11 +1,11 @@
 import { AddDwellerRepository } from '../../data/interfaces/dweller/add-dweller'
-import { GetVaultByIdRepository } from '../../data/interfaces/dweller/get-vault-by-id'
+import { GetDwellerByIdRepository } from '../../data/interfaces/dweller/get-dweller-by-id'
 import { QueryDwellerRepository } from '../../data/interfaces/dweller/query-dweller'
 import { DwellerParams, Dweller } from '../../domain/models/dweller'
 import DwellerRepositoryModel from './models/dweller'
 import { MongoDB } from './helper'
 
-export class DwellerRepository implements AddDwellerRepository, GetVaultByIdRepository, QueryDwellerRepository {
+export class DwellerRepository implements AddDwellerRepository, GetDwellerByIdRepository, QueryDwellerRepository {
   async get (id: string): Promise<Dweller | null> {
     try {
       const dweller = await DwellerRepositoryModel.findById(id)

@@ -1,5 +1,5 @@
 import { Dweller } from '../../../domain/models/dweller'
 
-export interface GetVaultByIdRepository {
+export interface GetDwellerByIdRepository {
   get: (id: string) => Promise<Dweller | null>
 }
