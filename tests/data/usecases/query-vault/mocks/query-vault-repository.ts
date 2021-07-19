@@ -1,7 +1,7 @@
-import { QueryVaultRepository } from '../../../../../src/data/interfaces/dweller/query-vault'
+import { QueryDwellerRepository } from '../../../../../src/data/interfaces/dweller/query-dweller'
 import { Dweller } from '../../../../../src/domain/models/dweller'
 
-export class MockQueryVaultRepository implements QueryVaultRepository {
+export class MockQueryVaultRepository implements QueryDwellerRepository {
   async query (params: any): Promise<Dweller[]> {
     return new Promise((resolve, reject) => {
       resolve([{

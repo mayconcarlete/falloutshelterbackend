@@ -1,5 +1,5 @@
 import { Dweller } from '../../../domain/models/dweller'
 
-export interface QueryVaultRepository{
+export interface QueryDwellerRepository{
   query: (params: any) => Promise<Dweller[]>
 }

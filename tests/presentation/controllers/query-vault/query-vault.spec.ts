@@ -1,16 +1,16 @@
-import { QueryVault } from '../../../../src/domain/usecases/query-vault'
-import { QueryVaultController } from '../../../../src/presentation/controllers/query-vault/query-vault'
+import { QueryDweller } from '../../../../src/domain/usecases/query-dweller'
+import { QueryDwellerController } from '../../../../src/presentation/controllers/query-dweller/query-dweller'
 import { THttpRequest } from '../../../../src/presentation/types/http'
 import { MockQueryVault } from './mocks/query-vault'
 
 type SutTypes = {
-  sut: QueryVaultController
-  queryVaultUseCase: QueryVault
+  sut: QueryDwellerController
+  queryVaultUseCase: QueryDweller
 }
 
 const makeSut = (): SutTypes => {
   const queryVaultUseCase = new MockQueryVault()
-  const sut = new QueryVaultController(queryVaultUseCase)
+  const sut = new QueryDwellerController(queryVaultUseCase)
   return { sut, queryVaultUseCase }
 }
 

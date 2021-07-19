@@ -1,16 +1,16 @@
 import { ParseParamsUpper } from '../../../../src/data/helpers/parse-object-uppercase'
 import { RemoveUndefinedParams } from '../../../../src/data/helpers/remove-undefined-params'
 import { RemoveParams } from '../../../../src/data/interfaces/helpers/remove-undefined-params'
-import { QueryVaultRepository } from '../../../../src/data/interfaces/dweller/query-vault'
-import { QueryVaultUseCase } from '../../../../src/data/usecases/query-vault'
-import { QueryVault } from '../../../../src/domain/usecases/query-vault'
+import { QueryDwellerRepository } from '../../../../src/data/interfaces/dweller/query-dweller'
+import { QueryDwellerUseCase } from '../../../../src/data/usecases/query-dweller'
+import { QueryDweller } from '../../../../src/domain/usecases/query-dweller'
 import { MockQueryVaultRepository } from './mocks/query-vault-repository'
 
 type SutTypes = {
-  sut: QueryVault
+  sut: QueryDweller
   removeUndefinedParams: RemoveParams
   parseParamsUpperCase: ParseParamsUpper
-  queryVaultRepository: QueryVaultRepository
+  queryVaultRepository: QueryDwellerRepository
 }
 
 const makeSut = (): SutTypes => {
@@ -18,7 +18,7 @@ const makeSut = (): SutTypes => {
   const removeUndefinedParams = new RemoveUndefinedParams(fields)
   const parseParamsUpperCase = new ParseParamsUpper()
   const queryVaultRepository = new MockQueryVaultRepository()
-  const sut = new QueryVaultUseCase(removeUndefinedParams, parseParamsUpperCase, queryVaultRepository)
+  const sut = new QueryDwellerUseCase(removeUndefinedParams, parseParamsUpperCase, queryVaultRepository)
   return { sut, removeUndefinedParams, parseParamsUpperCase, queryVaultRepository }
 }
 

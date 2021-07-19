@@ -1,10 +1,10 @@
 import { Express } from 'express'
 import { adapterController } from '../adapters/controller'
-import { makeQueryVaultController } from '../factories/controllers/query-vault/make-query-vault'
+import { makeQueryDwellerController } from '../factories/controllers/query-dweller/make-query-dweller'
 import { makeUpdateAgeDecorator } from '../factories/decorators/update-age-vault'
 
-export const queryVault = (app: Express): void => {
-  const makeQueryController = makeQueryVaultController()
+export const queryDweller = (app: Express): void => {
+  const makeQueryController = makeQueryDwellerController()
   const updateAgeDecorator = makeUpdateAgeDecorator(makeQueryController)
-  app.post('/query-vault', adapterController(updateAgeDecorator))
+  app.post('/query-dweller', adapterController(updateAgeDecorator))
 }

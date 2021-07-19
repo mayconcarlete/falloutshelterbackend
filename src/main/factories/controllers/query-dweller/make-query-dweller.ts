@@ -1,10 +1,10 @@
 import { ParseParamsUpper } from '../../../../data/helpers/parse-object-uppercase'
 import { RemoveUndefinedParams } from '../../../../data/helpers/remove-undefined-params'
-import { QueryVaultUseCase } from '../../../../data/usecases/query-vault'
+import { QueryDwellerUseCase } from '../../../../data/usecases/query-dweller'
 import { DwellerRepository } from '../../../../infra/mongodb/dweller-repository'
-import { QueryVaultController } from '../../../../presentation/controllers/query-vault/query-vault'
+import { QueryDwellerController } from '../../../../presentation/controllers/query-dweller/query-dweller'
 
-export const makeQueryVaultController = (): QueryVaultController => {
+export const makeQueryDwellerController = (): QueryDwellerController => {
   const fields = ['age', 'hairColor', 'eyeColor', 'name']
   const removeUndefinedParams = new RemoveUndefinedParams(fields)
   const parseParamsUpperCase = new ParseParamsUpper()
@@ -16,9 +16,9 @@ export const makeQueryVaultController = (): QueryVaultController => {
   // }
   // const mockRepository = new DynamoDbRepository(config)
   const mongoRepository = new DwellerRepository()
-  const queryVault = new QueryVaultUseCase(removeUndefinedParams, parseParamsUpperCase, mongoRepository)
+  const queryDweller = new QueryDwellerUseCase(removeUndefinedParams, parseParamsUpperCase, mongoRepository)
 
-  const queryVaultController = new QueryVaultController(queryVault)
+  const queryDwellerController = new QueryDwellerController(queryDweller)
 
-  return queryVaultController
+  return queryDwellerController
 }
