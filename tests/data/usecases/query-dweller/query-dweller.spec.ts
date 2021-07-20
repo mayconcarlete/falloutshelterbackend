@@ -4,25 +4,25 @@ import { RemoveParams } from '../../../../src/data/interfaces/helpers/remove-und
 import { QueryDwellerRepository } from '../../../../src/data/interfaces/dweller/query-dweller'
 import { QueryDwellerUseCase } from '../../../../src/data/usecases/query-dweller'
 import { QueryDweller } from '../../../../src/domain/usecases/query-dweller'
-import { MockQueryVaultRepository } from './mocks/query-vault-repository'
+import { MockQueryDwellerRepository } from './mocks/query-dweller-repository'
 
 type SutTypes = {
   sut: QueryDweller
   removeUndefinedParams: RemoveParams
   parseParamsUpperCase: ParseParamsUpper
-  queryVaultRepository: QueryDwellerRepository
+  queryDwellerRepository: QueryDwellerRepository
 }
 
 const makeSut = (): SutTypes => {
   const fields = ['age', 'eyeColor', 'name', 'hairColor']
   const removeUndefinedParams = new RemoveUndefinedParams(fields)
   const parseParamsUpperCase = new ParseParamsUpper()
-  const queryVaultRepository = new MockQueryVaultRepository()
-  const sut = new QueryDwellerUseCase(removeUndefinedParams, parseParamsUpperCase, queryVaultRepository)
-  return { sut, removeUndefinedParams, parseParamsUpperCase, queryVaultRepository }
+  const queryDwellerRepository = new MockQueryDwellerRepository()
+  const sut = new QueryDwellerUseCase(removeUndefinedParams, parseParamsUpperCase, queryDwellerRepository)
+  return { sut, removeUndefinedParams, parseParamsUpperCase, queryDwellerRepository }
 }
 
-describe('Db Query Vault', () => {
+describe('Db Query Dweller', () => {
   test('Should call removeUndefinedParams with correct paras', async () => {
     const { sut, removeUndefinedParams } = makeSut()
     const queryParams = {
@@ -53,8 +53,8 @@ describe('Db Query Vault', () => {
     expect(parseParamsUpperCase.paramsUpperCase).toEqual(parseUpperCase)
   })
   test('Should throw when query repository throws', async () => {
-    const { sut, queryVaultRepository } = makeSut()
-    jest.spyOn(queryVaultRepository, 'query').mockImplementationOnce(async () => {
+    const { sut, queryDwellerRepository } = makeSut()
+    jest.spyOn(queryDwellerRepository, 'query').mockImplementationOnce(async () => {
       return new Promise((resolve, reject) => {
         throw new Error()
       })
@@ -71,7 +71,7 @@ describe('Db Query Vault', () => {
       expect(e).toEqual(new Error())
     }
   })
-  test('Should return an array with Vaults when query repository is successful', async () => {
+  test('Should return an array with dwellers when query repository is successful', async () => {
     const { sut } = makeSut()
     const queryParams = {
       age: 'valid_age',
