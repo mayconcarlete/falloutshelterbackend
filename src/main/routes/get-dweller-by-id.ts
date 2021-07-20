@@ -1,7 +1,7 @@
 import { Express } from 'express'
 import { adapterController } from '../adapters/controller'
 import { makeGetDwellerByIdController } from '../factories/controllers/get-dweller-by-id/make-get-dweller-by-id'
-import { makeUpdateAgeDecorator } from '../factories/decorators/update-age-vault'
+import { makeUpdateAgeDecorator } from '../factories/decorators/update-age-dweller'
 
 export const getDwellerByIdRoute = (app: Express): void => {
   const getDwellerByIdController = makeGetDwellerByIdController()

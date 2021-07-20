@@ -1,5 +1,5 @@
-export const vaultTable = {
-  TableName: 'Vault',
+export const dwellerTable = {
+  TableName: 'Dweller',
   KeySchema: [
     { AttributeName: 'id', KeyType: 'HASH' }
   ],

@@ -1,11 +1,11 @@
 import { AddDwellerRepository } from '../../data/interfaces/dweller/add-dweller'
 import { DwellerParams, Dweller } from '../../domain/models/dweller'
-import { vaultTable } from './models/vault'
+import { dwellerTable } from './models/dweller'
 import AWS from 'aws-sdk'
 import { v4 } from 'uuid'
 import { DynamoDbConfig } from './config'
 import { GetDwellerById } from '../../domain/usecases/get-dweller-by-id'
-import { AddVaultDynamoMap } from './models/dynamo-add-vault'
+import { AddDwellerDynamoMap } from './models/dynamo-add-dweller'
 import { GetItemOutput } from 'aws-sdk/clients/dynamodb'
 import { QueryDweller } from '../../domain/usecases/query-dweller'
 
@@ -15,7 +15,7 @@ export class DynamoDbRepository implements AddDwellerRepository, GetDwellerById,
     this.aws = new AWS.DynamoDB(config)
   }
 
-  async getById (id: string, tableName: string = 'Vault'): Promise<Dweller | null> {
+  async getById (id: string, tableName: string = 'dweller'): Promise<Dweller | null> {
     const params = {
       TableName: tableName,
       Key: { id: { S: id } }
@@ -26,20 +26,20 @@ export class DynamoDbRepository implements AddDwellerRepository, GetDwellerById,
         if (!data.Item) {
           resolve(null)
         } else {
-          const vault = this.mapToJsonObject(data)
-          resolve(vault)
+          const dweller = this.mapToJsonObject(data)
+          resolve(dweller)
         }
       })
     })
   }
 
-  async add (vault: DwellerParams, table: string = 'Vault'): Promise<Dweller> {
+  async add (dweller: DwellerParams, table: string = 'Dweller'): Promise<Dweller> {
     const id = this.get_id()
-    const params = this.mapToDynamoObject({ ...vault, id }, table)
+    const params = this.mapToDynamoObject({ ...dweller, id }, table)
     return new Promise((resolve, reject) => {
       this.aws.putItem(params, (err, data) => {
         if (err) reject(err)
-        resolve({ ...vault, id })
+        resolve({ ...dweller, id })
       })
     })
   }
@@ -54,16 +54,16 @@ export class DynamoDbRepository implements AddDwellerRepository, GetDwellerById,
     }
   }
 
-  mapToDynamoObject (vault: Dweller, table: string): AddVaultDynamoMap {
+  mapToDynamoObject (dweller: Dweller, table: string): AddDwellerDynamoMap {
     return {
       TableName: table,
       ConditionExpression: 'attribute_not_exists(id)',
       Item: {
-        id: { S: vault.id },
-        age: { S: vault.age },
-        eyeColor: { S: vault.eyeColor },
-        name: { S: vault.name },
-        hairColor: { S: vault.hairColor }
+        id: { S: dweller.id },
+        age: { S: dweller.age },
+        eyeColor: { S: dweller.eyeColor },
+        name: { S: dweller.name },
+        hairColor: { S: dweller.hairColor }
       }
     }
   }
@@ -74,7 +74,7 @@ export class DynamoDbRepository implements AddDwellerRepository, GetDwellerById,
 
   async remove (id: string): Promise<any> {
     const params = {
-      TableName: 'Vault',
+      TableName: 'Dweller',
       Key: {
         id: {
           S: id
@@ -92,14 +92,14 @@ export class DynamoDbRepository implements AddDwellerRepository, GetDwellerById,
 
   async createTable (): Promise<void> {
     return new Promise((resolve, reject) => {
-      this.aws.createTable(vaultTable, function (err, data) {
+      this.aws.createTable(dwellerTable, function (err, data) {
         if (err) reject(err)
         resolve()
       })
     })
   }
 
-  async query (vaultParams: any): Promise<Dweller[]> {
+  async query (dwellerParams: any): Promise<Dweller[]> {
     return new Promise((resolve, reject) => {
       resolve([{
         id: 'valid_id',
