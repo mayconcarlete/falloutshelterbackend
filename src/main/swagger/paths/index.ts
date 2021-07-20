@@ -1,4 +1,4 @@
-export * from './add-vault'
-export * from './get-vault-by-id'
-export * from './query-vault'
+export * from './add-dweller'
+export * from './get-dweller-by-id'
+export * from './query-dweller'
 export * from './move-time'

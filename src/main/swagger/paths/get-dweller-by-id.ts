@@ -1,12 +1,12 @@
-export const getVaultByIdPath = {
+export const getDwellerByIdPath = {
   get: {
-    tags: ['Query vault by id'],
-    summary: 'Route to query a vault by id',
+    tags: ['Query dweller by id'],
+    summary: 'Route to query a dweller by id',
     parameters: [
       {
         in: 'path',
         name: 'id',
-        description: 'Id to find vault',
+        description: 'Id to find dweller',
         required: true,
         schema: {
           type: 'string'
@@ -19,7 +19,7 @@ export const getVaultByIdPath = {
         content: {
           'application/json': {
             schema: {
-              $ref: '#/schemas/vault'
+              $ref: '#/schemas/dweller'
             }
           }
         }

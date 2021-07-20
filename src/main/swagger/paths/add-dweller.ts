@@ -1,13 +1,13 @@
-export const addVaultPath = {
+export const addDwellerPath = {
   post: {
-    tags: ['Add Vault'],
-    summary: 'Route to insert vault in database',
+    tags: ['Add Dweller'],
+    summary: 'Route to insert dweller in vault',
     requestBody: {
       required: true,
       content: {
         'application/json': {
           schema: {
-            $ref: '#/schemas/addVaultParams'
+            $ref: '#/schemas/addDwellerParams'
           }
         }
       }
@@ -18,7 +18,7 @@ export const addVaultPath = {
         content: {
           'application/json': {
             schema: {
-              $ref: '#/schemas/vault'
+              $ref: '#/schemas/dweller'
             }
           }
         }

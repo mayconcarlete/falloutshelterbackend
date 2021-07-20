@@ -1,5 +1,5 @@
-import { getVaultByIdPath, addVaultPath, queryVaultPath, moveTimePath } from './paths'
-import { addVaultParams, moveTimeParams, vault, time } from './schemas'
+import { getDwellerByIdPath, addDwellerPath, queryDwellerPath, moveTimePath } from './paths'
+import { addDwellerParams, moveTimeParams, dweller, time } from './schemas'
 
 export default {
   openapi: '3.0.0',
@@ -15,18 +15,18 @@ export default {
   ],
   tags: [
     {
-      name: 'Add Vault'
+      name: 'Add Dweller'
     }
   ],
   paths: {
-    '/add-vault': addVaultPath,
-    '/get-vault-by-id/{id}': getVaultByIdPath,
-    '/query-vault': queryVaultPath,
+    '/add-dweller': addDwellerPath,
+    '/get-dweller-by-id/{id}': getDwellerByIdPath,
+    '/query-dweller': queryDwellerPath,
     '/move-time': moveTimePath
   },
   schemas: {
-    addVaultParams: addVaultParams,
-    vault: vault,
+    addDwellerParams: addDwellerParams,
+    dweller: dweller,
     moveTimeParams: moveTimeParams,
     time: time
   }

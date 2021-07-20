@@ -1,13 +1,13 @@
-export const queryVaultPath = {
+export const queryDwellerPath = {
   post: {
-    tags: ['Query Vault'],
-    summary: 'Route to query a list of vault by body params in a database',
+    tags: ['Query Dweller'],
+    summary: 'Route to query a list of dwellers by body params in Vault',
     requestBody: {
       required: false,
       content: {
         'application/json': {
           schema: {
-            $ref: '#/schemas/addVaultParams'
+            $ref: '#/schemas/addDwellerParams'
           }
         }
       }
@@ -18,7 +18,7 @@ export const queryVaultPath = {
         content: {
           'application/json': {
             schema: {
-              $ref: '#/schemas/vault'
+              $ref: '#/schemas/dweller'
             }
           }
         }

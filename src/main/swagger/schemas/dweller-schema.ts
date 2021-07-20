@@ -1,4 +1,4 @@
-export const vault = {
+export const dweller = {
   type: 'object',
   properties: {
     id: {

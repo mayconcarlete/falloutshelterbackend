@@ -1,4 +1,4 @@
-export const addVaultParams = {
+export const addDwellerParams = {
   type: 'object',
   properties: {
     name: {
