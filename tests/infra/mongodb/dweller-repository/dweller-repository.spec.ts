@@ -13,10 +13,11 @@ describe('DwellerRepository class', () => {
     await mongoDB.connect()
   })
   beforeEach(async () => {
-    DwellerRepositoryModel.deleteMany()
+    await DwellerRepositoryModel.deleteMany()
   })
 
   afterAll(async() => {
+    await DwellerRepositoryModel.deleteMany()
     await mongoDB.disconnect()  
   })
 
