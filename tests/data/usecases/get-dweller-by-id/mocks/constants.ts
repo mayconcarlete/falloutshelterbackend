@@ -1,4 +1,4 @@
-export const vault = {
+export const dweller = {
   id: 'valid_id',
   name: 'VALID_NAME',
   age: '2020-07-16',

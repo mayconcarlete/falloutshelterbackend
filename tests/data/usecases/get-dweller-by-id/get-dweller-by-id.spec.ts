@@ -1,21 +1,21 @@
 import { GetDwellerByIdRepository } from '../../../../src/data/interfaces/dweller/get-dweller-by-id'
 import { GetDwellerByIdUseCase } from '../../../../src/data/usecases/get-dweller-by-id'
 import { NotFoundError } from '../../../../src/presentation/errors/not-found'
-import { vault } from './mocks/constants'
-import { MockGetByIdRepository } from './mocks/get-vault-repository'
+import { dweller } from './mocks/constants'
+import { MockGetByIdRepository } from './mocks/get-dweller-repository'
 
 type SutTypes = {
   sut: GetDwellerByIdUseCase
-  getVaultRepository: GetDwellerByIdRepository
+  getDwellerRepository: GetDwellerByIdRepository
 }
 
 const makeSut = (): SutTypes => {
-  const getVaultRepository = new MockGetByIdRepository()
-  const sut = new GetDwellerByIdUseCase(getVaultRepository)
-  return { sut, getVaultRepository }
+  const getDwellerRepository = new MockGetByIdRepository()
+  const sut = new GetDwellerByIdUseCase(getDwellerRepository)
+  return { sut, getDwellerRepository }
 }
 
-describe('Db Get Vault By Id', () => {
+describe('Db Get Dweller By Id', () => {
   test('ensure getById is called with carrect params', async () => {
     const { sut } = makeSut()
     const sutSpy = jest.spyOn(sut, 'getById')
@@ -23,20 +23,20 @@ describe('Db Get Vault By Id', () => {
     await sut.getById(id)
     expect(sutSpy).toHaveBeenCalledWith(id)
   })
-  test('Should throw when getVaultRepository throws', async () => {
-    const { sut, getVaultRepository } = makeSut()
+  test('Should throw when getDwellertRepository throws', async () => {
+    const { sut, getDwellerRepository } = makeSut()
     const id = 'any_id'
-    jest.spyOn(getVaultRepository, 'get').mockImplementationOnce(async () => {
+    jest.spyOn(getDwellerRepository, 'get').mockImplementationOnce(async () => {
       return new Promise((resolve, reject) => {
         throw new Error()
       })
     })
     await expect(sut.getById(id)).rejects.toThrow()
   })
-  test('Should throw NotFoundError when vault are not found', async () => {
-    const { sut, getVaultRepository } = makeSut()
+  test('Should throw NotFoundError when dweller are not found', async () => {
+    const { sut, getDwellerRepository } = makeSut()
     const id = 'invalid_id'
-    jest.spyOn(getVaultRepository, 'get').mockImplementationOnce(async () => {
+    jest.spyOn(getDwellerRepository, 'get').mockImplementationOnce(async () => {
       return new Promise((resolve, reject) => {
         resolve(null)
       })
@@ -47,10 +47,10 @@ describe('Db Get Vault By Id', () => {
       expect(error).toEqual(new NotFoundError('cant found a dweller'))
     }
   })
-  test('ensure getGetById return a vault when find by id', async () => {
+  test('ensure getGetById return a dweller when find by id', async () => {
     const { sut } = makeSut()
     const id = 'valid_id'
-    const getVault = await sut.getById(id)
-    expect(getVault).toEqual(vault)
+    const getDweller = await sut.getById(id)
+    expect(getDweller).toEqual(dweller)
   })
 })
