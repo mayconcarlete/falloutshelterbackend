@@ -1,7 +1,7 @@
 import { Dweller } from '../../../../../src/domain/models/dweller'
 import { GetDwellerById } from '../../../../../src/domain/usecases/get-dweller-by-id'
 
-export class MockGetVaultById implements GetDwellerById {
+export class MockGetDwellerById implements GetDwellerById {
   async getById (id: string): Promise<Dweller> {
     return new Promise((resolve, reject) => {
       resolve({
