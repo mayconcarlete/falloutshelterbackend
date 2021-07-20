@@ -1,22 +1,22 @@
 import { QueryDweller } from '../../../../src/domain/usecases/query-dweller'
 import { QueryDwellerController } from '../../../../src/presentation/controllers/query-dweller/query-dweller'
 import { THttpRequest } from '../../../../src/presentation/types/http'
-import { MockQueryVault } from './mocks/query-vault'
+import { MockQueryDweller } from './mocks/query-dweller'
 
 type SutTypes = {
   sut: QueryDwellerController
-  queryVaultUseCase: QueryDweller
+  queryDwellerUseCase: QueryDweller
 }
 
 const makeSut = (): SutTypes => {
-  const queryVaultUseCase = new MockQueryVault()
-  const sut = new QueryDwellerController(queryVaultUseCase)
-  return { sut, queryVaultUseCase }
+  const queryDwellerUseCase = new MockQueryDweller()
+  const sut = new QueryDwellerController(queryDwellerUseCase)
+  return { sut, queryDwellerUseCase }
 }
 
-describe('Query Vault', () => {
-  test('Should call queryVaultUseCase with correct params', async () => {
-    const { sut, queryVaultUseCase } = makeSut()
+describe('Query Dweller', () => {
+  test('Should call queryDwellerUseCase with correct params', async () => {
+    const { sut, queryDwellerUseCase } = makeSut()
     const request: THttpRequest = {
       time: 'any_value',
       params: 'valid_id',
@@ -27,18 +27,18 @@ describe('Query Vault', () => {
         eyeColor: 'valid_eye_color'
       }
     }
-    const queryVaultSpy = jest.spyOn(queryVaultUseCase, 'query')
+    const queryDwellerSpy = jest.spyOn(queryDwellerUseCase, 'query')
     await sut.handle(request)
-    expect(queryVaultSpy).toHaveBeenCalledWith({
+    expect(queryDwellerSpy).toHaveBeenCalledWith({
       name: 'valid_name',
       age: 'valid_age',
       hairColor: 'valid_hair_color',
       eyeColor: 'valid_eye_color'
     })
   })
-  test('Should return ServerError if queryVaultUseCase throws', async () => {
-    const { sut, queryVaultUseCase } = makeSut()
-    jest.spyOn(queryVaultUseCase, 'query').mockImplementationOnce(async () => {
+  test('Should return ServerError if queryDwellerUseCase throws', async () => {
+    const { sut, queryDwellerUseCase } = makeSut()
+    jest.spyOn(queryDwellerUseCase, 'query').mockImplementationOnce(async () => {
       return new Promise((resolve, reject) => {
         throw new Error('server throws')
       })
@@ -57,7 +57,7 @@ describe('Query Vault', () => {
     expect(response.statusCode).toBe(500)
     expect(response.body).toEqual(new Error('server throws'))
   })
-  test('Should return 200 and array of vault if query was success', async () => {
+  test('Should return 200 and array of dweller if query was success', async () => {
     const { sut } = makeSut()
     const request: THttpRequest = {
       time: 'any_value',

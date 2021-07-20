@@ -1,8 +1,8 @@
 import { Dweller } from '../../../../../src/domain/models/dweller'
 import { QueryDweller } from '../../../../../src/domain/usecases/query-dweller'
 
-export class MockQueryVault implements QueryDweller {
-  async query (vaultParams: Dweller): Promise<Dweller[]> {
+export class MockQueryDweller implements QueryDweller {
+  async query (dwellerParams: Dweller): Promise<Dweller[]> {
     return new Promise((resolve, reject) => {
       resolve([{
         id: 'valid_id',
