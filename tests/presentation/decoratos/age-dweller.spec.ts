@@ -36,7 +36,7 @@ describe('UpdateAgeDecorator class', () => {
     expect(response.statusCode).toBe(400)
     expect(response.body).toBe('dummy_value')
   })
-  test('Should return a parsed vault with age updated when body is a single vault', async () => {
+  test('Should return a parsed dweller with age updated when body is a single dweller', async () => {
     const { sut } = makeSut()
     const request: THttpRequest = {
       body: {
@@ -47,7 +47,7 @@ describe('UpdateAgeDecorator class', () => {
     expect(response.statusCode).toBe(200)
     expect(response.body.age).toBe('29')
   })
-  test('Should return a parsed array of vaults with age update when body is an array of vaults', async () => {
+  test('Should return a parsed array of dwellers with age update when body is an array of dwellers', async () => {
     const { sut, controller } = makeSut()
     const request: THttpRequest = {
       body: {
