@@ -1,6 +1,6 @@
 import { DwellerParams } from '../../../../../src/domain/models/dweller'
 
-export const vault: DwellerParams = {
+export const dweller: DwellerParams = {
   age: '2020-06-02',
   eyeColor: 'brown',
   name: 'Maycon',
