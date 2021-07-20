@@ -11,20 +11,20 @@ export class UpdateAgeDecorator implements IController {
 
   async handle (request: THttpRequest): Promise<THttpResponse> {
     const response = await this.controller.handle(request)
-    if (this.wasSuccess(response.statusCode)) {
+    if (this.wasRequestSuccess(response.statusCode)) {
       const { time } = await this.time.getTime()
       if (this.isBodyArray(response.body)) {
-        const updatedArrVault = this.updateArrayAge(response.body, time)
-        return { ...response, body: updatedArrVault }
+        const updateArrayOfDwellers = this.updateArrayAge(response.body, time)
+        return { ...response, body: updateArrayOfDwellers }
       } else {
-        const updatedVault = this.updateAge(response.body, time)
-        return { ...response, body: updatedVault }
+        const updatedDweller = this.updateAge(response.body, time)
+        return { ...response, body: updatedDweller }
       }
     }
     return response
   }
 
-  wasSuccess (statusCode: number): boolean {
+  wasRequestSuccess (statusCode: number): boolean {
     return statusCode === 200
   }
 
@@ -32,14 +32,14 @@ export class UpdateAgeDecorator implements IController {
     return Array.isArray(body)
   }
 
-  updateArrayAge (arrVault: Dweller[], time: string): Dweller[] {
-    const updatedAgeVault = arrVault.map(vault => this.updateAge(vault, time))
-    return updatedAgeVault
+  updateArrayAge (dwellersArray: Dweller[], time: string): Dweller[] {
+    const updatedDwellerAge = dwellersArray.map(dweller => this.updateAge(dweller, time))
+    return updatedDwellerAge
   }
 
-  updateAge (vault: Dweller, time: string): Dweller {
-    const millisecondsDiff = new Date(time).getTime() - new Date(vault.age).getTime()
+  updateAge (dweller: Dweller, time: string): Dweller {
+    const millisecondsDiff = new Date(time).getTime() - new Date(dweller.age).getTime()
     const years = `${Math.trunc(millisecondsDiff / 31536000000)}`
-    return { ...vault, age: years }
+    return { ...dweller, age: years }
   }
 }

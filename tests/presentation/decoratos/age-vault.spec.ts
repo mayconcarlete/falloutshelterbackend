@@ -1,5 +1,5 @@
 import { GetTime } from '../../../src/domain/usecases/get-time'
-import { UpdateAgeDecorator } from '../../../src/presentation/decorators/age-vault'
+import { UpdateAgeDecorator } from '../../../src/presentation/decorators/age-dweller'
 import { IController } from '../../../src/presentation/interfaces/controller'
 import { THttpRequest } from '../../../src/presentation/types/http'
 import { MockController } from './mocks/controller'

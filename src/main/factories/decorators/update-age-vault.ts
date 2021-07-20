@@ -1,6 +1,6 @@
 import { GetTimeUseCase } from '../../../data/usecases/get-time'
 import { MoveTimeRepository } from '../../../infra/mongodb/move-time-repository'
-import { UpdateAgeDecorator } from '../../../presentation/decorators/age-vault'
+import { UpdateAgeDecorator } from '../../../presentation/decorators/age-dweller'
 import { IController } from '../../../presentation/interfaces/controller'
 
 export const makeUpdateAgeDecorator = (controller: IController): IController => {
