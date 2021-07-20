@@ -9,8 +9,8 @@ export const expectedResponse = {
   hairColor: 'BROWN'
 }
 
-export class MockAddVault implements AddDweller {
-  async create (vault: DwellerParams): Promise<Dweller> {
+export class MockAddDweller implements AddDweller {
+  async create (dweller: DwellerParams): Promise<Dweller> {
     return new Promise((resolve, reject) => {
       resolve(expectedResponse)
     })
