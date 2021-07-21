@@ -7,7 +7,8 @@
     "test": "jest --watchAll --verbose --runInBand --detectOpenHandles",
     "test:unit": "jest --verbose --runInBand --detectOpenHandles",
     "test:coverage": "jest --runInBand --no-cache --verbose --collect-coverage --passWithNoTests --detectOpenHandles",
-    "dev": "ts-node-dev src/index.ts"
+    "dev": "ts-node-dev src/index.ts",
+    "build": "npx tsc -p tsconfig-build.json"
   },
   "keywords": [],
   "author": "",
