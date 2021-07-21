@@ -27,26 +27,26 @@ services:
             - mongo-express
         command: ["npm", "run", "test"]
 
-    run-local:
-        env_file: 
-            - .env
-        build:
-            context: .
-            dockerfile: docker/base-tests.Dockerfile
-        ports:
-            - ${SERVER_PORT}:${SERVER_PORT}
-        volumes:
-            - "/app/node_modules"
-            - ".:/app"
-        depends_on: 
-            - mongo
-            - mongo-express
-        command: ["npm", "run", "dev"]
+    # run-local:
+    #     env_file: 
+    #         - .env
+    #     build:
+    #         context: .
+    #         dockerfile: docker/base-tests.Dockerfile
+    #     ports:
+    #         - ${SERVER_PORT}:${SERVER_PORT}
+    #     volumes:
+    #         - "/app/node_modules"
+    #         - ".:/app"
+    #     depends_on: 
+    #         - mongo
+    #         - mongo-express
+    #     command: ["npm", "run", "dev"]
     
-    production:
-        build:
-            context: .
-            dockerfile: docker/build.Dockerfile
-        ports:
-            - ${SERVER_PORT}:${SERVER_PORT}
+    # production:
+    #     build:
+    #         context: .
+    #         dockerfile: docker/build.Dockerfile
+    #     ports:
+    #         - ${SERVER_PORT}:${SERVER_PORT}
         
