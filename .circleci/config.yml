@@ -4,6 +4,7 @@ version: 2.1
 jobs:
   unit-test:
     machine: true
+    image: docker/base-tests.Dockerfile
     steps:
       - checkout
       - run:
