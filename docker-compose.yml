@@ -25,7 +25,7 @@ services:
         depends_on: 
             - mongo
             - mongo-express
-        command: ["npm", "run", "test"]
+        command: ["npm", "run", "test:unit"]
 
     # run-local:
     #     env_file: 
