@@ -48,3 +48,11 @@ services:
             - mongo
             - mongo-express
         command: ["npm", "run", "dev"]
+    
+    production:
+        build:
+            context: .
+            dockerfile: docker/build.Dockerfile
+        ports:
+            - ${SERVER_PORT}:${SERVER_PORT}
+        

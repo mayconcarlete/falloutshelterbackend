@@ -1,0 +1,10 @@
+version: 2.1
+
+jobs:
+  test:
+    machine: true
+    steps:
+      - checkout
+      - run:
+          name: Unit Tests
+          command: make unit-test  
