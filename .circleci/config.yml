@@ -1,10 +1,15 @@
 version: 2.1
 
 jobs:
-  test:
+  unit-test:
     machine: true
     steps:
       - checkout
       - run:
           name: Unit Tests
           command: make unit-test  
+
+workflow:
+  tests:
+    jobs:
+      - unit-test
