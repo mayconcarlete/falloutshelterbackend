@@ -4,14 +4,16 @@ version: 2.1
 jobs:
   unit-test:
     machine: true
-    image: docker/base-tests.Dockerfile
+    #image: docker/base-tests.Dockerfile
     steps:
       - checkout
       - run:
           name: Unit Tests
-          command: make unit-test  
+          command: | 
+            make unit-test  
 
-workflow:
-  tests:
+workflows:
+  version: 2
+  build_and_tests:
     jobs:
-      - unit-test
+    - unit-test
