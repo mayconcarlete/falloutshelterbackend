@@ -8,6 +8,16 @@ jobs:
     steps:
       - checkout
       - run:
+          name: creating .env
+          command: |
+            export MONGO_URL=${MONGO_URL}
+            export MONGO_PORT=${MONGO_PORT}
+            export MONGO_MANAGER_PORT=${MONGO_MANAGER_PORT}
+      - run:
+          name: printando envs
+          command: |
+            printenv
+      - run:
           name: Unit Tests
           command: | 
             make unit-test  
