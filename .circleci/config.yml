@@ -29,14 +29,14 @@ jobs:
     steps:
       - checkout
       - run:
-        name: Login docker
-        command: docker login -u ${DOCKER_USER} -p ${DOCKER_PASSWORD}
+          name: Login docker
+          command: docker login -u ${DOCKER_USER} -p ${DOCKER_PASSWORD}
       - run:
-        name: Docker Build
-        command: docker build -t falloutshelter docker/build.Dockerfile
+          name: Docker Build
+          command: docker build -t falloutshelter docker/build.Dockerfile
       - run:
-        name: Pushing image to docker hub
-        command: docker push falloutshelter
+          name: Pushing image to docker hub
+          command: docker push falloutshelter
 
 workflows:
   version: 2
