@@ -43,8 +43,6 @@ workflows:
   build_and_tests:
     jobs:
     - unit-test
-  deploy:
-    requires:
-      - build_and_tests
-    jobs:
-      - deploy-api
+    - deploy-api:
+        requires:
+          - unit-test
