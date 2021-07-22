@@ -2,13 +2,16 @@ version: '3'
 
 services: 
     mongo:
-
+        env_file: 
+            - .env
         image: mongo
         restart: always
         ports:
             - ${MONGO_PORT}:${MONGO_PORT}
     
     mongo-express:
+        env_file: 
+            - .env
         image: mongo-express
         restart: always
         depends_on: 
@@ -17,6 +20,8 @@ services:
             - ${MONGO_MANAGER_PORT}:${MONGO_MANAGER_PORT}
 
     unit-test:
+        env_file: 
+            - .env
         build:
             context: .
             dockerfile: docker/base-tests.Dockerfile

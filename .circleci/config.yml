@@ -10,9 +10,9 @@ jobs:
       - run:
           name: creating .env
           command: |
-            export MONGO_URL=${MONGO_URL}
-            export MONGO_PORT=${MONGO_PORT}
-            export MONGO_MANAGER_PORT=${MONGO_MANAGER_PORT}
+            echo "MONGO_URL=${MONGO_URL}" > .env
+            echo "MONGO_PORT=${MONGO_PORT}" > .env
+            echo "MONGO_MANAGER_PORT=${MONGO_MANAGER_PORT}" > .env
       - run:
           name: printando envs
           command: |
