@@ -36,10 +36,10 @@ jobs:
           command: docker login -u ${DOCKER_USER} -p ${DOCKER_PASSWORD}
       - run:
           name: Docker Build
-          command: docker build -t falloutshelter -f ~/app/docker/build.Dockerfile
+          command: docker build -t mayconcarlete/falloutshelter -f ~/app/docker/build.Dockerfile
       - run:
           name: Pushing image to docker hub
-          command: docker push falloutshelter
+          command: docker push mayconcarlete/falloutshelter
 
 workflows:
   version: 2
