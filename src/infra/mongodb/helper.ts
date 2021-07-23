@@ -4,11 +4,8 @@ export class MongoDB {
   private mongooseConnection: undefined|Mongoose
 
   async connect (): Promise<Mongoose> {
-    const url = process.env.MONGO_URL
-    const port = process.env.MONGO_PORT
-    const mergedUrl = `mongodb://${url}:${port}/api`
-   
-    this.mongooseConnection = await mongoose.connect(mergedUrl, {
+    const uri = `${process.env.MONGO_URL}`
+    this.mongooseConnection = await mongoose.connect(uri, {
       useCreateIndex: true,
       useNewUrlParser: true,
       useUnifiedTopology: true
