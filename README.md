@@ -67,3 +67,7 @@ Please follow along to setup the environment and run the application.
 * localhost:3000/get-dweller-by-id/:id - GET
 * localhost:3000/query-dweller - POST
 * localhost:3000/move-time - POST
+
+## To-Do
+* Migrate database to DynamoDb - in progress
+* Migrate image deploy to ECR
