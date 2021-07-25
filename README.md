@@ -1,6 +1,6 @@
 # Fallout Shelter Backend Challenge
 
-> ## Principles:
+## Principles:
 * SRP - Single Responsability Principle
 * OCP - Open Closed Principle
 * LSP - Liskov Substitution Principle
@@ -12,44 +12,38 @@
 * Composition Over Inheritance
 * Small Commits
 
-> ## Design Patterns:
+## Design Patterns:
 * Factory
 * Decorator
 * Adapter
 * Dependency Injection 
 
->## Methodology and Design:
+## Methodology and Design:
 * TDD
 * Conventional Commits
 * Modular Design
 
->## Top Level Architecture Design
->### Add Dweller Controller
+## Top Level Architecture Design
+### Add Dweller Controller
 ![alt text](https://user-images.githubusercontent.com/6265325/126898107-5791b1a4-e602-4aaf-8187-4a667ceb6647.png)
->### Get Dweller By Id Controller
+### Get Dweller By Id Controller
 ![alt text](https://user-images.githubusercontent.com/6265325/126898109-818f6b76-b145-4d05-ae9b-92a74e102dfa.png)
->### Query Dweller Controller
+### Query Dweller Controller
 ![alt text](https://user-images.githubusercontent.com/6265325/126898110-1dcf2dbb-c70a-412e-9808-b67a86d6fcd9.png)
->### Move Time Controller
+### Move Time Controller
 ![alt text](https://user-images.githubusercontent.com/6265325/126898111-39936b4b-ae2e-46e8-a229-f772dc4c7191.png)
 
-
->## Start Application
-* docker-compose up
-* You can test the api opening swagger docs or calling each specific route
-* localhost:3000/api-docs
-* localhost:3000/delete-word/:word
-* localhost:3000/get-three-words/:word
-* localhost:3000/update-word/:word
-
->## Swagger Support
+## Swagger Support
 ![alt text](https://user-images.githubusercontent.com/6265325/126898416-c34b9ec2-08a7-4bf2-bf67-d821a8136513.png)
 
->## Test Driven Development is awesome!
+## Test Driven Development is awesome!
 * Coverage over all core system
 
 ![alt text](https://user-images.githubusercontent.com/6265325/126898330-a0a75873-dfcf-4172-8e3e-bcc45a201fca.png)
 
+## CI/CD
+ * Circle/CI
+ * Docker Hub images
 
 ## Summary
 Welcome to the Fallout Shelter Underground Vault, where you act as the Overseer with the ability to:
@@ -61,3 +55,14 @@ Welcome to the Fallout Shelter Underground Vault, where you act as the Overseer 
  
 Please follow along to setup the environment and run the application. 
  
+## Start Application
+* Make sure to have docker and Makefile support
+* Rename **".env.example"** file to **.env**
+* To run tests: **make unit-test**
+* To run api in development mode: **make dev**
+* You can test the api opening swagger docs or calling each specific route
+* localhost:3000/api-docs
+* localhost:3000/add-dweller - POST
+* localhost:3000/get-dweller-by-id/:id - GET
+* localhost:3000/query-dweller - POST
+* localhost:3000/move-time - POST
