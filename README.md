@@ -43,7 +43,8 @@
 
 ## CI/CD
  * Circle/CI
- * Docker Hub images
+ * Deploy image to Docker Hub
+![alt text](https://user-images.githubusercontent.com/6265325/126898882-017f5568-a409-4343-a939-d88f8fc45812.png)
 
 ## Summary
 Welcome to the Fallout Shelter Underground Vault, where you act as the Overseer with the ability to:
