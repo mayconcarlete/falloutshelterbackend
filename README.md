@@ -63,7 +63,7 @@ Welcome to the Fallout Shelter Underground Vault, where you act as the Overseer 
 Please follow along to setup the environment and run the application. 
 
 ## Start Application
- * Make sure to have docker and Makefile support
+ * Make sure to have docker and Makefile installed
  * Rename **".env.example"** file to **.env**
  * To run tests: **make unit-test**
  * To run api in development mode: **make dev**
