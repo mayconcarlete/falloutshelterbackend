@@ -46,7 +46,7 @@
  * Deploy image to Docker Hub
 ![alt text](https://user-images.githubusercontent.com/6265325/126898882-017f5568-a409-4343-a939-d88f8fc45812.png)
 
-## Why use UpdateAgeDecorator and how its works
+## Why use decorator to handle with move time and how its works
  
  Without this decorator, every time that we want to set a new time with move-time route, we would need to update all rows/keys in our database, this could be very costly over time as data grows. So with this decorator we handle with this issue by make just a request to a saved date in out database and  make the difference between dweller and date, avoiding update all rows/keys everytime that we want to set a new time.</br>
 
