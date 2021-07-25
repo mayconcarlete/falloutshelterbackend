@@ -24,14 +24,14 @@
 * Modular Design
 
 >## Top Level Architecture Design
->### Add Vault Controller
-![alt text](https://user-images.githubusercontent.com/6265325/126053658-87721218-9b6a-48b0-912e-47e9d680904d.png)
->### Get Vault By Id Controller
-![alt text](https://user-images.githubusercontent.com/6265325/126053671-f24aed54-b8e5-4829-8d61-521da7ef23b6.png)
->### Query Vault Controller
-![alt text](https://user-images.githubusercontent.com/6265325/126053683-976ebfab-57cc-4d81-979f-6d1475bcd308.png)
+>### Add Dweller Controller
+![alt text](https://user-images.githubusercontent.com/6265325/126898107-5791b1a4-e602-4aaf-8187-4a667ceb6647.png)
+>### Get Dweller By Id Controller
+![alt text](https://user-images.githubusercontent.com/6265325/126898109-818f6b76-b145-4d05-ae9b-92a74e102dfa.png)
+>### Query Dweller Controller
+![alt text](https://user-images.githubusercontent.com/6265325/126898110-1dcf2dbb-c70a-412e-9808-b67a86d6fcd9.png)
 >### Move Time Controller
-![alt text](https://user-images.githubusercontent.com/6265325/126053696-1019c9d2-ef7c-4fee-a74f-5e6e3405779e.png)
+![alt text](https://user-images.githubusercontent.com/6265325/126898111-39936b4b-ae2e-46e8-a229-f772dc4c7191.png)
 
 
 >## Start Application
