@@ -48,7 +48,7 @@
 
 ## Why use UpdateAgeDecorator and how its works
  
- Without this decorator, every time that we want to set a new time with move-time route, we would need to update all rows/keys in our database, this could be very costly over time as data grows. So with this decorator we handle with this issue by make just a request to a saved date in out database and  make the difference between dweller and date. Avoiding update all rows/keys everytime that we want to set a new time.</br>
+ Without this decorator, every time that we want to set a new time with move-time route, we would need to update all rows/keys in our database, this could be very costly over time as data grows. So with this decorator we handle with this issue by make just a request to a saved date in out database and  make the difference between dweller and date, avoiding update all rows/keys everytime that we want to set a new time.</br>
 
 ![alt text](https://user-images.githubusercontent.com/6265325/126900773-b0f5bb3f-26b4-4256-9373-6a01e7d1a6ee.png)
 
