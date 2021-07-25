@@ -43,12 +43,12 @@
 * localhost:3000/update-word/:word
 
 >## Swagger Support
-![alt text](https://user-images.githubusercontent.com/6265325/126053768-39999bea-f999-4f63-a582-b6f84c944dbf.png)
+![alt text](https://user-images.githubusercontent.com/6265325/126898416-c34b9ec2-08a7-4bf2-bf67-d821a8136513.png)
 
 >## Test Driven Development is awesome!
 * Coverage over all core system
 
-![alt text](https://user-images.githubusercontent.com/6265325/126053822-988d9d82-183f-4358-b02c-11e89608152e.png)
+![alt text](https://user-images.githubusercontent.com/6265325/126898330-a0a75873-dfcf-4172-8e3e-bcc45a201fca.png)
 
 
 ## Summary
