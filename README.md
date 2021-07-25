@@ -46,6 +46,12 @@
  * Deploy image to Docker Hub
 ![alt text](https://user-images.githubusercontent.com/6265325/126898882-017f5568-a409-4343-a939-d88f8fc45812.png)
 
+## Why use UpdateAgeDecorator and how its works
+ 
+ Without this decorator, every time that we want to set a new time with move-time route, we would need to update all rows/keys in our database, this could be very costly over time as data grows. So with this decorator we handle with this issue by make just a request to a saved date in out database and  make the difference between dweller and date. Avoiding update all rows/keys everytime that we want to set a new time.</br>
+
+![alt text](https://user-images.githubusercontent.com/6265325/126900773-b0f5bb3f-26b4-4256-9373-6a01e7d1a6ee.png)
+
 ## Summary
 Welcome to the Fallout Shelter Underground Vault, where you act as the Overseer with the ability to:
  * Retrieve information regarding each dweller in the Vault
@@ -55,19 +61,19 @@ Welcome to the Fallout Shelter Underground Vault, where you act as the Overseer 
  * Move time forward to retrieve a search result with dwellers and their updated ages 
  
 Please follow along to setup the environment and run the application. 
- 
+
 ## Start Application
-* Make sure to have docker and Makefile support
-* Rename **".env.example"** file to **.env**
-* To run tests: **make unit-test**
-* To run api in development mode: **make dev**
-* You can test the api opening swagger docs or calling each specific route
-* localhost:3000/api-docs
-* localhost:3000/add-dweller - POST
-* localhost:3000/get-dweller-by-id/:id - GET
-* localhost:3000/query-dweller - POST
-* localhost:3000/move-time - POST
+ * Make sure to have docker and Makefile support
+ * Rename **".env.example"** file to **.env**
+ * To run tests: **make unit-test**
+ * To run api in development mode: **make dev**
+ * You can test the api opening swagger docs or calling each specific route
+ * localhost:3000/api-docs
+ * localhost:3000/add-dweller - POST
+ * localhost:3000/get-dweller-by-id/:id - GET
+ * localhost:3000/query-dweller - POST
+ * localhost:3000/move-time - POST
 
 ## To-Do
-* Migrate database to DynamoDb - in progress
-* Migrate image deploy to ECR
+ * Migrate database to DynamoDb - in progress
+ * Migrate image deploy to ECR
