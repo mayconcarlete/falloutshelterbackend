@@ -7,6 +7,7 @@ import { makeAddDwellerValidators } from './make-validators'
 export const makeAddDwellerController = (): AddDwellerController => {
   const validators = makeAddDwellerValidators()
 
+  // To add Dynamodb as Database
   // const config = {
   //   endpoint: 'http://localhost:8000',
   //   region: 'us-east-1',
@@ -14,6 +15,7 @@ export const makeAddDwellerController = (): AddDwellerController => {
   //   secretAccessKey: 'DUMMY_KEY'
   // }
   // const repository = new DynamoDbRepository(config)
+
   const mongoRepository = new DwellerRepository()
   const addDwellerUseCase = new AddDwellerUseCase(mongoRepository)
   const addDwellerController = new AddDwellerController(validators, addDwellerUseCase)

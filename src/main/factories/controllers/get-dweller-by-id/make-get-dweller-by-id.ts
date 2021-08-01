@@ -6,13 +6,6 @@ import { makeGetDwellerByIdValitors } from './make-validators'
 export const makeGetDwellerByIdController = (): GetDwellerByIdController => {
   const validators = makeGetDwellerByIdValitors()
 
-  // const config = {
-  //   endpoint: 'http://localhost:8000',
-  //   region: 'us-east-1',
-  //   accessKeyId: 'DUMMY_ID',
-  //   secretAccessKey: 'DUMMY_KEY'
-  // }
-  // const repository = new DynamoDbRepository(config)
   const mongoRepository = new DwellerRepository()
   const getDwellerById = new GetDwellerByIdUseCase(mongoRepository)
 
