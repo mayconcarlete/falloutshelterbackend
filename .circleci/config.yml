@@ -52,23 +52,6 @@ workflows:
   build_and_tests:
     jobs:
     - unit-test
-    - aws-ecr/build-and-push-image:
+    - deploy-api:
         requires:
           - unit-test
-<<<<<<< HEAD
-        account-url: ${AWS_ECR_ACCOUNT_URL}
-        aws-access-key-id: ${AWS_ACCESS_KEY_ID}
-        aws-secret-access-key: ${AWS_SECRET_ACCESS_KEY}
-=======
-        account-url: AWS_ECR_ACCOUNT_URL
-        aws-access-key-id: AWS_ACCESS_KEY_ID
-        aws-secret-access-key: AWS_SECRET_ACCESS_KEY
->>>>>>> 81cfb3bcacc569e90145157c5f6578f32fe78521
-        create-repo: true 
-        dockerfile: build.Dockerfile
-        no-output-timeout: 20m
-        path: ~/app/docker/
-        region: ${AWS_REGION}
-        repo: falloutShelterRepo
-        skip-when-tags-exist: false
-        tag: "$CIRCLE_SHA1"
