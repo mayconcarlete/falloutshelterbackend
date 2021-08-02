@@ -27,25 +27,6 @@ jobs:
           name: Unit Tests
           command: | 
             make unit-test  
-  deploy-api:
-    working_directory: ~/app
-    machine: true
-    steps:  
-      - checkout
-      - attach_workspace:
-          at: ~/app
-      - run:
-          name: Login docker
-          command: docker login -u ${DOCKER_USER} -p ${DOCKER_PASSWORD}
-      - run:
-          name: Docker Build
-          command: docker build -t mayconcarleterodrigues/falloutshelter -f ~/app/docker/build.Dockerfile .
-      - run:
-          name: Pushing image to docker hub
-          command: docker push mayconcarleterodrigues/falloutshelter
-  
-  
-
 
 workflows:
   version: 2
