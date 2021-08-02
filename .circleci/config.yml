@@ -44,20 +44,7 @@ jobs:
           name: Pushing image to docker hub
           command: docker push mayconcarleterodrigues/falloutshelter
   
-  deploy-aws:
-    working_directory: ~/app
-    account-url: ${AWS_ECR_ACCOUNT_URL}
-    aws-access-key-id: ${AWS_ACCESS_KEY_ID}
-    aws-secret-access-key: ${AWS_SECRET_ACCESS_KEY}
-    context: .
-    create-repo: true 
-    dockerfile: build.Dockerfile
-    no-output-timeout: 20m
-    path: ~/app/docker/
-    region: ${AWS_REGION}
-    repo: falloutShelterRepo
-    skip-when-tags-exist: false
-    tag: "$CIRCLE_SHA1"
+  
 
 
 workflows:
@@ -65,6 +52,18 @@ workflows:
   build_and_tests:
     jobs:
     - unit-test
-    - deploy-aws:
+    - aws-ecr/build-and-push-image:
         requires:
           - unit-test
+        account-url: AWS_ECR_ACCOUNT_URL
+        aws-access-key-id: AWS_ACCESS_KEY_ID
+        aws-secret-access-key: AWS_SECRET_ACCESS_KEY
+        context: .
+        create-repo: true 
+        dockerfile: build.Dockerfile
+        no-output-timeout: 20m
+        path: ~/app/docker/
+        region: AWS_REGION
+        repo: falloutShelterRepo
+        skip-when-tags-exist: false
+        tag: "$CIRCLE_SHA1"
