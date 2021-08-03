@@ -76,4 +76,4 @@ Please follow along to setup the environment and run the application.
 
 ## To-Do
  * Migrate database to DynamoDb - in progress
- * Migrate image deploy to ECR
+ * Migrate image deploy to ECR - Done
