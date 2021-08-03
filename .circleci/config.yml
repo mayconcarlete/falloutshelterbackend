@@ -53,9 +53,9 @@ workflows:
     jobs:
     - unit-test
     - aws-ecr/build-and-push-image:
-      repo: slackcicd
-      tag: "latest,v0.1.${CIRCLE_BUILD_NUM}"
-      dockerfile: docker/build.Dockerfile
-      path: .
-      requires:
-        - test
+        repo: slackcicd
+        tag: "latest,v0.1.${CIRCLE_BUILD_NUM}"
+        dockerfile: docker/build.Dockerfile
+        path: .
+        requires:
+          - unit-test
