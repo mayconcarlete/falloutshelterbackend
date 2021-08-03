@@ -53,7 +53,7 @@ workflows:
     jobs:
     - unit-test
     - aws-ecr/build-and-push-image:
-        repo: slackcicd
+        repo: falloutshelter
         tag: "latest,v0.1.${CIRCLE_BUILD_NUM}"
         dockerfile: docker/build.Dockerfile
         path: .
