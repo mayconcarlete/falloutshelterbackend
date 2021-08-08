@@ -2,57 +2,20 @@ version: '3'
 
 services: 
     mongo:
-        env_file: 
-            - .env
         image: mongo
         restart: always
         ports:
-            - ${MONGO_PORT}:${MONGO_PORT}
+            - 27017:27017
     
     mongo-express:
-        env_file: 
-            - .env
         image: mongo-express
         restart: always
         depends_on: 
             - mongo
         ports:
-            - ${MONGO_MANAGER_PORT}:${MONGO_MANAGER_PORT}
-
-    unit-test:
-        env_file: 
-            - .env
-        build:
-            context: .
-            dockerfile: docker/base-tests.Dockerfile
-        volumes:
-            - "/app/node_modules"
-            - ".:/app"
-        depends_on: 
-            - mongo
-            - mongo-express
-        command: ["npm", "run", "test:unit"]
-
-    run-local:
-        env_file: 
-            - .env
-        build:
-            context: .
-            dockerfile: docker/base-tests.Dockerfile
-        ports:
-            - ${SERVER_PORT}:${SERVER_PORT}
-        volumes:
-            - "/app/node_modules"
-            - ".:/app"
-        depends_on: 
-            - mongo
-            - mongo-express
-        command: ["npm", "run", "dev"]
+            - 8081:8081
     
     production:
-        build:
-            context: .
-            dockerfile: docker/build.Dockerfile
-        ports:
-            - ${SERVER_PORT}:${SERVER_PORT}
+        image: "mayconcarleterodrigues/falloutshelter"
+        command: ["npm", "start"]
         
