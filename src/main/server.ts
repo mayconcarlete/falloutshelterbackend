@@ -12,7 +12,10 @@ swaggerSetup(app)
 app.use(express.json())
 
 app.get('/status', (req, res) => {
-    res.json({message: 'ok'})
+    res.json({
+        message: 'ok',
+        email: 'maycon.carlete@gmail.com'
+    })
 })
 
 getDwellerByIdRoute(app)
