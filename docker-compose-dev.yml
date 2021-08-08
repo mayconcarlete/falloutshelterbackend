@@ -29,7 +29,7 @@ services:
       - MONGO_URL=mongodb://mongo:27017/api
     command: ["npm", "run", "test:unit"]
 
-  run-local:
+  api:
     build:
       context: .
       dockerfile: docker/base-tests.Dockerfile
@@ -45,3 +45,14 @@ services:
       - MONGO_URL=mongodb://mongo:27017/api
     command: ["npm", "run", "dev"]
   
+  nginx:
+    restart: always
+    build:
+      context: ./nginx
+      dockerfile: Dockerfile
+    depends_on: 
+      - mongo
+      - mongo-express
+      - api
+    ports: 
+      - 80:80
