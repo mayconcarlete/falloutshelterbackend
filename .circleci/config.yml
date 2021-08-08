@@ -52,7 +52,10 @@ workflows:
     jobs:
     - unit-test
     - deploy-api-to-docker-hub:
+        requires:
+          - unit-test
         filters:
           branches:
             only:
               - master
+      
