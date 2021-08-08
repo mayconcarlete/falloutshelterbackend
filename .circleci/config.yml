@@ -2,7 +2,7 @@ version: 2.1
 
 orbs:
   aws-ecr: circleci/aws-ecr@7.0.0
-
+  eb: circleci/aws-elastic-beanstalk@2.0.0
 
 jobs:
   unit-test:
@@ -43,17 +43,21 @@ jobs:
       - run:
           name: Pushing image to docker hub
           command: docker push mayconcarleterodrigues/falloutshelter
-  
-
+  deploy-api:
+    docker:
+      - image: mayconcarleterodrigues/falloutshelter
+    steps:
+      - checkout
+      - eb/setup
+      - run:
+            command: |
+                eb create falloutshelter
+                eb deploy falloutshelter
+                eb status
+            name: Deploy Eb
 
 workflows:
   version: 2
   build_and_tests:
     jobs:
-    - unit-test
-    - aws-ecr/build-and-push-image:
-        repo: falloutshelter
-        tag: "latest,v0.1.${CIRCLE_BUILD_NUM}"
-        dockerfile: docker/build.Dockerfile
-        path: .
-      
+      - deploy-api
