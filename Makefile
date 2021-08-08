@@ -3,3 +3,6 @@ unit-test:
 
 dev:
 	@docker-compose -f docker-compose-dev.yml up run-local
+
+api: 
+	@docker-compose up api

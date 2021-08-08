@@ -15,7 +15,14 @@ services:
         ports:
             - 8081:8081
     
-    production:
+    api:
         image: "mayconcarleterodrigues/falloutshelter"
+        environment: 
+            - MONGO_URL=mongodb://mongo:27017/api
+        depends_on: 
+            - mongo
+            - mongo-express
+        ports:
+            - 3000:3000
         command: ["npm", "start"]
         
