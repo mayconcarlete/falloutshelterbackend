@@ -52,7 +52,7 @@ jobs:
       - aws-cli/setup
       - run:
           name: Trigger pipeline
-          command: aws codepipeline start-pipeline-execution --name=maykids
+          command: aws codepipeline start-pipeline-execution --name=falloutshelter-backend
 
       
       
