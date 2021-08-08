@@ -1,0 +1,47 @@
+version: '3'
+
+services:
+  mongo:
+    image: mongo
+    restart: always
+    ports:
+      - 27017:27017
+
+  mongo-express:
+    image: mongo-express
+    restart: always
+    depends_on: 
+      - mongo
+    ports: 
+      - 8081:8081
+
+  unit-test:
+    build:
+      context: .
+      dockerfile: docker/base-tests.Dockerfile
+    volumes:
+      - "/app/node_modules"
+      - ".:/app"
+    depends_on: 
+      - mongo
+      - mongo-express
+    environment: 
+      - MONGO_URL=mongodb://mongo:27017/api
+    command: ["npm", "run", "test:unit"]
+
+  run-local:
+    build:
+      context: .
+      dockerfile: docker/base-tests.Dockerfile
+    volumes: 
+      - "/app/node_modules"
+      - ".:/app"
+    ports:
+      - 3000:3000
+    depends_on: 
+      - mongo
+      - mongo-express
+    environment: 
+      - MONGO_URL=mongodb://mongo:27017/api
+    command: ["npm", "run", "dev"]
+  

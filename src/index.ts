@@ -2,7 +2,7 @@ import server from './main/server'
 import { MongoDB } from './infra/mongodb/helper'
 
 const mongoRepository = new MongoDB()
-const PORT = process.env.PORT || 3000
+const PORT = 3000
 
 mongoRepository.connect().then(async () =>
   server.listen(PORT,() => {

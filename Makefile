@@ -1,5 +1,5 @@
 unit-test:
-	@docker-compose run unit-test
+	@docker-compose -f docker-compose-dev.yml run unit-test
 
 dev:
-	@docker-compose up run-local
+	@docker-compose -f docker-compose-dev.yml up run-local
