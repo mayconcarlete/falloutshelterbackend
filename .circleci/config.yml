@@ -54,11 +54,22 @@ jobs:
           name: Trigger pipeline
           command: aws codepipeline start-pipeline-execution --name=falloutshelter-backend
 
-      
-      
 workflows:
   version: 2
   build_and_tests:
     jobs:
-      - trigger-pipeline        
-      
+      - unit-test
+      - deploy-api-to-docker-hub:
+          requires:
+            - unit-test
+          filters:
+            branches:
+              only:
+                - master
+      - trigger-pipeline:
+          requires:
+            - deploy-api-to-docker-hub  
+          filters:
+            branches:
+              only:
+                - master
