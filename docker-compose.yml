@@ -12,6 +12,7 @@ services:
         build:
             context: ./nginx
             dockerfile: Dockerfile
+        depends_on: 
             - api
         ports: 
             - 80:80
