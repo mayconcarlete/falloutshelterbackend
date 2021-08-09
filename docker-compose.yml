@@ -3,9 +3,6 @@ version: '3'
 services: 
     api:
         image: "mayconcarleterodrigues/falloutshelter"
-        depends_on: 
-            - mongo
-            - mongo-express
         ports:
             - 3000:3000
         command: ["npm", "start"]
@@ -15,9 +12,6 @@ services:
         build:
             context: ./nginx
             dockerfile: Dockerfile
-        depends_on: 
-            - mongo
-            - mongo-express
             - api
         ports: 
             - 80:80
