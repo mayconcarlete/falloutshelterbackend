@@ -6,6 +6,8 @@ services:
         ports:
             - 3000:3000
         command: ["npm", "start"]
+        environment: 
+            - MONGO_URL=mongodb://mongo:27017/api
     
     nginx:
         restart: always
