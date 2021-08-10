@@ -1,7 +1,6 @@
 version: 2.1
 
 orbs:
-  aws-ecr: circleci/aws-ecr@7.0.0
   aws-cli: circleci/aws-cli@2.0
 
 jobs:
@@ -53,6 +52,8 @@ jobs:
       - run:
           name: Trigger pipeline
           command: aws codepipeline start-pipeline-execution --name=falloutshelter-backend
+
+
 
 workflows:
   version: 2
