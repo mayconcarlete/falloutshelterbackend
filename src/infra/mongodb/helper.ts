@@ -4,7 +4,7 @@ export class MongoDB {
   private mongooseConnection: undefined|Mongoose
 
   async connect (): Promise<Mongoose> {
-    const uri = `${process.env.MONGO_URL}`
+    const uri = process.env.MONGO_URL!
     this.mongooseConnection = await mongoose.connect(uri, {
       useCreateIndex: true,
       useNewUrlParser: true,
