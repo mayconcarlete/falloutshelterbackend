@@ -6,8 +6,6 @@ services:
         ports:
             - 3000:3000
         command: ["npm", "start"]
-        environment: 
-            - MONGO_URL=${process.env.MONGO_URL}
     
     nginx:
         restart: always
