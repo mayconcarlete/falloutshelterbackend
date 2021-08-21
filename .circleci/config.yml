@@ -2,6 +2,7 @@ version: 2.1
 
 orbs:
   aws-cli: circleci/aws-cli@2.0
+  aws-ecr: circleci/aws-ecr@7.0.0
 
 jobs:
   unit-test:
@@ -26,32 +27,41 @@ jobs:
           name: Unit Tests
           command: | 
             make unit-test  
-
-  deploy-api-to-docker-hub:
-    working_directory: ~/app
+  deploy-to-ecr:
     machine: true
-    steps:  
-      - checkout
-      - attach_workspace:
-          at: ~/app
-      - run:
-          name: Login docker
-          command: docker login -u ${DOCKER_USER} -p ${DOCKER_PASSWORD}
-      - run:
-          name: Docker Build
-          command: docker build -t mayconcarleterodrigues/falloutshelter -f ~/app/docker/build.Dockerfile .
-      - run:
-          name: Pushing image to docker hub
-          command: docker push mayconcarleterodrigues/falloutshelter
-  
-  trigger-pipeline:
-    executor: aws-cli/default
     steps:
       - checkout
-      - aws-cli/setup
-      - run:
-          name: Trigger pipeline
-          command: aws codepipeline start-pipeline-execution --name=falloutshelter-backend
+      - aws-ecr/build-and-push-image:
+          repo: falloutshelter
+          tag: "latest,v0.1.${CIRCLECI_BUILD_NUM}"
+          dockerfile: docker/build.Dockerfile
+          path: .
+
+  # deploy-api-to-docker-hub:
+  #   working_directory: ~/app
+  #   machine: true
+  #   steps:  
+  #     - checkout
+  #     - attach_workspace:
+  #         at: ~/app
+  #     - run:
+  #         name: Login docker
+  #         command: docker login -u ${DOCKER_USER} -p ${DOCKER_PASSWORD}
+  #     - run:
+  #         name: Docker Build
+  #         command: docker build -t mayconcarleterodrigues/falloutshelter -f ~/app/docker/build.Dockerfile .
+  #     - run:
+  #         name: Pushing image to docker hub
+  #         command: docker push mayconcarleterodrigues/falloutshelter
+  
+  # trigger-pipeline:
+  #   executor: aws-cli/default
+  #   steps:
+  #     - checkout
+  #     - aws-cli/setup
+  #     - run:
+  #         name: Trigger pipeline
+  #         command: aws codepipeline start-pipeline-execution --name=falloutshelter-backend
 
 
 
@@ -60,17 +70,18 @@ workflows:
   build_and_tests:
     jobs:
       - unit-test
-      - deploy-api-to-docker-hub:
-          requires:
-            - unit-test
-          filters:
-            branches:
-              only:
-                - master
-      - trigger-pipeline:
-          requires:
-            - deploy-api-to-docker-hub  
-          filters:
-            branches:
-              only:
-                - master
+      - deploy-to-ecr
+      # - deploy-api-to-docker-hub:
+      #     requires:
+      #       - unit-test
+      #     filters:
+      #       branches:
+      #         only:
+      #           - master
+      # - trigger-pipeline:
+      #     requires:
+      #       - deploy-api-to-docker-hub  
+      #     filters:
+      #       branches:
+      #         only:
+      #           - master
