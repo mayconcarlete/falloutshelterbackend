@@ -63,7 +63,7 @@ workflows:
       - unit-test
       - aws-ecr/build-and-push-image:
           repo: falloutshelter
-          tag: "latest,v0.1.${CIRCLECI_BUILD_NUM}"
+          tag: "latest,v0.1.${CIRCLE_BUILD_NUM}"
           dockerfile: docker/build.Dockerfile
           path: .
       # - deploy-api-to-docker-hub:
