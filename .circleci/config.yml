@@ -27,15 +27,6 @@ jobs:
           name: Unit Tests
           command: | 
             make unit-test  
-  deploy-to-ecr:
-    machine: true
-    steps:
-      - checkout
-      - aws-ecr/build-and-push-image:
-          repo: falloutshelter
-          tag: "latest,v0.1.${CIRCLECI_BUILD_NUM}"
-          dockerfile: docker/build.Dockerfile
-          path: .
 
   # deploy-api-to-docker-hub:
   #   working_directory: ~/app
@@ -70,7 +61,11 @@ workflows:
   build_and_tests:
     jobs:
       - unit-test
-      - deploy-to-ecr
+      - aws-ecr/build-and-push-image:
+          repo: falloutshelter
+          tag: "latest,v0.1.${CIRCLECI_BUILD_NUM}"
+          dockerfile: docker/build.Dockerfile
+          path: .
       # - deploy-api-to-docker-hub:
       #     requires:
       #       - unit-test
